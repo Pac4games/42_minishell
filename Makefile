@@ -6,7 +6,7 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/08/10 11:29:01 by paugonca         ###   ########.fr        #
+#    Updated: 2023/08/10 12:56:36 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ CFLAGS		= -Wall -Wextra -Werror -g
 RM			= rm -f
 MKD			= mkdir
 
-SRC_NAME	= main.c
+SRC_NAME	= main.c		\
+			  extra_utils.c	\
+			  env_utils.c
 
 SRC			= $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJ			= $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))
