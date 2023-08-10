@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:50:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/10 12:23:45 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/10 13:57:10 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,13 @@ void	print_matrix(char **mtx)
 
 	p = 0;
 	while (mtx[p])
-	{
-		ft_putstr_fd(mtx[p++], STDOUT_FILENO);
-		ft_putchar_fd('\n', STDOUT_FILENO);
-	}
+		ft_putendl_fd(mtx[p++], STDOUT_FILENO);
+}
+
+void	print_lst_fd(t_list *lst, int fd)
+{
+	int	p;
+
+	p = 0;
+
 }
