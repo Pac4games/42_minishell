@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/10 14:23:30 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:39:15 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,15 @@ typedef struct s_cmd
 }			t_cmd;
 
 //Binary Tree struct (also known as Command Table)
-typedef struct s_node
+typedef struct s_tree
 {
-	t_cmd			*cmd;
+	void			*token;
 	struct s_node	*parent;
 	struct s_node	*left;
 	struct s_node	*right;
 	enum e_ndtype	type;
-}			t_node;
+	int				p[2];
+}			t_tree;
 
 /*					   SRC						*/
 //extra_utils.c
