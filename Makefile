@@ -6,7 +6,7 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/08/11 10:59:06 by paugonca         ###   ########.fr        #
+#    Updated: 2023/08/11 12:36:00 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ MKD			= mkdir
 SRC_NAME	= main.c					\
 			  extra_utils.c				\
 			  env_utils.c				\
-			  executor/proc_utils.c		\
+			  executor/xqt.c			\
 			  executor/path_utils1.c	\
 			  executor/path_utils2.c
 
