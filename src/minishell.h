@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 13:52:00 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:08:02 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ typedef struct s_cmd
 typedef struct s_tree
 {
 	void			*token;
-	struct s_node	*parent;
-	struct s_node	*left;
-	struct s_node	*right;
+	struct s_tree	*parent;
+	struct s_tree	*left;
+	struct s_tree	*right;
 	enum e_ndtype	type;
 	int				fds[2];
 }			t_tree;
