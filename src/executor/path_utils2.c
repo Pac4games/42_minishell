@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 10:38:21 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 10:57:55 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:14:22 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*format_program_path(char *cmd, char *path, char *tmp)
 	return (path);
 }
 
-static char	*get_cur_path_helper(char **path, char *cmd)
+static char	*get_cur_path_fr(char **path, char *cmd)
 {
 	char	*tmp;
 	int		p;
@@ -78,5 +78,5 @@ char	*get_cur_path(char *env, char *cmd)
 		return (NULL);
 	tmp_path = ft_split(env, ':');
 	tmp_cmd = ft_strjoin("/", cmd);
-	return (get_cur_path_helper(tmp_path, tmp_cmd));
+	return (get_cur_path_fr(tmp_path, tmp_cmd));
 }

@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 11:01:26 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/11 11:17:24 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	get_cur_env(t_list **env, char **envp);
 void	print_env(t_list *env, int fd);
 
 /*					EXECUTOR					*/
+//xqt.c
+void	xqt(t_tree **root, t_list **env, int cmd_num);
 //path_utils1.c
 char	*get_cmd_path(char *cmd, t_list *env, char **env_mtx);
 //path_utils2.c
