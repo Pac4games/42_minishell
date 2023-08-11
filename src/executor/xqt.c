@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:44:43 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 14:10:39 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:08:00 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ static void	run_cmd_fr(t_tree *node, t_list *env, t_cmd *cmd)
 	close(node->fds[1]);
 	close(node->fds[0]);
 	close(cmd->fd);
-	g_exitstts = 127;
-	exit(g_exitstts);
+	exit(127);
 }
 
 static void	run_cmd(t_tree *node, t_list *env, t_cmd *cmd)

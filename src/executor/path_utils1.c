@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 19:16:15 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 11:05:10 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:07:45 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ char	*get_abs_path(char *cmd, char **env_mtx)
 		ft_putstr_fd(cmd, STDERR_FILENO);
 		ft_putendl_fd(" is a directory", STDERR_FILENO);
 		free_mtx(env_mtx);
-		g_exitstts = 126;
-		exit(g_exitstts);
+		exit(126);
 	}
 	if (access(cmd, X_OK) < 0)
 	{
 		ft_putstr_fd(cmd, STDERR_FILENO);
 		ft_putendl_fd(": Command not found", STDERR_FILENO);
 		free_mtx(env_mtx);
-		g_exitstts = 127;
-		exit(g_exitstts);
+		exit(127);
 	}
 	return (cmd);
 }

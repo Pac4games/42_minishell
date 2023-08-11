@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 14:08:02 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:06:58 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@
 //"readline-devel".
 # include <readline/readline.h>
 # include <readline/history.h>
-
-//Global variable (put here so LSP auto-correction can detect it)
-int g_exitstts = EXIT_SUCCESS;
 
 //Node types, pretty self explanatory
 typedef enum e_ndtype

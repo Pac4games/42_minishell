@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 10:38:21 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 11:14:22 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/11 15:07:24 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	is_valid_path(char *cmd, char *path)
 	{
 		ft_putstr_fd(cmd, STDERR_FILENO);
 		ft_putendl_fd(" is a directory", STDERR_FILENO);
-		g_exitstts = 126;
-		exit(g_exitstts);
+		exit(126);
 	}
 	if (access(path, X_OK) < 0)
 		return (0);
@@ -38,8 +37,10 @@ char	*format_program_path(char *cmd, char *path, char *tmp)
 	tmp = ft_strjoin(cmd, "/");
 	free(path);
 	path = ft_strjoin(cmd, tmp);
-	free(path); 
-	return (path);
+	free(tmp); 
+	if (is_valid_path(cmd, path))
+		return (path);
+	return (NULL);
 }
 
 static char	*get_cur_path_fr(char **path, char *cmd)
