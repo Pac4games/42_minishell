@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:44:43 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 12:33:48 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/11 13:52:25 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,18 @@ static void	run_cmd_fr(t_tree *node, t_list *env, t_cmd *cmd)
 
 	env_mtx = lst2mtx(env);
 	path = get_cmd_path(((char **)node->token)[0], env, env_mtx);
-	close(node->fd[0]);
+	close(node->fds[0]);
 	if (path)
 		execve(path, node->token, env_mtx);
+	free_mtx(env_mtx);
+	close(node->fds[1]);
+	close(node->fds[0]);
+	close(cmd->fd);
 }
 
 static void	run_cmd(t_tree *node, t_list *env, t_cmd *cmd)
 {
-	if (pipe(node->fd) == -1)
+	if (pipe(node->fds) == -1)
 		ft_putendl_fd("Error: failed to create pipe.", STDERR_FILENO);
 	cmd->pid = fork();
 	if (cmd->pid < 0)
