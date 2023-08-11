@@ -1,41 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_utils.c                                       :+:      :+:    :+:   */
+/*   path_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/10 19:16:15 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 09:53:58 by paugonca         ###   ########.fr       */
+/*   Created: 2023/08/11 10:38:21 by paugonca          #+#    #+#             */
+/*   Updated: 2023/08/11 10:57:55 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-char	*get_abs_path(char *cmd, char **env_mtx)
-{
-	DIR	*dir;
-
-	dir = opendir(cmd);
-	if (dir)
-	{
-		closedir(dir);
-		ft_putstr_fd(cmd, STDERR_FILENO);
-		ft_putendl_fd(" is a directory", STDERR_FILENO);
-		free_matrix(env_mtx);
-		g_exitstts = 126;
-		exit(g_exitstts);
-	}
-	if (access(cmd, X_OK) < 0)
-	{
-		ft_putstr_fd(cmd, STDERR_FILENO);
-		ft_putendl_fd(": Command not found", STDERR_FILENO);
-		free_matrix(env_mtx);
-		g_exitstts = 127;
-		exit(g_exitstts);
-	}
-	return (cmd);
-}
 
 int	is_valid_path(char *cmd, char *path)
 {
@@ -67,22 +42,41 @@ char	*format_program_path(char *cmd, char *path, char *tmp)
 	return (path);
 }
 
-char	*get_rel_path(char *cmd, t_list *env)
+static char	*get_cur_path_helper(char **path, char *cmd)
 {
-	char	*path;
 	char	*tmp;
-	t_list	*env_tmp;
-	path = NULL;
+	int		p;
+
 	tmp = NULL;
-	env_tmp = env;
-	if (cmd[0] == '.')
-		return (format_program_path(cmd, path, tmp));
+	p = 0;
+	while (path[p])
+	{
+		tmp = ft_strjoin(path[p], cmd);
+		if (is_valid_path(cmd, tmp))
+		{
+			free_mtx(path);
+			free(cmd);
+			return (tmp);
+		}
+		free(tmp);
+	}
+	free_mtx(path);
+	free(cmd);
+	return (NULL);
 }
 
-char	*get_cmd_path(char *cmd, t_list *env, char **env_mtx)
+//Only gets called to look for relative path, returns NULL if absolute
+//path is found.
+char	*get_cur_path(char *env, char *cmd)
 {
-	if (cmd[0] == '/')
-		return (get_abs_path(cmd, env_mtx));
-	else
-		return (get_rel_path(cmd, env));
+	char	**tmp_path;
+	char	*tmp_cmd;
+
+	tmp_path = NULL;
+	tmp_cmd = NULL;
+	if (ft_strncmp(env, "PATH=", 5))
+		return (NULL);
+	tmp_path = ft_split(env, ':');
+	tmp_cmd = ft_strjoin("/", cmd);
+	return (get_cur_path_helper(tmp_path, tmp_cmd));
 }
