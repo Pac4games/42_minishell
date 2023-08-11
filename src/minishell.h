@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/10 15:28:16 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/10 23:04:52 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
+# include <dirent.h>
+
+//Global variable (put here so LSP auto-correction can detect it)
+int exitstts = EXIT_SUCCESS;
 
 //Node types, pretty self explanatory
 typedef enum e_ndtype

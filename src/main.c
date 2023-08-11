@@ -6,13 +6,11 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/10 14:24:39 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/10 23:04:02 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	exitstts = EXIT_SUCCESS;
 
 int	main(int ac, char **av, char **envp)
 {
@@ -21,5 +19,6 @@ int	main(int ac, char **av, char **envp)
 	(void) av;
 
 	get_cur_env(&env, envp);
+//	print_matrix(lst2mtx(env));
 	return (exitstts);
 }

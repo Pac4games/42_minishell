@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:50:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/10 15:27:58 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:13:13 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ char **lst2mtx(t_list *env)
 		mtx[p++] = tmp->content;
 		tmp = tmp->next;
 	}
-	mtx[++p] = NULL;
+	mtx[p++] = NULL;
 	return (mtx);
 }
