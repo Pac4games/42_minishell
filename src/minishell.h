@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 11:17:24 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:23:53 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # include <stdlib.h>
 # include <dirent.h>
 # include <sys/stat.h>
+//The readline library may not come installed by default. The package on
+//Ubuntu is called "libreadline-dev", while on Fedora it's
+//"readline-devel".
+# include <readline/readline.h>
+# include <readline/history.h>
 
 //Global variable (put here so LSP auto-correction can detect it)
 int g_exitstts = EXIT_SUCCESS;

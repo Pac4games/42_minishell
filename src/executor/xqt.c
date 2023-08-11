@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 14:44:43 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 11:16:58 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:33:48 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ static void	run_cmd_fr(t_tree *node, t_list *env, t_cmd *cmd)
 	char	*path;
 
 	env_mtx = lst2mtx(env);
+	path = get_cmd_path(((char **)node->token)[0], env, env_mtx);
+	close(node->fd[0]);
+	if (path)
+		execve(path, node->token, env_mtx);
 }
 
 static void	run_cmd(t_tree *node, t_list *env, t_cmd *cmd)
