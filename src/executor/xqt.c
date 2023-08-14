@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   xqt.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/14 12:45:33 by paugonca         ###   ########.fr       */
+/*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
+/*   Updated: 2023/08/14 15:25:23 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-int	g_stts = EXIT_SUCCESS;
-
-int	main(int ac, char **av, char **envp)
+//The actual executor function. Cool name, right?
+void	xqt(t_tree **root, t_cmd *cmd, int *fd)
 {
-	t_list	*env;
-//	t_tree	*root;
-	(void) ac;
-	(void) av;
-
-	get_cur_env(&env, envp);
-//	root->token = "ls";
-//	xqt(&root, &env, 1);
-	print_mtx(lst2mtx(env));
-	return (g_stts);
+	if (pipe(cmd->pipes) == -1)
+		print_err("failed to open pipe.", EXIT_FAILURE);
+	cmd->pid = fork();
+	if (cmd->pid < 0)
+		print_err("failed to fork process.", EXIT_FAILURE);
 }

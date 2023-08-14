@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 15:06:58 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:10:49 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,17 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-//Node types, pretty self explanatory
+//Booleans
+# define TRUE 1
+# define FALSE 0
+
+//Shell name
+# define SHELL "minihell"
+
+//Global variable declaration
+int	g_stts;
+
+//Node types
 typedef enum e_ndtype
 {
 	E_PIPE,
@@ -40,24 +50,27 @@ typedef enum e_ndtype
 //Command struct
 typedef struct s_cmd
 {
+	int		pipes[2];
 	int		num;
-	int		pid;
 	int		fd;
 	int		in;
 	int		out;
 	int		doc;
-	t_list	*env;
+	char	***env;
+	pid_t	pid;
 }			t_cmd;
 
 //Binary Tree struct (also known as Command Table)
 typedef struct s_tree
 {
-	void			*token;
+	char			*input;
 	struct s_tree	*parent;
 	struct s_tree	*left;
 	struct s_tree	*right;
 	enum e_ndtype	type;
 	int				fds[2];
+	int				id;
+	int				pipe_num;
 }			t_tree;
 
 /*					   SRC						*/
@@ -65,18 +78,14 @@ typedef struct s_tree
 void	free_mtx(char **mtx);
 void	print_mtx(char **mtx);
 char	**lst2mtx(t_list *lst);
+void	print_err(char *msg, int stts);
+void	print_shell_err(char *cmd, char *msg, int stts);
 //env_utils.c
 void	get_cur_env(t_list **env, char **envp);
 void	print_env(t_list *env, int fd);
 
 /*					EXECUTOR					*/
 //xqt.c
-void	xqt(t_tree **root, t_list **env, int cmd_num);
-//path_utils1.c
-char	*get_cmd_path(char *cmd, t_list *env, char **env_mtx);
-//path_utils2.c
-int		is_valid_path(char *cmd, char *path);
-char	*format_program_path(char *cmd, char *path, char *tmp);
-char	*get_cur_path(char *env, char *cmd);
+void	xqt(t_tree **root, t_cmd *cmd, int *fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:50:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/11 10:42:28 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/14 14:58:20 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,23 @@ char **lst2mtx(t_list *lst)
 	}
 	mtx[p++] = NULL;
 	return (mtx);
+}
+
+void	print_stderr(char *msg, int stts)
+{
+	ft_putstr_fd("Error: ", STDERR_FILENO);
+	ft_putendl_fd(msg, STDERR_FILENO);
+	g_stts = stts;
+	exit(g_stts);
+}
+
+void	print_shellerr(char *cmd, char *msg, int stts)
+{
+	ft_putstr_fd(SHELL, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(msg, STDERR_FILENO);
+	g_stts = stts;
+	exit(g_stts);
 }
