@@ -6,11 +6,24 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:24:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/14 15:25:18 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:01:56 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static int	is_valid_path(char *cmd, char *path)
+{
+	struct stat	buf;
+
+	lstat(path, &buf);
+	if (S_ISDIR(buf.st_mode))
+		print_shell_err(cmd, "Is a directory", 126);
+	else if (access(path, X_OK) >= 0)
+		return (TRUE);
+	free(path);
+	return (FALSE);
+}
 
 static char	*get_abs_path(char *cmd)
 {
@@ -39,6 +52,9 @@ static char	*get_rel_path(char *cmd, char **env, int p)
 		pwd = ft_strjoin(cwd, "/");
 		free(cwd);
 		tmp = ft_strjoin(pwd, cmd);
+		if (is_valid_path(cmd, tmp))
+			return (tmp);
+		free_mtx(env);
 	}
 	return (NULL);
 }
@@ -47,7 +63,7 @@ char	*get_cmd_path(char *cmd, char **env)
 {
 	if (!cmd)
 		return (NULL);
-	if (ft_strlen(cmd) == 1 && cmd[0] == '.')
+	else if (ft_strlen(cmd) == 1 && cmd[0] == '.')
 	{
 		ft_putstr_fd(SHELL, STDERR_FILENO);
 		ft_putendl_fd(": filename argument required", STDERR_FILENO);
@@ -57,6 +73,8 @@ char	*get_cmd_path(char *cmd, char **env)
 	}
 	else if (ft_strlen(cmd) == 2 && cmd[0] == '.' && cmd[1] == '.')
 		print_shell_err(cmd, "command not found", 127);
-	else if (cmd[0] == '/')
+	if (cmd[0] == '/')
 		return (get_abs_path(cmd));
+	else 
+		return (get_rel_path(cmd, get_cur_env(env), 0));
 }

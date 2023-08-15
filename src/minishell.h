@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/14 15:10:49 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:43:11 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,13 @@ typedef struct s_tree
 //extra_utils.c
 void	free_mtx(char **mtx);
 void	print_mtx(char **mtx);
-char	**lst2mtx(t_list *lst);
 void	print_err(char *msg, int stts);
 void	print_shell_err(char *cmd, char *msg, int stts);
-//env_utils.c
-void	get_cur_env(t_list **env, char **envp);
-void	print_env(t_list *env, int fd);
 
 /*					EXECUTOR					*/
 //xqt.c
 void	xqt(t_tree **root, t_cmd *cmd, int *fd);
+//env_utils.c
+char	**get_cur_env(char **env);
 
 #endif
