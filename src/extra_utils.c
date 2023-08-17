@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:50:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/14 15:34:36 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/15 12:21:36 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_mtx(char **mtx)
 		ft_putendl_fd(mtx[p++], STDOUT_FILENO);
 }
 
-void	print_stderr(char *msg, int stts)
+void	print_err(char *msg, int stts)
 {
 	ft_putstr_fd("Error: ", STDERR_FILENO);
 	ft_putendl_fd(msg, STDERR_FILENO);
@@ -39,7 +39,7 @@ void	print_stderr(char *msg, int stts)
 	exit(g_stts);
 }
 
-void	print_shellerr(char *cmd, char *msg, int stts)
+void	print_shell_err(char *cmd, char *msg, int stts)
 {
 	ft_putstr_fd(SHELL, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);

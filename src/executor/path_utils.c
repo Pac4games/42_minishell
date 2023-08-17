@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:24:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/14 16:01:56 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/16 11:06:32 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,29 @@ static char	*get_abs_path(char *cmd)
 	return (cmd);
 }
 
+static char *join_rel_path(char *cmd, char **path, char *tmp)
+{
+	int	p;
+
+	p = 0;
+	while (path[p])
+	{
+		tmp = ft_strjoin(path[p++], cmd);
+		if (is_valid_path(cmd, tmp))
+		{
+			free_mtx(path);
+			return (tmp);
+		}
+	}
+	free_mtx(path);
+	p = 0;
+	while (cmd[p])
+		if (cmd[p++] == '/')
+			print_shell_err(cmd, "No such file or directory", 127);
+	print_shell_err(cmd, "command not found", 127);
+	return (NULL);
+}
+
 static char	*get_rel_path(char *cmd, char **env, int p)
 {
 	char	*tmp;
@@ -53,10 +76,14 @@ static char	*get_rel_path(char *cmd, char **env, int p)
 		free(cwd);
 		tmp = ft_strjoin(pwd, cmd);
 		if (is_valid_path(cmd, tmp))
+		{
+			free_mtx(env);
 			return (tmp);
-		free_mtx(env);
+		}
 	}
-	return (NULL);
+	if (!env)
+		print_shell_err(cmd, "path is unset", 127);
+	return (join_rel_path(cmd, env, tmp));
 }
 
 char	*get_cmd_path(char *cmd, char **env)

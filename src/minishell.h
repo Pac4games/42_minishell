@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/14 15:43:11 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/16 11:30:37 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ int	g_stts;
 //Node types
 typedef enum e_ndtype
 {
+	E_ARG,
 	E_PIPE,
+	E_FLAG,
 	E_LESS,
 	E_LLESS,
 	E_GREATER,
@@ -51,6 +53,7 @@ typedef enum e_ndtype
 typedef struct s_cmd
 {
 	int		pipes[2];
+	int		pos;
 	int		num;
 	int		fd;
 	int		in;
@@ -69,7 +72,6 @@ typedef struct s_tree
 	struct s_tree	*right;
 	enum e_ndtype	type;
 	int				fds[2];
-	int				id;
 	int				pipe_num;
 }			t_tree;
 
@@ -85,5 +87,7 @@ void	print_shell_err(char *cmd, char *msg, int stts);
 void	xqt(t_tree **root, t_cmd *cmd, int *fd);
 //env_utils.c
 char	**get_cur_env(char **env);
+//path_utils.c
+char	*get_cmd_path(char *cmd, char **env);
 
 #endif
