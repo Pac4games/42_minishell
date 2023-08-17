@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 11:22:37 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:24:42 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	*get_cmd(t_tree *node, int pos)
 //the binary tree: one to count the number of nodes for malloc(), and
 //another to duplicate the strings, so this was engineered in order to
 //avoid unecessary indentical "while" loops.
-static void args_set(t_tree *node, int pos, char **args, int phase)
+static void	args_set(t_tree *node, int pos, char **args, int phase)
 {
 	int	p;
 
