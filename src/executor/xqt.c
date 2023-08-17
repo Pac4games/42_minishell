@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 11:24:42 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:33:19 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*get_cmd(t_tree *node, int pos)
 //being the variable "p". At the end of the "while (node)" loop, if we're
 //still in phase 1, the memory for the "args" matrix will be allocated,
 //and in the next function call we will set the strings for "args" as
-//the input containted in the nodes with ft_strdup(). we decided to do
+//the input containted in the nodes with ft_strdup(). We decided to do
 //this since we would need two separate identical functions to navigate
 //the binary tree: one to count the number of nodes for malloc(), and
 //another to duplicate the strings, so this was engineered in order to
