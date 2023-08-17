@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 14:30:08 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 15:46:10 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <dirent.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 //The readline library may not come installed by default. The package on
 //Ubuntu is called "libreadline-dev", while on Fedora it's
 //"readline-devel".
@@ -75,7 +76,19 @@ typedef struct s_tree
 	int				pipe_num;
 }			t_tree;
 
-/*					  EXTRA						*/
+/*					EXECUTOR					*/
+//xqt.c
+void	xqt(t_tree *root, t_cmd *cmd, int *fd);
+//cmd_utils.c
+char	*get_cmd(t_tree *node, int pos);
+char	**get_cmd_args(t_tree *node, int pos);
+int		get_cmd_num(t_tree *node);
+//env_utils.c
+char	**get_cur_env(char **env);
+//path_utils.c
+char	*get_cmd_path(char *cmd, char **env);
+
+/*					 EXTRA						*/
 //print_utils.c
 void	print_mtx(char **mtx);
 void	print_err(char *msg, int stts);
@@ -84,16 +97,5 @@ void	print_shell_err(char *cmd, char *msg, int stts);
 void	free_mtx(char **mtx);
 void	free_tree(t_tree **node);
 t_tree	**get_tree_root(t_tree **node);
-
-/*					EXECUTOR					*/
-//xqt.c
-void	xqt(t_tree *root, t_cmd *cmd, int *fd);
-//cmd_utils.c
-char	*get_cmd(t_tree *node, int pos);
-char	**get_cmd_args(t_tree *node, int pos);
-//env_utils.c
-char	**get_cur_env(char **env);
-//path_utils.c
-char	*get_cmd_path(char *cmd, char **env);
 
 #endif

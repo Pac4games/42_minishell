@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:48:22 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 14:06:19 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:52:48 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,19 @@ char	**get_cmd_args(t_tree *node, int pos)
 		cmd_args_set(tmp, pos, args, ++phase);
 	}
 	return (args);
+}
+
+int	get_cmd_num(t_tree *node)
+{
+	int	res;
+
+	res = 0;
+	while (node)
+	{
+		if (!res && node->right)
+			res++;
+		res++;
+		node = node->parent;
+	}
+	return (res);
 }
