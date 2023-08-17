@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:35:46 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 13:47:45 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:30:58 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_mtx(char **mtx)
 void	free_tree(t_tree **node)
 {
 	if (!node || !(*node))
-		return ; 
+		return ;
 	free_tree(&((*node)->left));
 	free_tree(&((*node)->right));
 	if ((*node)->input)
@@ -36,7 +36,7 @@ void	free_tree(t_tree **node)
 
 t_tree	**get_tree_root(t_tree **node)
 {
-	t_tree *root;
+	t_tree	*root;
 
 	if (!(*node))
 		return (NULL);

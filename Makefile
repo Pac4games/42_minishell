@@ -6,7 +6,7 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/08/17 13:36:29 by paugonca         ###   ########.fr        #
+#    Updated: 2023/08/17 14:33:25 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ OBJ_PATH    = ./obj
 SRC_NAME    = main.c				\
               extra/free_utils.c	\
 			  extra/print_utils.c	\
-              executor/xqt.c		\
+              executor/executor.c	\
+			  executor/cmd_utils.c	\
               executor/path_utils.c	\
               executor/env_utils.c
 
@@ -44,7 +45,7 @@ $(NAME): $(DEPS) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(DEPS) -o $(NAME)
 
 $(LIBFT_PATH)/libft.a:
-	make bonus -C $(LIBFT_PATH)
+	make -C $(LIBFT_PATH)
 
 clean:
 	make clean -C $(LIBFT_PATH)

@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:24:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 11:24:15 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:14:42 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	*join_rel_path(char *cmd, char **path, char *tmp)
 	return (NULL);
 }
 
-static char	*get_rel_path(char *cmd, char **env, int p)
+static char	*get_rel_path(char *cmd, char **env)
 {
 	char	*tmp;
 	char	*pwd;
@@ -103,5 +103,5 @@ char	*get_cmd_path(char *cmd, char **env)
 	if (cmd[0] == '/')
 		return (get_abs_path(cmd));
 	else 
-		return (get_rel_path(cmd, get_cur_env(env), 0));
+		return (get_rel_path(cmd, get_cur_env(env)));
 }

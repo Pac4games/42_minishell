@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 13:55:41 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:30:08 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define SHELL "minihell"
 
 //Global variable declaration
-int	g_stts;
+extern int	g_stts;
 
 //Node types
 typedef enum e_ndtype
