@@ -6,12 +6,11 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/16 12:48:03 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:22:37 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-#include <unistd.h>
 
 static char	*get_cmd(t_tree *node, int pos)
 {
@@ -26,32 +25,55 @@ static char	*get_cmd(t_tree *node, int pos)
 	return (NULL);
 }
 
-static int	get_arg_num(t_tree *node, int pos)
+//These next 2 functions might be complicated to understand, so we will
+//proceed to explain it. Because of norme limitations, we have divided this
+//function in get_args() and args_set(). During phase 1, the binary tree
+//is navigated while we count the number of existing nodes, this number
+//being the variable "p". At the end of the "while (node)" loop, if we're
+//still in phase 1, the memory for the "args" matrix will be allocated,
+//and in the next function call we will set the strings for "args" as
+//the input containted in the nodes with ft_strdup(). we decided to do
+//this since we would need two separate identical functions to navigate
+//the binary tree: one to count the number of nodes for malloc(), and
+//another to duplicate the strings, so this was engineered in order to
+//avoid unecessary indentical "while" loops.
+static void args_set(t_tree *node, int pos, char **args, int phase)
 {
-	int	res;
+	int	p;
 
-	res = 0;
 	while (node)
 	{
-		if (node->type == E_ARG || node->type == E_FLAG || node->type == E_CMD)
-			res++;
-		if (!pos)
-			node = node->left;
-		else
-			node = node->right;
+		p = 0;
+		if (node->type == E_ARG || node->type == E_CMD || node->type == E_FLAG)
+		{
+			if (phase == 1)
+				p++;
+			else if (phase == 2)
+				args[p++] = ft_strdup(node->input);
+			if (!pos)
+				node = node->left;
+			else
+				node = node->right;
+		}
 	}
-	return (res);
+	if (phase == 1)
+		args = malloc(sizeof(char **) * (p + 1));
 }
 
 static char	**get_args(t_tree *node, int pos)
 {
-	int		p;
+	int		phase;
+	t_tree	*tmp;
 	char	**args;
 
-	p = 0;
-	args = malloc(sizeof(char *) * (get_arg_num(node, pos) + 1));
-	if (!args)
-		print_err("memory allocation failed", STDERR_FILENO);
+	phase = 0;
+	args = NULL;
+	while (phase <= 2)
+	{
+		tmp = node;
+		args_set(tmp, pos, args, ++phase);
+	}
+	return (args);
 }
 
 static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)

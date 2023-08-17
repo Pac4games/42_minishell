@@ -6,7 +6,7 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/08/11 15:03:07 by paugonca         ###   ########.fr        #
+#    Updated: 2023/08/17 11:11:57 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,11 @@ MKD         = mkdir -p
 SRC_PATH    = ./src
 OBJ_PATH    = ./obj
 
-SRC_NAME    = main.c               \
-              extra_utils.c       \
-              env_utils.c         \
-              executor/xqt.c       \
-              executor/path_utils1.c \
-              executor/path_utils2.c
+SRC_NAME    = main.c				\
+              extra_utils.c			\
+              executor/xqt.c		\
+              executor/path_utils.c	\
+              executor/env_utils.c
 
 SRC         = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJ         = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))
