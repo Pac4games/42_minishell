@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 13:51:00 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 13:55:41 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_tree	**get_tree_root(t_tree **node);
 
 /*					EXECUTOR					*/
 //xqt.c
-void	xqt(t_tree **root, t_cmd *cmd, int *fd);
+void	xqt(t_tree *root, t_cmd *cmd, int *fd);
 //cmd_utils.c
 char	*get_cmd(t_tree *node, int pos);
 char	**get_cmd_args(t_tree *node, int pos);

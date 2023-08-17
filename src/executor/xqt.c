@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 13:52:17 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 13:58:07 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,20 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 }
 
 //The actual executor function. Cool name, right?
-void	xqt(t_tree **root, t_cmd *cmd, int *fd)
+void	xqt(t_tree *root, t_cmd *cmd, int *fd)
 {
 	if (pipe(cmd->pipes) == -1)
 		print_err("failed to open pipe.", EXIT_FAILURE);
 	cmd->pid = fork();
 	if (cmd->pid < 0)
 		print_err("failed to fork process.", EXIT_FAILURE);
+	else if (cmd->pid == 0)
+		proc_child(root, cmd, fd);
+	if (cmd->num != 1)
+	{
+		if ((*fd) < 0)
+			close(*fd);
+		close((cmd->pipes[1]));
+		*fd = cmd->pipes[0];
+	}
 }

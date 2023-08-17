@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:48:22 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 13:50:45 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:06:19 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ static void	cmd_args_set(t_tree *node, int pos, char **args, int phase)
 	}
 	if (phase == 1)
 		args = malloc(sizeof(char **) * (p + 1));
+	if (!args)
+		print_err("failed to allocate memory", EXIT_FAILURE);
 }
 
 char	**get_cmd_args(t_tree *node, int pos)
