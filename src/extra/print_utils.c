@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extra_utils.c                                      :+:      :+:    :+:   */
+/*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:50:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/15 12:21:36 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/17 13:36:00 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-void	free_mtx(char **mtx)
-{
-	int	p;
-
-	p = 0;
-	while (mtx[p])
-		free(mtx[p++]);
-	free(mtx);
-}
+#include "../minishell.h"
 
 void	print_mtx(char **mtx)
 {
