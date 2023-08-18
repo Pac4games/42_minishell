@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 15:46:10 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/18 15:33:16 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <dirent.h>
+# include <signal.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
 //The readline library may not come installed by default. The package on
@@ -49,6 +50,13 @@ typedef enum e_ndtype
 	E_BUILTIN,
 	E_CMD
 }			t_ndtype;
+
+//Signal types
+typedef enum e_sigtype
+{
+	E_SIG_IGN,
+	E_SIG_DFL
+}			t_sigtype;
 
 //Command struct
 typedef struct s_cmd
@@ -87,6 +95,8 @@ int		get_cmd_num(t_tree *node);
 char	**get_cur_env(char **env);
 //path_utils.c
 char	*get_cmd_path(char *cmd, char **env);
+//sig_utils.c
+void	sig_handle(t_sigtype type);
 
 /*					 EXTRA						*/
 //print_utils.c

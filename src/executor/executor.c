@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 17:09:56 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/18 15:33:47 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	proc_child(t_tree *node, t_cmd *cmd)
 {
 	close((cmd->pipes)[0]);
+	sig_handle(E_SIG_DFL);
 	execve(get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env)),
 		get_cmd_args(node, cmd->pos), *(cmd->env));
 	free_tree(get_tree_root(&node));
