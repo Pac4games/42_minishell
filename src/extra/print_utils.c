@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:50:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 13:36:00 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:51:14 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	print_shell_err(char *cmd, char *msg, int stts)
 	ft_putstr_fd(SHELL, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putstr_fd(cmd, STDERR_FILENO);
+	free(cmd);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(msg, STDERR_FILENO);
 	g_stts = stts;

@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/18 16:14:51 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:44:54 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
 # include <dirent.h>
 # include <signal.h>
 # include <sys/stat.h>
@@ -34,6 +35,13 @@
 //Shell name
 # define SHELL "minihell"
 
+//Standard permissions for new files in Unix-based/like systems
+//0 - Special permissions
+//6 - User permissions (read + write)
+//4 - Group permissions (read)
+//4 - Others permissions (read)
+# define S_STDPERMS 0664
+
 //Global variable declaration
 extern int	g_stts;
 
@@ -43,13 +51,20 @@ typedef enum e_ndtype
 	E_ARG,
 	E_PIPE,
 	E_FLAG,
-	E_LESS,
-	E_LLESS,
-	E_GREATER,
-	E_GGREATER,
+	E_STDIN,
+	E_HDOC,
+	E_STDOUT,
+	E_APPEND,
 	E_BUILTIN,
 	E_CMD
 }			t_ndtype;
+
+//Input/Output (I/O)
+typedef enum e_io
+{
+	E_IN,
+	E_OUT
+}			t_io;
 
 //Signal types
 typedef enum e_sigtype
@@ -67,7 +82,7 @@ typedef struct s_cmd
 	int		fd;
 	int		in;
 	int		out;
-	int		doc;
+	int		heredoc;
 	char	***env;
 	pid_t	pid;
 }			t_cmd;
@@ -75,7 +90,7 @@ typedef struct s_cmd
 //Binary Tree struct (also known as Command Table)
 typedef struct s_tree
 {
-	char			*input;
+	char			*content;
 	struct s_tree	*parent;
 	struct s_tree	*left;
 	struct s_tree	*right;

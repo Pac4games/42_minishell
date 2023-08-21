@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:35:46 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 14:30:58 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:20:22 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	free_tree(t_tree **node)
 		return ;
 	free_tree(&((*node)->left));
 	free_tree(&((*node)->right));
-	if ((*node)->input)
-		free((*node)->input);
+	if ((*node)->content)
+		free((*node)->content);
 	free(*node);
 	*node = NULL;
 }

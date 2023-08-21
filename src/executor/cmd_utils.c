@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:48:22 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 14:52:48 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:19:32 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*get_cmd(t_tree *node, int pos)
 		while (node && node->type != E_CMD)
 			node = node->right;
 	if (node)
-		return (node->input);
+		return (node->content);
 	return (NULL);
 }
 
@@ -49,7 +49,7 @@ static void	cmd_args_set(t_tree *node, int pos, char **args, int phase)
 			if (phase == 1)
 				p++;
 			else if (phase == 2)
-				args[p++] = ft_strdup(node->input);
+				args[p++] = ft_strdup(node->content);
 			if (!pos)
 				node = node->left;
 			else
