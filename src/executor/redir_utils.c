@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:02:27 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/21 12:55:02 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:46:01 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,6 @@ static int	get_redir_num(t_tree *node, int pos, t_io io)
 	return (res);
 }
 
-static void	redir_stdin(t_tree *node, t_cmd *cmd, int p, int in_num)
-{
-	int	fd;
-
-	fd = open(node->content, O_RDONLY, S_STDPERMS);
-	if (fd < 0)
-		print_shell_err("failed to open file", node->content, EXIT_FAILURE);
-	if (p != in_num)
-		close(fd);
-	else
-		dup2(fd, STDIN_FILENO);
-}
-
-static void	redir_in(t_tree *node, t_cmd *cmd)
-{
-	int	p;
-
-	p = 0;
-	cmd->heredoc = 0;
-	while (node)
-	{
-
-	}
-}
-
 void	redir(t_tree *node, t_cmd *cmd, int *fd)
 {
 	int	in_num;
@@ -62,9 +37,24 @@ void	redir(t_tree *node, t_cmd *cmd, int *fd)
 
 	in_num = get_redir_num(node, cmd->pos, E_IN);
 	out_num = get_redir_num(node, cmd->pos, E_OUT);
-	if (!in_num)
+	if (in_num)
 	{
 		if (*fd)
 			close(*fd);
+		redir_in(node, cmd, in_num);
+	}
+	else
+		dup2(*fd, STDIN_FILENO);
+	if (out_num)
+	{
+		close((cmd->pipes)[0]);
+		redir_out(node, cmd, out_num);
+	}
+	else
+	{
+		if (cmd->pos ==	cmd->num - 1)
+			close((cmd->pipes)[1]);
+		else
+			dup2((cmd->pipes)[1], STDOUT_FILENO);
 	}
 }

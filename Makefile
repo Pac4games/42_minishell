@@ -6,7 +6,7 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/08/17 14:33:25 by paugonca         ###   ########.fr        #
+#    Updated: 2023/08/21 15:51:15 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,17 @@ MKD         = mkdir -p
 SRC_PATH    = ./src
 OBJ_PATH    = ./obj
 
-SRC_NAME    = main.c				\
-              extra/free_utils.c	\
-			  extra/print_utils.c	\
-              executor/executor.c	\
-			  executor/cmd_utils.c	\
-              executor/path_utils.c	\
-              executor/env_utils.c
+SRC_NAME    = main.c						\
+              extra/free_utils.c			\
+			  extra/print_utils.c			\
+              executor/executor.c			\
+			  executor/cmd_utils.c			\
+              executor/path_utils.c			\
+              executor/env_utils.c			\
+			  executor/sig_utils.c			\
+			  executor/redir_utils.c		\
+			  executor/redir_in_utils.c		\
+			  executor/redir_out_utils.c
 
 SRC         = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJ         = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))

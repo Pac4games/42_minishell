@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/21 12:44:54 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:33:45 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,17 @@
 # define SHELL "minihell"
 
 //Standard permissions for new files in Unix-based/like systems
-//0 - Special permissions
-//6 - User permissions (read + write)
-//4 - Group permissions (read)
-//4 - Others permissions (read)
-# define S_STDPERMS 0664
+//User - read and write
+//Group - read
+//Others - read
+# define S_STDPERMS (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
+
+//Standard flags for outfile creation
+//O_TRUNC will delete any contents inside the file if it exists
+# define O_STDOUTFILE (O_CREAT | O_WRONLY | O_TRUNC)
+
+//Standard flags for output appending
+# define O_STDAPPEND (O_CREAT | O_WRONLY | O_APPEND)
 
 //Global variable declaration
 extern int	g_stts;
@@ -76,6 +82,7 @@ typedef enum e_sigtype
 //Command struct
 typedef struct s_cmd
 {
+	pid_t	pid;
 	int		pipes[2];
 	int		pos;
 	int		num;
@@ -84,23 +91,22 @@ typedef struct s_cmd
 	int		out;
 	int		heredoc;
 	char	***env;
-	pid_t	pid;
 }			t_cmd;
 
 //Binary Tree struct (also known as Command Table)
 typedef struct s_tree
 {
-	char			*content;
 	struct s_tree	*parent;
 	struct s_tree	*left;
 	struct s_tree	*right;
 	enum e_ndtype	type;
-	int				fds[2];
+	char			*content;
+	int				pipes[2];
 	int				pipe_num;
 }			t_tree;
 
 /*					EXECUTOR					*/
-//xqt.c
+//executor.c
 void	xqt(t_tree *root, t_cmd *cmd, int *fd);
 //cmd_utils.c
 char	*get_cmd(t_tree *node, int pos);
@@ -112,7 +118,12 @@ char	**get_cur_env(char **env);
 char	*get_cmd_path(char *cmd, char **env);
 //sig_utils.c
 void	sig_handle(t_sigtype type);
-
+//redir_utils.c
+void	redir(t_tree *node, t_cmd *cmd, int *fd);
+//redir_in_utils.c
+void	redir_in(t_tree *node, t_cmd *cmd, int in_num);
+//redir_out_utils.c
+void	redir_out(t_tree *node, t_cmd *cmd, int out_num);
 /*					 EXTRA						*/
 //print_utils.c
 void	print_mtx(char **mtx);
