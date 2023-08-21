@@ -6,11 +6,42 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:44:55 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/21 15:52:35 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:20:48 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static void	sig_rl(int sig, siginfo_t *info, void *ucontext)
+{
+	(void)info;
+	(void)ucontext;
+	if (sig == SIGQUIT)
+		return ;
+	else if (sig == SIGINT)
+	{
+		g_stts = 130;
+		rl_replace_line("", 0);
+		ft_putendl_fd(NULL, STDOUT_FILENO);
+		rl_on_new_line();
+		rl_redisplay();
+	}
+}
+
+static void	sig_heredoc(int sig, siginfo_t *info, void *ucontext)
+{
+	(void)info;
+	(void)ucontext;
+	if (sig == SIGQUIT)
+		return ;
+	else if (sig == SIGINT)
+	{
+		ft_putendl_fd(NULL, 0);
+		unlink(".heredoc_tmp");
+		g_stts = 130;
+		exit(g_stts);
+	}
+}
 
 static void	sig_check(struct sigaction *sa, t_sigtype type)
 {
@@ -21,6 +52,10 @@ static void	sig_check(struct sigaction *sa, t_sigtype type)
 		(sa->sa_handler) = SIG_IGN;
 	else if (type == E_SIG_DFL)
 		(sa->sa_handler) = SIG_DFL;
+	else if (type == E_SIG_RL)
+		(sa->sa_sigaction) = sig_rl;
+	else if (type == E_SIG_HDOC)
+		(sa->sa_sigaction) = sig_heredoc;
 	else
 		return ;
 }

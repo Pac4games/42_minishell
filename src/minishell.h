@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/21 15:33:45 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:17:52 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ typedef enum e_io
 typedef enum e_sigtype
 {
 	E_SIG_IGN,
-	E_SIG_DFL
+	E_SIG_DFL,
+	E_SIG_RL,
+	E_SIG_HDOC
 }			t_sigtype;
 
 //Command struct
