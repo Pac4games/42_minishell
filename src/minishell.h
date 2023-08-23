@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/23 15:10:18 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/23 16:36:46 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_tree
 
 //main.c
 void	set_exit_stts(int stts);
+char	*shlvl_up(char *shlvl);
 
 /*					EXECUTOR					*/
 //executor.c

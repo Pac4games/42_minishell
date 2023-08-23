@@ -6,14 +6,14 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/08/23 15:15:34 by paugonca         ###   ########.fr        #
+#    Updated: 2023/08/23 16:43:21 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = minishell
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g
+CFLAGS      = -Wall -Wextra -Werror -g -rline
 
 RM          = rm -f
 MKD         = mkdir -p

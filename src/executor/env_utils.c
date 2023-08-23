@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:30:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/14 15:43:43 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/23 16:38:58 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,24 @@
 
 char	**get_cur_env(char **env)
 {
-	char	**path;
-	char	*tmp;
 	int		p;
+	char	**res;
 
+	p = 0;
+	while (env[p++])
+		continue ;
+	res = malloc(sizeof(char *) * (p + 1));
+	if (!res)
+		print_err("failed to allocate memory", EXIT_FAILURE);
 	p = 0;
 	while (env[p])
 	{
-		if (!ft_strncmp(env[p], "PATH=", 5))
-		{
-			path = ft_split(env[p] + 5, ':');
-			p = 0;
-			while (path[p])
-			{
-				tmp = ft_strdup(path[p]);
-				free(path[p]);
-				path[p] = ft_strjoin(tmp, "/");
-				free(tmp);
-				p++;
-			}
-			return (path);
-		}
+		if (!ft_strncmp(env[p], "SHLVL=", 6))
+			res[p] = shlvl_up(env[p]);
+		else
+			res[p] = ft_strdup(env[p]);
 		p++;
 	}
-	return (NULL);
+	res[p] = NULL;
+	return (res);
 }

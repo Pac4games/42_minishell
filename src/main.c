@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/23 14:52:13 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/23 16:34:50 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@ void	set_exit_stts(int stts)
 	}
 	else 
 		g_stts = WEXITSTATUS(stts);
+}
+
+char	*shlvl_up(char *shlvl)
+{
+	char	*tmp;
+	char	*res;
+
+	tmp = ft_itoa(ft_atoi(shlvl + 6) + 1);
+	res = ft_strjoin("SHLVL=", tmp);
+	free(tmp);
+	return (res);
 }
 
 int	main(int ac, char **av, char **envp)
