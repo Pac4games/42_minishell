@@ -6,7 +6,7 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/08/21 15:51:15 by paugonca         ###   ########.fr        #
+#    Updated: 2023/08/23 15:15:34 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRC_NAME    = main.c						\
 			  executor/sig_utils.c			\
 			  executor/redir_utils.c		\
 			  executor/redir_in_utils.c		\
-			  executor/redir_out_utils.c
+			  executor/redir_out_utils.c	\
+			  executor/heredoc_utils.c
 
 SRC         = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJ         = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))
