@@ -6,13 +6,13 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:21:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/23 15:12:57 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/23 16:46:44 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	redir_heredoc(t_tree **root, t_cmd *cmd)
+int	redir_hdoc(t_tree **root, t_cmd *cmd)
 {
 	t_tree	*tmp;
 
