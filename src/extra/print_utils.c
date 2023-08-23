@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:50:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/21 12:51:14 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:52:57 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ void	print_shell_err(char *cmd, char *msg, int stts)
 	free(cmd);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(msg, STDERR_FILENO);
+	g_stts = stts;
+	exit(g_stts);
+}
+
+void	print_hdoc_warn(char *eof, char *in, int stts)
+{
+	ft_putstr_fd(SHELL, STDERR_FILENO);
+	ft_putstr_fd(": warning: here-document delimited by end-of-file (wanted `",
+		STDERR_FILENO);
+	ft_putstr_fd(eof, STDERR_FILENO);
+	ft_putendl_fd("')", STDERR_FILENO);
+	free(eof);
+	free(in);
+	unlink(".heredoc_tmp");
 	g_stts = stts;
 	exit(g_stts);
 }

@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/18 15:56:03 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/22 12:19:47 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	t_cmd	cmd;
 	t_tree	*tmp;
 
+	if (redir_heredoc(root, &cmd))
+		return ;
 	p = 0;
 	cmd_num = get_cmd_num(*root);
 	tmp = *root;

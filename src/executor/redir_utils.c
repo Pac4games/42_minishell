@@ -6,13 +6,13 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:02:27 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/21 15:46:01 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/22 12:22:39 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	get_redir_num(t_tree *node, int pos, t_io io)
+int	get_redir_num(t_tree *node, int pos, t_io io)
 {
 	int	res;
 

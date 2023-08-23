@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/21 16:17:52 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/23 12:52:35 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,16 +121,23 @@ char	*get_cmd_path(char *cmd, char **env);
 //sig_utils.c
 void	sig_handle(t_sigtype type);
 //redir_utils.c
+int		get_redir_num(t_tree *node, int pos, t_io io);
 void	redir(t_tree *node, t_cmd *cmd, int *fd);
 //redir_in_utils.c
 void	redir_in(t_tree *node, t_cmd *cmd, int in_num);
 //redir_out_utils.c
 void	redir_out(t_tree *node, t_cmd *cmd, int out_num);
+int		redir_heredoc(t_tree **root, t_cmd *cmd);
+//heredoc_utils.c
+int		is_heredoc(t_tree **root, t_cmd *cmd);
+int		deezdocs(t_tree **root, t_cmd *cmd, int p);
+
 /*					 EXTRA						*/
 //print_utils.c
 void	print_mtx(char **mtx);
 void	print_err(char *msg, int stts);
 void	print_shell_err(char *cmd, char *msg, int stts);
+void	print_hdoc_warn(char *eof, char *in, int stts);
 //free_utils.c
 void	free_mtx(char **mtx);
 void	free_tree(t_tree **node);
