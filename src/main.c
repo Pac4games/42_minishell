@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/21 16:33:00 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/23 14:52:13 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,21 @@
 
 int	g_stts = EXIT_SUCCESS;
 
+void	set_exit_stts(int stts)
+{
+	if (WIFSIGNALED(stts))
+	{
+		g_stts = WTERMSIG(stts) + 128;
+		if (stts == SIGINT)
+			ft_putendl_fd(NULL, STDIN_FILENO);
+	}
+	else 
+		g_stts = WEXITSTATUS(stts);
+}
+
 int	main(int ac, char **av, char **envp)
 {
-	char **env;
+	char	**env;
 
 	(void)ac;
 	(void)av;

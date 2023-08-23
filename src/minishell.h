@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/23 12:52:35 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/23 15:10:18 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,11 @@
 # define SHELL "minihell"
 
 //Standard permissions for new files in Unix-based/like systems
-//User - read and write
-//Group - read
-//Others - read
-# define S_STDPERMS (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
-
-//Standard flags for outfile creation
-//O_TRUNC will delete any contents inside the file if it exists
-# define O_STDOUTFILE (O_CREAT | O_WRONLY | O_TRUNC)
-
-//Standard flags for output appending
-# define O_STDAPPEND (O_CREAT | O_WRONLY | O_APPEND)
+//0 - special file permissions (none in this case)
+//6 - user permissions (read + write)
+//4 - group permissions (read)
+//4 - others permissions (read)
+# define S_STDPERMS 0664
 
 //Global variable declaration
 extern int	g_stts;
@@ -107,6 +101,9 @@ typedef struct s_tree
 	int				pipe_num;
 }			t_tree;
 
+//main.c
+void	set_exit_stts(int stts);
+
 /*					EXECUTOR					*/
 //executor.c
 void	xqt(t_tree *root, t_cmd *cmd, int *fd);
@@ -127,9 +124,9 @@ void	redir(t_tree *node, t_cmd *cmd, int *fd);
 void	redir_in(t_tree *node, t_cmd *cmd, int in_num);
 //redir_out_utils.c
 void	redir_out(t_tree *node, t_cmd *cmd, int out_num);
-int		redir_heredoc(t_tree **root, t_cmd *cmd);
+int		redir_hdoc(t_tree **root, t_cmd *cmd);
 //heredoc_utils.c
-int		is_heredoc(t_tree **root, t_cmd *cmd);
+int		handle_hdoc(t_tree **root, t_cmd *cmd);
 int		deezdocs(t_tree **root, t_cmd *cmd, int p);
 
 /*					 EXTRA						*/

@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:02:27 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/22 12:22:39 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/23 15:13:27 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	redir(t_tree *node, t_cmd *cmd, int *fd)
 	}
 	else
 	{
-		if (cmd->pos ==	cmd->num - 1)
+		if (cmd->pos == cmd->num - 1)
 			close((cmd->pipes)[1]);
 		else
 			dup2((cmd->pipes)[1], STDOUT_FILENO);

@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/22 12:19:47 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/23 14:34:28 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static void	proc_child(t_tree *node, t_cmd *cmd)
 void	xqt(t_tree *node, t_cmd *cmd, int *fd)
 {
 	if (pipe(cmd->pipes) == -1)
-		print_err("failed to open pipe.", EXIT_FAILURE);
+		print_err("failed to open pipe", EXIT_FAILURE);
 	cmd->pid = fork();
 	if (cmd->pid < 0)
-		print_err("failed to fork process.", EXIT_FAILURE);
+		print_err("failed to fork process", EXIT_FAILURE);
 	else if (cmd->pid == 0)
 		proc_child(node, cmd);
 	if (cmd->num != 1)
@@ -57,18 +57,6 @@ static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)
 	return (cmd);
 }
 
-static void	set_exit_stts(int stts)
-{
-	if (WIFSIGNALED(stts))
-	{
-		g_stts = WTERMSIG(stts) + 128;
-		if (stts == SIGINT)
-			ft_putendl_fd(NULL, STDIN_FILENO);
-	}
-	else 
-		g_stts = WEXITSTATUS(stts);
-}
-
 void	proc_exec_tree(t_tree **root, char ***env)
 {
 	int		p;
@@ -77,7 +65,7 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	t_cmd	cmd;
 	t_tree	*tmp;
 
-	if (redir_heredoc(root, &cmd))
+	if (redir_hdoc(root, &cmd))
 		return ;
 	p = 0;
 	cmd_num = get_cmd_num(*root);
