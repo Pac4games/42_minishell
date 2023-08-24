@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:44:55 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/21 16:20:48 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/23 16:54:31 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	sig_rl(int sig, siginfo_t *info, void *ucontext)
 	}
 }
 
-static void	sig_heredoc(int sig, siginfo_t *info, void *ucontext)
+static void	sig_hdoc(int sig, siginfo_t *info, void *ucontext)
 {
 	(void)info;
 	(void)ucontext;
@@ -55,7 +55,7 @@ static void	sig_check(struct sigaction *sa, t_sigtype type)
 	else if (type == E_SIG_RL)
 		(sa->sa_sigaction) = sig_rl;
 	else if (type == E_SIG_HDOC)
-		(sa->sa_sigaction) = sig_heredoc;
+		(sa->sa_sigaction) = sig_hdoc;
 	else
 		return ;
 }
