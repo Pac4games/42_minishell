@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/23 16:36:46 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/08/31 11:00:40 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 //6 - user permissions (read + write)
 //4 - group permissions (read)
 //4 - others permissions (read)
-# define S_STDPERMS 0664
+# define S_STDPERMS 0644
 
 //Global variable declaration
 extern int	g_stts;
