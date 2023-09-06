@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/31 11:00:40 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:15:01 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 //Pac4's libft
 # include "../libft/libft.h"
+# include "parse.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <dirent.h>
 # include <signal.h>
+# include <errno.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
 //The readline library may not come installed by default. The package on
@@ -101,7 +103,27 @@ typedef struct s_tree
 	int				pipe_num;
 }			t_tree;
 
+//Data struct (mostly used for parsing)
+typedef struct s_data
+{
+	int			nbr_tokens;
+	char		**tokens;
+	char		*str_cmd;
+	char		**env_p;
+	char		***cmds;
+	int			fd[2][2];
+	int			curr_cmd;
+	int			curr_fd;
+	int			count;
+	int			warning;
+	int			shlvl;
+	char		**here_doc;
+	char		*str_tmp;
+	int			error;
+}			t_data;
+
 //main.c
+t_data	data(void);
 void	set_exit_stts(int stts);
 char	*shlvl_up(char *shlvl);
 
@@ -129,6 +151,59 @@ int		redir_hdoc(t_tree **root, t_cmd *cmd);
 //heredoc_utils.c
 int		handle_hdoc(t_tree **root, t_cmd *cmd);
 int		deezdocs(t_tree **root, t_cmd *cmd, int p);
+
+// ---------- BUILTINS ------------
+
+// check_builtins
+int				is_builtins(char *cmd);
+void			call_builtins(char **cmd);
+void			clean_exit_child(void);
+
+// error_msg
+void			error_msg(char *option, char *var_option, \
+				char *msg, int err);
+void			check_permission(void);
+void			error_exec(void);
+void			free_all(void);
+void			exit_child(void);
+
+//  ft_cd
+void			add_cd_to_env(char *path);
+void			apply_cd(char *oldcd, char *newcd);
+void			cd_to(char *str);
+int				ft_check_cd(char **str);
+void			ft_cd(char **str);
+
+// ft_echo
+int				is_flag(char *str);
+void			print_echo(char **str, int flag);
+void			ft_echo_beg(char **str, int flag);
+void			ft_echo(char **str);
+
+// ft_env
+void			ft_env(char **str);
+void			ft_env_exec(char **str);
+
+// ft_exit
+int				ft_exit_err(void);
+long long int	ft_atoli_checker(char *nptr, int i, int sing);
+long long int	ft_atoli(char *nptr);
+void			ft_exit(char **str);
+
+// ft_export
+void			export_declare_exec(char **str);
+void			export_declare(void);
+void			check_env_name(char **env, char *str, int size);
+int				check_export(char **str, int i, int j);
+void			ft_export(void);
+
+// ft_pwd
+void			ft_pwd(char **str);
+void			ft_pwd_exec(char **str);
+
+// ft_unset
+void			ft_unset(char **str, char *find);
+void			unset_var(char **env, int skip);
 
 /*					 EXTRA						*/
 //print_utils.c
