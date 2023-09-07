@@ -6,11 +6,11 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:38:13 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/05 12:08:55 by jferreir         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:47:42 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 // Main function of the parse unit
 void	parse_init(void)

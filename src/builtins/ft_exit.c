@@ -6,7 +6,7 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/06 15:02:55 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:44:30 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,12 @@ void	ft_exit(char **str)
 	{
 		i = ft_atoli(str[1]);
 		if ((!ft_isdigit(str[1][0]) && str[1][0] != '-' && str[1][0] != '+') \
-		|| (i == 0 && (!my_strcmp(str[1], "0") || !my_strcmp(str[1], "+0"))))
+		|| (i == 0 && (!ft_strncmp(str[1], "0", 1) || !ft_strncmp(str[1], "+0", 2))))
 		{
 			i = 2;
 			error_msg("exit: ", str[1], ": numeric argument required", i);
 		}
 	}
-	free(data()->str_cmd);
-	free_double_ptr(data()->env_p);
-	free_triple_ptr(data()->cmds);
+	free_cmd_data();
 	exit(i);
 }

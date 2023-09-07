@@ -6,7 +6,7 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/06 15:15:04 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:34:52 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	add_cd_to_env(char *path)
 	}
 	new_str[j++] = ft_strdup(path);
 	new_str[j] = NULL;
-	free_double_ptr(data()->env_p);
+	free_mtx(data()->env_p);
 	data()->env_p = new_str;
 }
 
@@ -69,14 +69,14 @@ void	cd_to(char *str)
 
 	path = NULL;
 	getcwd(dir, (sizeof(char) * 1024));
-	if (!str || str == NULL || my_strcmp(str, "~"))
+	if (!str || str == NULL || ft_strncmp(str, "~", 1))
 	{
-		path = ft_getenv(data()->env_p, "HOME", 4);
+		path = get_env_var(data()->env_p, "HOME");
 		apply_cd(dir, path);
 	}
-	else if (my_strcmp(str, "-"))
+	else if (ft_strncmp(str, "-", 1))
 	{
-		path = ft_getenv(data()->env_p, "OLDPWD", 6);
+		path = get_env_var(data()->env_p, "OLDPWD");
 		if (path == NULL)
 			error_msg("cd: ", NULL, ": OLDPWD not set", 1);
 		else

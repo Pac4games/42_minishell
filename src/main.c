@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/07 14:28:45 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:05:12 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ char	*shlvl_up(char *shlvl)
 	return (res);
 }
 
-t_data	data(void)
+t_data	*data(void)
 {
-	static t_data	data;
+	static t_data	*data;
 
 	return (data);
 }

@@ -6,7 +6,7 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:42:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/05 12:07:19 by jferreir         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:48:58 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char			*my_getenv(char *str);
 int				check_quotes(char *str);
 int				nbr_outside_quotes(char *str);
 int				nbr_inside_quotes(char *str, char c);
-char			*check_envp(char	*str);
+char			*check_envp(char *str);
 char			*handle_quote(char	*str, char c);
 
 // Utils

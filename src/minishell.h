@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/07 14:32:37 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:44:13 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,9 @@ typedef struct s_tree
 //main.c
 void			set_exit_stts(int stts);
 char			*shlvl_up(char *shlvl);
+//env_utils.c
+char			**get_cur_env(char **env);
+char			*get_env_var(char **env, char *var_name);
 
 /*					EXECUTOR					*/
 //executor.c
@@ -134,8 +137,6 @@ void			xqt(t_tree *root, t_cmd *cmd, int *fd);
 char			*get_cmd(t_tree *node, int pos);
 char			**get_cmd_args(t_tree *node, int pos);
 int				get_cmd_num(t_tree *node);
-//env_utils.c
-char			**get_cur_env(char **env);
 //path_utils.c
 char			*get_cmd_path(char *cmd, char **env);
 //sig_utils.c
@@ -216,6 +217,7 @@ void			free_mtx(char **mtx);
 void			free_tree(t_tree **node);
 t_tree			**get_tree_root(t_tree **node);
 //data_utils.c
-t_data			data(void);
+t_data			*data(void);
+void			free_cmd_data(void);
 
 #endif

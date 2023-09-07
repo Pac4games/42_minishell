@@ -6,7 +6,7 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:41:20 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/06 15:03:00 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:46:37 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_export(void)
 {
 	int		j;
 	int		new;
-	char	**new_str;
+	char	**new_env;
 
 	if (data()->cmds[data()->curr_cmd][1] == NULL)
 		export_declare();
@@ -118,16 +118,16 @@ void	ft_export(void)
 	j = 0;
 	while (data()->env_p && data()->env_p[j] != NULL)
 		j++;
-	new_str = malloc(sizeof(char *) * (j + 2));
+	new_env = malloc(sizeof(char *) * (j + 2));
 	j = 0;
 	while (data()->env_p && data()->env_p[j] != NULL)
 	{
-		new_str[j] = ft_strdup(data()->env_p[j]);
+		new_env[j] = ft_strdup(data()->env_p[j]);
 		j++;
 	}
-	new_str[j++] = ft_strdup(data()->cmds[data()->curr_cmd][new]);
-	new_str[j] = NULL;
-	free_double_ptr(data()->env_p);
-	data()->env_p = new_str;
+	new_env[j++] = ft_strdup(data()->cmds[data()->curr_cmd][new]);
+	new_env[j] = NULL;
+	free_mtx(data()->env_p);
+	data()->env_p = new_env;
 	data()->error = 0;
 }

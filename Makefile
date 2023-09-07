@@ -6,7 +6,7 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/09/07 14:38:07 by paugonca         ###   ########.fr        #
+#    Updated: 2023/09/07 17:18:54 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC_PATH    = ./src
 OBJ_PATH    = ./obj
 
 SRC_NAME    = main.c						\
+              env_utils.c					\
               extra/free_utils.c			\
 			  extra/print_utils.c			\
 			  extra/data_utils.c			\
@@ -45,7 +46,6 @@ SRC_NAME    = main.c						\
               executor/executor.c			\
 			  executor/cmd_utils.c			\
               executor/path_utils.c			\
-              executor/env_utils.c			\
 			  executor/sig_utils.c			\
 			  executor/redir_utils.c		\
 			  executor/redir_in_utils.c		\

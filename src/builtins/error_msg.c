@@ -6,7 +6,7 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 13:35:28 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/06 15:02:16 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:42:09 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,6 @@ void	error_exec(void)
 	": command not found", 127);
 	free_all();
 	exit(127);
-}
-
-void	free_all(void)
-{
-	free(data()->str_cmd);
-	free_double_ptr(data()->env_p);
-	free_triple_ptr(data()->cmds);
 }
 
 void	exit_child(void)

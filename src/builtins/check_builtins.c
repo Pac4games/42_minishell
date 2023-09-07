@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:04:45 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/06 15:06:04 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:04:54 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	call_builtins(char **cmd)
 	int	tmp_curr;
 
 	tmp_curr = data()->curr_cmd + 1;
-	if (data()->cmds[tmp_curr] != NULL && is_spc(data()->cmds[tmp_curr][0]))
+	if (data()->curr_cmd && is_spc(data()->cmds[tmp_curr][0]))
 		tmp_curr = fd_check(tmp_curr);
 	if (ft_strncmp(cmd[0], "echo", 4))
 		ft_echo(cmd);
