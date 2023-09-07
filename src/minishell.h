@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/06 15:15:01 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:32:37 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <dirent.h>
 # include <signal.h>
 # include <errno.h>
@@ -77,6 +78,25 @@ typedef enum e_sigtype
 	E_SIG_HDOC
 }			t_sigtype;
 
+//Data struct (mostly used for parsing)
+typedef struct s_data
+{
+	int			nbr_tokens;
+	char		**tokens;
+	char		*str_cmd;
+	char		**env_p;
+	char		***cmds;
+	int			fd[2][2];
+	int			curr_cmd;
+	int			curr_fd;
+	int			count;
+	int			warning;
+	int			shlvl;
+	char		**here_doc;
+	char		*str_tmp;
+	int			error;
+}			t_data;
+
 //Command struct
 typedef struct s_cmd
 {
@@ -103,54 +123,34 @@ typedef struct s_tree
 	int				pipe_num;
 }			t_tree;
 
-//Data struct (mostly used for parsing)
-typedef struct s_data
-{
-	int			nbr_tokens;
-	char		**tokens;
-	char		*str_cmd;
-	char		**env_p;
-	char		***cmds;
-	int			fd[2][2];
-	int			curr_cmd;
-	int			curr_fd;
-	int			count;
-	int			warning;
-	int			shlvl;
-	char		**here_doc;
-	char		*str_tmp;
-	int			error;
-}			t_data;
-
 //main.c
-t_data	data(void);
-void	set_exit_stts(int stts);
-char	*shlvl_up(char *shlvl);
+void			set_exit_stts(int stts);
+char			*shlvl_up(char *shlvl);
 
 /*					EXECUTOR					*/
 //executor.c
-void	xqt(t_tree *root, t_cmd *cmd, int *fd);
+void			xqt(t_tree *root, t_cmd *cmd, int *fd);
 //cmd_utils.c
-char	*get_cmd(t_tree *node, int pos);
-char	**get_cmd_args(t_tree *node, int pos);
-int		get_cmd_num(t_tree *node);
+char			*get_cmd(t_tree *node, int pos);
+char			**get_cmd_args(t_tree *node, int pos);
+int				get_cmd_num(t_tree *node);
 //env_utils.c
-char	**get_cur_env(char **env);
+char			**get_cur_env(char **env);
 //path_utils.c
-char	*get_cmd_path(char *cmd, char **env);
+char			*get_cmd_path(char *cmd, char **env);
 //sig_utils.c
-void	sig_handle(t_sigtype type);
+void			sig_handle(t_sigtype type);
 //redir_utils.c
-int		get_redir_num(t_tree *node, int pos, t_io io);
-void	redir(t_tree *node, t_cmd *cmd, int *fd);
+int				get_redir_num(t_tree *node, int pos, t_io io);
+void			redir(t_tree *node, t_cmd *cmd, int *fd);
 //redir_in_utils.c
-void	redir_in(t_tree *node, t_cmd *cmd, int in_num);
+void			redir_in(t_tree *node, t_cmd *cmd, int in_num);
 //redir_out_utils.c
-void	redir_out(t_tree *node, t_cmd *cmd, int out_num);
-int		redir_hdoc(t_tree **root, t_cmd *cmd);
+void			redir_out(t_tree *node, t_cmd *cmd, int out_num);
+int				redir_hdoc(t_tree **root, t_cmd *cmd);
 //heredoc_utils.c
-int		handle_hdoc(t_tree **root, t_cmd *cmd);
-int		deezdocs(t_tree **root, t_cmd *cmd, int p);
+int				handle_hdoc(t_tree **root, t_cmd *cmd);
+int				deezdocs(t_tree **root, t_cmd *cmd, int p);
 
 // ---------- BUILTINS ------------
 
@@ -207,13 +207,15 @@ void			unset_var(char **env, int skip);
 
 /*					 EXTRA						*/
 //print_utils.c
-void	print_mtx(char **mtx);
-void	print_err(char *msg, int stts);
-void	print_shell_err(char *cmd, char *msg, int stts);
-void	print_hdoc_warn(char *eof, char *in, int stts);
+void			print_mtx(char **mtx);
+void			print_err(char *msg, int stts);
+void			print_shell_err(char *cmd, char *msg, int stts);
+void			print_hdoc_warn(char *eof, char *in, int stts);
 //free_utils.c
-void	free_mtx(char **mtx);
-void	free_tree(t_tree **node);
-t_tree	**get_tree_root(t_tree **node);
+void			free_mtx(char **mtx);
+void			free_tree(t_tree **node);
+t_tree			**get_tree_root(t_tree **node);
+//data_utils.c
+t_data			data(void);
 
 #endif

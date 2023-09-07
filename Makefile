@@ -6,7 +6,7 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/08/23 16:44:29 by paugonca         ###   ########.fr        #
+#    Updated: 2023/09/07 14:38:07 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,24 @@ OBJ_PATH    = ./obj
 SRC_NAME    = main.c						\
               extra/free_utils.c			\
 			  extra/print_utils.c			\
+			  extra/data_utils.c			\
+			  builtins/check_builtins.c		\
+			  builtins/error_msg.c			\
+			  builtins/ft_cd.c				\
+			  builtins/ft_echo.c			\
+			  builtins/ft_env.c				\
+			  builtins/ft_exit.c			\
+			  builtins/ft_export.c			\
+			  builtins/ft_pwd.c				\
+			  builtins/ft_unset.c			\
+			  parser/parse_init.c			\
+			  parser/parse_quotes.c			\
+			  parser/parse_utils.c			\
+			  parser/utils.c				\
+			  parser/utils2.c				\
+			  parser/utils3.c				\
+			  parser/utils4.c				\
+			  parser/utils5.c				\
               executor/executor.c			\
 			  executor/cmd_utils.c			\
               executor/path_utils.c			\

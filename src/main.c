@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/23 16:34:50 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:28:45 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ char	*shlvl_up(char *shlvl)
 	res = ft_strjoin("SHLVL=", tmp);
 	free(tmp);
 	return (res);
+}
+
+t_data	data(void)
+{
+	static t_data	data;
+
+	return (data);
 }
 
 int	main(int ac, char **av, char **envp)
