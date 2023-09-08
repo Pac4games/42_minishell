@@ -6,11 +6,11 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:06:25 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/05 12:09:10 by jferreir         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:28:52 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 char	*strjoin_here(char *s1, char *s2)
 {

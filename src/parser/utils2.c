@@ -6,11 +6,11 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:26:11 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/05 12:09:14 by jferreir         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:28:57 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	skip_whitespace(char *str)
 {

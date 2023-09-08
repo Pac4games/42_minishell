@@ -6,11 +6,11 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:51:58 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/05 12:09:02 by jferreir         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:28:33 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	nbr_inside_quotes(char *str, char c)
 {
@@ -18,7 +18,6 @@ int	nbr_inside_quotes(char *str, char c)
 
 	i = 0;
 	str++;
-	data()->warning = 0;
 	while (*str && *str != c)
 	{
 		if (*str == '$' && c == '\"' && str[1] != ' ' && str[1] != '\t'

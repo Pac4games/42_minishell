@@ -6,11 +6,11 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 13:23:12 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/05 12:09:18 by jferreir         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:29:04 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	handle_dollar_sign(char *str)
 {

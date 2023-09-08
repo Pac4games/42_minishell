@@ -6,11 +6,11 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 21:45:57 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/05 12:09:05 by jferreir         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:28:46 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 // Function to count the tokens
 int	count_tokens(char *str)
