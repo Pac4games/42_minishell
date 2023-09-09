@@ -1,24 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   quote_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 14:43:08 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/09 15:49:51 by paugonca         ###   ########.fr       */
+/*   Created: 2023/08/23 15:51:58 by jferreir          #+#    #+#             */
+/*   Updated: 2023/09/09 16:25:41 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_env(char **env, int fd)
+int	skip_quotes(char *str, int i)
 {
-	int	i;
+	char	tmp;
 
-	i = -1;
-	while (env[++i])
-		if (find_eq_sign(env[i]) != -1)
-			ft_putendl_fd(env[i], fd);
-	return (1);
+	tmp = str[i++];
+	while (str[i] && str[i] != tmp)
+		i++;
+	if (!str[i])
+	{
+		ft_putendl_fd("Unclosed quotes!", STDOUT_FILENO);
+		print_syntax_error();
+	}
+	return (i);
+}
+
+bool	is_diff_sign(char *sign, char c)
+{
+	int	j;
+
+	j = 0;
+	while (c && sign[j] && c != sign[j])
+		j++;
+	if (!sign[j])
+		return (true);
+	return (false);
 }

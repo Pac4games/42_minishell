@@ -1,24 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 14:43:08 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/09 15:49:51 by paugonca         ###   ########.fr       */
+/*   Created: 2023/08/23 12:12:11 by jferreir          #+#    #+#             */
+/*   Updated: 2023/09/09 15:30:32 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_env(char **env, int fd)
+static bool	is_flag(char *arg)
 {
 	int	i;
 
 	i = -1;
-	while (env[++i])
-		if (find_eq_sign(env[i]) != -1)
-			ft_putendl_fd(env[i], fd);
+	while (arg[++i])
+		if ((!i && arg[i] != '-') || (i && arg[i] != 'n'))
+			return (false);
+	return (true);
+}
+
+int	ft_echo(char **args, int fd)
+{
+	int i;
+
+	i = 1;
+	if (mtx_len(args) > 1 && is_flag(args[1]))
+		i++;
+	while (args[i])
+	{
+		ft_putstr_fd(args[i], fd);
+		if (args[++i])
+			ft_putstr_fd(" ", fd);
+	}
+	if (mtx_len(args) <= 1 && !is_flag(args[1]))
+		ft_putendl_fd(NULL, fd);
+	free_mtx(args);
+	g_stts = EXIT_SUCCESS;
 	return (1);
 }

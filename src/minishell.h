@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 13:16:14 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 17:19:45 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@
 
 //Shell name
 # define SHELL "MiniHell"
+
+//Macro for print_shell_err() not quitting the program
+# define NO_EXIT 69420
 
 //Standard permissions for new files in Unix-based/like systems
 //0 - special file permissions (none in this case)
@@ -120,12 +123,41 @@ typedef struct s_tree
 	int				pipe_num;
 }			t_tree;
 
+//Exclusively used by add_var()
+typedef struct s_var
+{
+	int		start;
+	int		end;
+	int		i;
+	int		j;
+	char	*str;
+	char	*var;
+	char	**res;
+}			t_var;
+
 //main.c
 void			set_exit_stts(int stts);
 char			*shlvl_up(char *shlvl);
 //env_utils.c
 char			**get_cur_env(char **env);
 char			*get_env_var(char **env, char *var_name);
+
+/*					 PARSER						*/
+//syntax_utils.c
+int				*syntax(void);
+//get_stts_utils.c
+char			*get_stts(char *str, int i, char *val);
+//var_utils.c
+bool			is_var(char c);
+char			*add_var(char *str, char *var, int start, int end);
+char			*find_var(char *var, char **env);
+char			*get_var(char *str, int *i, char **env);
+//signs_utils.c
+int				find_eq_sign(char *str);
+char			*parse_signs(char *str, char **env);
+//quote_utils.c
+bool			is_diff_sign(char *sign, char c);
+int				skip_quotes(char *str, int i);
 
 /*					EXECUTOR					*/
 //executor.c
@@ -154,8 +186,11 @@ int				deezdocs(t_tree **root, t_cmd *cmd, int p);
 //buitin_utils.c
 int				is_builtin(t_tree *node, char ***env, char *cmd, int pos);
 //ft_exit.c
+int				ft_pwd(int fd);
 int				ft_exit(char **args);
-bool			ft_env(char **env, int fd);
+int				ft_echo(char **args, int fd);
+int				ft_env(char **env, int fd);
+int				ft_cd(char **args, char ***env);
 
 /*					 EXTRA						*/
 //print_utils.c
@@ -163,6 +198,7 @@ void			print_mtx(char **mtx);
 void			print_err(char *msg, int stts);
 void			print_shell_err(char *cmd, char *msg, int stts);
 void			print_hdoc_warn(char *eof, char *in, int stts);
+void			print_syntax_error(void);
 //free_utils.c
 void			free_mtx(char **mtx);
 void			free_tree(t_tree **node);

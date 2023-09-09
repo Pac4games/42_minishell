@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   syntax_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 14:43:08 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/09 15:49:51 by paugonca         ###   ########.fr       */
+/*   Created: 2023/09/09 16:20:15 by paugonca          #+#    #+#             */
+/*   Updated: 2023/09/09 16:21:28 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_env(char **env, int fd)
+int	*syntax(void)
 {
-	int	i;
+	static int	amogus;
 
-	i = -1;
-	while (env[++i])
-		if (find_eq_sign(env[i]) != -1)
-			ft_putendl_fd(env[i], fd);
-	return (1);
+	return (&amogus);
 }
