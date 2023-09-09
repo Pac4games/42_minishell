@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:35:46 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/21 12:20:22 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 12:11:05 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,14 @@ t_tree	**get_tree_root(t_tree **node)
 		root = root->parent;
 	*node = root;
 	return (node);
+}
+
+int	mtx_len(char **mtx)
+{
+	int	res;
+
+	res = 0;
+	while (mtx[res++])
+		continue ;
+	return (res);
 }

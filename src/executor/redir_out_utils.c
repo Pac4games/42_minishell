@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:21:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/23 16:46:44 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 11:42:15 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	redir_hdoc(t_tree **root, t_cmd *cmd)
 		{
 			cmd->in = get_redir_num(tmp, cmd->pos, E_IN);
 			if (handle_hdoc(&tmp, cmd))
-				return (TRUE);
+				return (true);
 		}
 		if (cmd->pos)
 			tmp = tmp->parent;
 		cmd->pos++;
 	}
-	return (FALSE);
+	return (false);
 }
 
 static int	redir_write_out(t_tree *node, int fd)

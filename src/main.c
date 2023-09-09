@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/08 11:35:53 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 11:58:12 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,41 @@ char	*shlvl_up(char *shlvl)
 	return (res);
 }
 
-t_data	*data(void)
+static bool	in_enter(char *in)
 {
-	static t_data	*data;
-
-	return (data);
+	if (!ft_strlen(in))
+	{
+		free(in);
+		return (true);
+	}
+	return (false);
 }
 
 int	main(int ac, char **av, char **envp)
 {
-	char	**env;
+	char	*in;
+	char	*prompt;
 
-	(void)ac;
-	(void)av;
-	env = get_cur_env(envp);
-	print_mtx(env);
-	free_mtx(env);
+	while (true)
+	{
+		sig_handle(E_SIG_RL);
+		prompt = ft_strjoin(SHELL, ":$ ");
+		in = readline(prompt);
+		free(prompt);
+		sig_handle(E_SIG_IGN);
+		if (in && ft_strlen(in))
+			add_history(in);
+		else if (!in)
+		{
+			ft_putstr_fd("\nexit\n", STDOUT_FILENO);
+			rl_clear_history();
+			exit(g_stts);
+		}
+		else if (ft_strlen(in))
+		{
+			free(in);
+			continue ;
+		}
+	}
 	return (g_stts);
 }

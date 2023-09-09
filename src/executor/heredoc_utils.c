@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:49:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/23 15:16:45 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 11:41:48 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	rtfd(int fd, char *eof, int stts)
 	char	*in;
 	char	*res;
 
-	while (TRUE)
+	while (true)
 	{
 		sig_handle(E_SIG_HDOC);
 		in = readline("heredoc> ");
@@ -69,9 +69,9 @@ int	deezdocs(t_tree **root, t_cmd *cmd, int p)
 	{
 		if (g_stts == 129)
 			g_stts = EXIT_SUCCESS;
-		return (TRUE);
+		return (true);
 	}
-	return (FALSE);
+	return (false);
 }
 
 int	handle_hdoc(t_tree **root, t_cmd *cmd)
@@ -81,7 +81,7 @@ int	handle_hdoc(t_tree **root, t_cmd *cmd)
 
 	p = 0;
 	tmp = *root;
-	cmd->heredoc = FALSE;
+	cmd->heredoc = false;
 	while (tmp)
 	{
 		if (tmp->type == E_STDIN || tmp->type == E_HDOC)
@@ -89,12 +89,12 @@ int	handle_hdoc(t_tree **root, t_cmd *cmd)
 			p++;
 			if (tmp->type == E_HDOC)
 				if (deezdocs(&tmp, cmd, p))
-					return (TRUE);
+					return (true);
 		}
 		if (!(cmd->pos))
 			tmp = tmp->left;
 		else
 			tmp = tmp->right;
 	}
-	return (FALSE);
+	return (false);
 }

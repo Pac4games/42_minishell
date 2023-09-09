@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 11:23:08 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 13:16:14 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "parse.h"
 # include <stdio.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include <limits.h>
 # include <dirent.h>
@@ -31,12 +32,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-//Booleans
-# define TRUE 1
-# define FALSE 0
-
 //Shell name
-# define SHELL "minihell"
+# define SHELL "MiniHell"
 
 //Standard permissions for new files in Unix-based/like systems
 //0 - special file permissions (none in this case)
@@ -153,7 +150,26 @@ int				redir_hdoc(t_tree **root, t_cmd *cmd);
 int				handle_hdoc(t_tree **root, t_cmd *cmd);
 int				deezdocs(t_tree **root, t_cmd *cmd, int p);
 
-/*					BUILTINS					*/
-int				is_builtin(t_tree *node, char **env, char *cmd, int pos);
+/*				   BUILTINS					*/
+//buitin_utils.c
+int				is_builtin(t_tree *node, char ***env, char *cmd, int pos);
+//ft_exit.c
+int				ft_exit(char **args);
+bool			ft_env(char **env, int fd);
+
+/*					 EXTRA						*/
+//print_utils.c
+void			print_mtx(char **mtx);
+void			print_err(char *msg, int stts);
+void			print_shell_err(char *cmd, char *msg, int stts);
+void			print_hdoc_warn(char *eof, char *in, int stts);
+//free_utils.c
+void			free_mtx(char **mtx);
+void			free_tree(t_tree **node);
+t_tree			**get_tree_root(t_tree **node);
+int				mtx_len(char **mtx);
+//data_utils.c
+t_data			*data(void);
+void			free_cmd_data(void);
 
 #endif

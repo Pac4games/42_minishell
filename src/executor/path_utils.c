@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:24:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/17 14:14:42 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 11:41:57 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int	is_valid_path(char *cmd, char *path)
 	if (S_ISDIR(buf.st_mode))
 		print_shell_err(cmd, "Is a directory", 126);
 	else if (access(path, X_OK) >= 0)
-		return (TRUE);
+		return (true);
 	free(path);
-	return (FALSE);
+	return (false);
 }
 
 static char	*get_abs_path(char *cmd)

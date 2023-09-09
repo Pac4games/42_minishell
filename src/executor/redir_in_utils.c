@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:10:56 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/23 14:53:53 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 11:42:07 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	redir_in(t_tree *node, t_cmd *cmd, int in_num)
 	int	p;
 
 	p = 0;
-	cmd->heredoc = FALSE;
+	cmd->heredoc = false;
 	while (node)
 	{
 		if (node->type == E_STDIN || node->type == E_HDOC)
@@ -44,7 +44,7 @@ void	redir_in(t_tree *node, t_cmd *cmd, int in_num)
 			{
 				if (p == in_num)
 					dup2((node->pipes)[0], STDIN_FILENO);
-				cmd->heredoc = TRUE;
+				cmd->heredoc = true;
 			}
 		}
 		if (!(cmd->pos))
