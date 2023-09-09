@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/07 17:44:13 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 11:23:08 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,71 +153,7 @@ int				redir_hdoc(t_tree **root, t_cmd *cmd);
 int				handle_hdoc(t_tree **root, t_cmd *cmd);
 int				deezdocs(t_tree **root, t_cmd *cmd, int p);
 
-// ---------- BUILTINS ------------
-
-// check_builtins
-int				is_builtins(char *cmd);
-void			call_builtins(char **cmd);
-void			clean_exit_child(void);
-
-// error_msg
-void			error_msg(char *option, char *var_option, \
-				char *msg, int err);
-void			check_permission(void);
-void			error_exec(void);
-void			free_all(void);
-void			exit_child(void);
-
-//  ft_cd
-void			add_cd_to_env(char *path);
-void			apply_cd(char *oldcd, char *newcd);
-void			cd_to(char *str);
-int				ft_check_cd(char **str);
-void			ft_cd(char **str);
-
-// ft_echo
-int				is_flag(char *str);
-void			print_echo(char **str, int flag);
-void			ft_echo_beg(char **str, int flag);
-void			ft_echo(char **str);
-
-// ft_env
-void			ft_env(char **str);
-void			ft_env_exec(char **str);
-
-// ft_exit
-int				ft_exit_err(void);
-long long int	ft_atoli_checker(char *nptr, int i, int sing);
-long long int	ft_atoli(char *nptr);
-void			ft_exit(char **str);
-
-// ft_export
-void			export_declare_exec(char **str);
-void			export_declare(void);
-void			check_env_name(char **env, char *str, int size);
-int				check_export(char **str, int i, int j);
-void			ft_export(void);
-
-// ft_pwd
-void			ft_pwd(char **str);
-void			ft_pwd_exec(char **str);
-
-// ft_unset
-void			ft_unset(char **str, char *find);
-void			unset_var(char **env, int skip);
-
-/*					 EXTRA						*/
-//print_utils.c
-void			print_mtx(char **mtx);
-void			print_err(char *msg, int stts);
-void			print_shell_err(char *cmd, char *msg, int stts);
-void			print_hdoc_warn(char *eof, char *in, int stts);
-//free_utils.c
-void			free_mtx(char **mtx);
-void			free_tree(t_tree **node);
-t_tree			**get_tree_root(t_tree **node);
-//data_utils.c
-t_data			*data(void);
-void			free_cmd_data(void);
+/*					BUILTINS					*/
+int				is_builtin(t_tree *node, char **env, char *cmd, int pos);
 
 #endif
