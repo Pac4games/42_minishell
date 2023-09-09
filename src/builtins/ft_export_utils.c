@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 20:29:48 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 20:52:07 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 21:11:17 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ static bool	is_exportable(char *arg)
 {
 	int	i;
 
-	if (!ft_strlen(arg))
-		return (export_fail(arg));
-	else if (!ft_isalpha(arg[0]))
+	if (!(ft_strlen(arg) || ft_isalpha(arg[0])))
 		return (export_fail(arg));
 	i = 0;
 	while (arg[i] && arg[i] != '=')

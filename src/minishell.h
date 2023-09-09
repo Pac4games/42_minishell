@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 20:53:17 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 21:31:40 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,8 @@ int				ft_env(char **env, int fd);
 int				ft_export(char **args, char ***env, int fd);
 //export_utils.c
 void			export_arg_new(char *arg, char ***env, int i);
+//ft_unset.c
+int				ft_unset(char **args, char ***env);
 //ft_cd.c
 int				ft_cd(char **args, char ***env);
 

@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:19:06 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 20:20:19 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 21:32:35 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	is_builtin(t_tree *node, char ***env, char *cmd, int pos)
 	if (cmd && !ft_strncmp(cmd, "env", 4))
 		return (ft_env(*env, fd));
 	if (cmd && !ft_strncmp(cmd, "export", 7))
-		return ();
+		return (ft_export(get_cmd_args(node, pos), env, fd));
+	if (cmd && !ft_strncmp(cmd, "unset", 6))
+		return (ft_unset(get_cmd_args(node, pos), env));
 	if (cmd && !ft_strncmp(cmd, "cd", 3))
 		return (ft_cd(get_cmd_args(node, pos), env));
 	return (false);
