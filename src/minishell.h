@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 21:31:40 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 22:27:46 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef enum e_ndtype
 	E_CMD
 }			t_ndtype;
 
-//Input/Output (I/O)
+//Input/Output (used for redirections)
 typedef enum e_io
 {
 	E_IN,
@@ -178,13 +178,19 @@ void			redir_in(t_tree *node, t_cmd *cmd, int in_num);
 //redir_out_utils.c
 void			redir_out(t_tree *node, t_cmd *cmd, int out_num);
 int				redir_hdoc(t_tree **root, t_cmd *cmd);
+//redir_builtins.c
+int				redir_builtin_in(t_tree *node);
+int				redir_builtin_out(t_tree *node);
 //heredoc_utils.c
 int				handle_hdoc(t_tree **root, t_cmd *cmd);
 int				deezdocs(t_tree **root, t_cmd *cmd, int p);
 
 /*				   BUILTINS					*/
 //buitin_utils.c
-int				is_builtin(t_tree *node, char ***env, char *cmd, int pos);
+int				print_builtin_err(char *arg);
+int				run_builtin(t_tree *node, char ***env, char *cmd, int fd);
+int				builtin_ret(t_tree *node, char ***env, char *cmd, int pos);
+bool			is_builtin(t_tree *node, char ***env, char *cmd);
 //ft_pwd.c
 int				ft_pwd(int fd);
 //ft_exit.c

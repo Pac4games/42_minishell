@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 21:35:53 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 22:30:24 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	proc_child(t_tree *node, t_cmd *cmd)
 	close((cmd->pipes)[0]);
 	sig_handle(E_SIG_DFL);
 	rl_clear_history();
-	if (is_builtin(node, cmd->env, get_cmd(node, cmd->pos), cmd->pos))
+	if (builtin_ret(node, cmd->env, get_cmd(node, cmd->pos), cmd->pos))
 		exit(g_stts);
 	execve(get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env)),
 		get_cmd_args(node, cmd->pos), *(cmd->env));
@@ -68,6 +68,8 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	t_tree	*tmp;
 
 	if (redir_hdoc(root, &cmd))
+		return ;
+	if (cmd_num == 1 && is_builtin(*root, env, get_cmd(*root, 0)))
 		return ;
 	p = 0;
 	cmd_num = get_cmd_num(*root);
