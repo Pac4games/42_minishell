@@ -6,14 +6,14 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/09/07 17:18:54 by paugonca         ###   ########.fr        #
+#    Updated: 2023/09/09 11:14:46 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = minishell
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g -lreadline
+CFLAGS      = -Wall -Wextra -Werror -g
 
 RM          = rm -f
 MKD         = mkdir -p
@@ -54,7 +54,7 @@ SRC_NAME    = main.c						\
 
 SRC         = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJ         = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))
-DEPS        = ./libft/libft.a
+DEPS        = ./libft/libft.a -lreadline
 
 LIBFT_PATH  = ./libft
 
