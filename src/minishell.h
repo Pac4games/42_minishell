@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 17:19:45 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/09 20:53:17 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,11 +185,19 @@ int				deezdocs(t_tree **root, t_cmd *cmd, int p);
 /*				   BUILTINS					*/
 //buitin_utils.c
 int				is_builtin(t_tree *node, char ***env, char *cmd, int pos);
-//ft_exit.c
+//ft_pwd.c
 int				ft_pwd(int fd);
+//ft_exit.c
 int				ft_exit(char **args);
+//ft_echo.c
 int				ft_echo(char **args, int fd);
+//ft_env.c
 int				ft_env(char **env, int fd);
+//ft_export.c
+int				ft_export(char **args, char ***env, int fd);
+//export_utils.c
+void			export_arg_new(char *arg, char ***env, int i);
+//ft_cd.c
 int				ft_cd(char **args, char ***env);
 
 /*					 EXTRA						*/
