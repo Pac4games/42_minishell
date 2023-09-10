@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/10 11:55:30 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/10 12:34:53 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,13 @@ typedef struct s_tree
 	int				pipe_num;
 }			t_tree;
 
+typedef struct s_pipe
+{
+	int				pos;
+	int				num;
+	struct s_pipe	*next;
+}			t_pipe;
+
 //Exclusively used by add_var()
 typedef struct s_var
 {
@@ -157,6 +164,8 @@ char			*parse_signs(char *str, char **env);
 //quote_utils.c
 bool			is_diff_sign(char *sign, char c);
 int				skip_quotes(char *str, int i);
+//tilde_utils.c
+char			*parse_tilde(char *arg, char **env);
 
 /*					EXECUTOR					*/
 //executor.c
