@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 11:58:12 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:10:50 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,8 @@ char	*shlvl_up(char *shlvl)
 	return (res);
 }
 
-static bool	in_enter(char *in)
+static void	le_loop(char *in, char *prompt, char **env, t_tree *root)
 {
-	if (!ft_strlen(in))
-	{
-		free(in);
-		return (true);
-	}
-	return (false);
-}
-
-int	main(int ac, char **av, char **envp)
-{
-	char	*in;
-	char	*prompt;
-
 	while (true)
 	{
 		sig_handle(E_SIG_RL);
@@ -72,6 +59,24 @@ int	main(int ac, char **av, char **envp)
 			free(in);
 			continue ;
 		}
+		parsa(in, &env, &root, 0);
+		free_tree(get_tree_root(&root));
+		*syntax() = 0;
 	}
+}
+
+int	main(int ac, char **av, char **envp)
+{
+	char	*in;
+	char	*prompt;
+	char	**env;
+	t_tree	*root;
+
+	(void)ac;
+	(void)av;
+	*syntax() = 0;
+	root = NULL;
+	env = get_cur_env(envp);
+	le_loop(in, prompt, env, root);
 	return (g_stts);
 }
