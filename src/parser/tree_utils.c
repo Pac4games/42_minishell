@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 12:32:15 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 14:43:33 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,36 @@ static void	tar_util(char *arg, int *i, int *j)
 		(*j)++;
 }
 
+static void	tar_util2(char *arg, t_ndtype type, t_parse parse)
+{
+	if (type == E_HDOC)
+	{
+		if (!(*(parse.tree)))
+			tree_add_n_parse(parse.tree, quotes_rm(arg), type);
+		else
+			tree_add_node(quotes_rm(arg), type, parse);
+	}
+	else
+	{
+		if (!(parse.tree))
+			tree_add_n_parse(parse.tree, \
+			quotes_rm(parse_signs(arg, parse.env)), type);
+		else
+			tree_add_node(quotes_rm(parse_signs(arg, parse.env)), type, parse);
+	}
+}
+
+static void	check_export(char *arg, t_ndtype type, t_parse parse)
+{
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	tmp = quotes_rm(arg);
+	if (!ft_strncmp(tmp, "export", ft_strlen(tmp) && type == E_CMD))
+		*(parse.exp) = true;
+}
+
 int	tree_add_redir(char *arg, int i, t_ndtype type, t_parse parse)
 {
 	int	j;
@@ -52,4 +82,18 @@ int	tree_add_redir(char *arg, int i, t_ndtype type, t_parse parse)
 	if (type == E_HDOC || type == E_APPEND)
 		i++;
 	i++;
+	tar_util(arg, &i, &j);
+	if (!(arg[j] || is_diff_sign("<>|&", arg[j])))
+		print_syntax_error();
+	while (arg[j] && is_diff_sign("<>|& \t", arg[j]))
+	{
+		if (!is_diff_sign("\"'", arg[j]))
+			j = quotes_skip(arg, j);
+		j++;
+	}
+	if (*syntax())
+		return (0);
+	check_export(ft_substr(arg, i, j - 1), type, parse);
+	tar_util2(ft_substr(arg, i, j - 1), type, parse);
+	return (j);
 }

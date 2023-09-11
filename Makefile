@@ -6,7 +6,7 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/09/11 12:42:47 by paugonca         ###   ########.fr        #
+#    Updated: 2023/09/11 12:59:44 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC_NAME    = main.c						\
 			  parser/tree_utils.c			\
 			  parser/pipe_utils.c			\
 			  parser/signs_utils.c			\
-			  parser/quote_utils.c			\
+			  parser/quotes_utils.c			\
 			  parser/syntax_utils.c			\
 			  parser/var_utils.c			\
 			  parser/get_stts_utils.c		\

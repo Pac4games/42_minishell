@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 12:15:43 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:13:22 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ typedef struct s_pipe
 typedef struct s_parse
 {
 	int		pos;
-	int		*exp;
+	bool	*exp;
 	char	**env;
 	t_tree	**tree;
 }			t_parse;
@@ -167,8 +167,10 @@ void			parse_all(t_tree **root, char *arg, t_pipe **pipes, int num);
 int				*syntax(void);
 //tree_init.c
 void			tree_add_node(char *arg, t_ndtype type, t_parse parse);
+void			tree_add_n_parse(t_tree **node, char *arg, t_ndtype type);
 //tree_utils.c
 void			tree_add_pipe(t_tree **root);
+int				tree_add_redir(char *arg, int i, t_ndtype type, t_parse parse);
 //get_stts_utils.c
 char			*get_stts(char *str, int i, char *val);
 //var_utils.c
@@ -180,18 +182,22 @@ char			*get_var(char *str, int *i, char **env);
 void			check_pipes(char *arg);
 void			pipe_add2pos(t_pipe **pipes, int pos, int num);
 char			**pipe_split(t_pipe *pipes, char *arg);
+void			free_pipes(t_pipe **pipes);
 //signs_utils.c
 int				find_eq_sign(char *str);
 char			*parse_signs(char *str, char **env);
-//quote_utils.c
 bool			is_diff_sign(char *sign, char c);
-int				skip_quotes(char *str, int i);
+//quotes_utils.c
+int				quotes_skip(char *str, int i);
+int				get_quote_num(char *str);
+char			*quotes_rm(char *str);
 //tilde_utils.c
 char			*parse_tilde(char *arg, char **env);
 
 /*					EXECUTOR					*/
 //executor.c
 void			xqt(t_tree *root, t_cmd *cmd, int *fd);
+void			proc_exec_tree(t_tree **root, char ***env);
 //cmd_utils.c
 char			*get_cmd(t_tree *node, int pos);
 char			**get_cmd_args(t_tree *node, int pos);

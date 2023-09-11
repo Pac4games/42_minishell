@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quote_utils.c                                      :+:      :+:    :+:   */
+/*   quotes_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:51:58 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/10 12:12:57 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 13:16:50 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	skip_quotes(char *str, int i)
+int	quotes_skip(char *str, int i)
 {
 	char	tmp;
 
@@ -27,14 +27,52 @@ int	skip_quotes(char *str, int i)
 	return (i);
 }
 
-bool	is_diff_sign(char *sign, char c)
+int	get_quote_num(char *str)
 {
-	int	j;
+	int		i;
+	int		num;
+	char	tmp;
 
-	j = 0;
-	while (c && sign[j] && c != sign[j])
-		j++;
-	if (!sign[j])
-		return (true);
-	return (false);
+	i = -1;
+	num = 0;
+	while (str[++i])
+	{
+		if (str[i] && !is_diff_sign("\"'", str[i]))
+		{
+			tmp = str[i++];
+			while (str[i] && str[i] != tmp)
+				i++;
+			num += 2;
+		}
+	}
+	return (num);
+}
+
+static char	*quotes_rm_fr(char *str, int i, int j, char tmp)
+{
+	char	*res;
+
+	res = malloc(ft_strlen(str) - get_quote_num(str) + 1 * sizeof(char));
+	while (str[++i])
+	{
+		if (!is_diff_sign("\"'", str[i]))
+		{
+			tmp = str[i++];
+			while (str[i] && str[i] != tmp)
+				res[j++] = str[i++];
+		}
+		else
+			res[j++] = res[i];
+	}
+	res[j] = 0;
+	return (res);
+}
+
+char	*quotes_rm(char *str)
+{
+	char	*res;
+
+	res = quotes_rm_fr(str, -1, 0, ' ');
+	free(str);
+	return (res);
 }

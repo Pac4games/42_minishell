@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 12:33:38 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:11:19 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	parse_pipes_utils(char *arg, int *i)
 	while (arg[*i])
 	{
 		if (!is_diff_sign("\"'", arg[*i]))
-			*i = skip_quotes(arg, *i);
+			*i = quotes_skip(arg, *i);
 		if (!is_diff_sign("|", arg[*i]))
 		{
 			(*i)++;
@@ -94,4 +94,13 @@ char	**pipe_split(t_pipe *pipes, char *arg)
 		pipes = pipes->next;
 	}
 	return (res);
+}
+
+void	free_pipes(t_pipe **pipes)
+{
+	if (!pipes || !(*pipes))
+		return ;
+	free_pipes(&((*pipes)->next));
+	free(*pipes);
+	*pipes = NULL;
 }

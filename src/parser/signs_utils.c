@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:48:21 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 12:34:08 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 13:19:06 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*parse_signs(char *str, char **env)
 		if (!is_diff_sign("\"", str[i]))
 			dol_sign_util(&tmp);
 		if (!is_diff_sign("'", str[i]) && !tmp)
-			i = skip_quotes(str, i);
+			i = quotes_skip(str, i);
 		if (*syntax())
 			return (free_str_ret_null(str));
 		if (!is_diff_sign("$", str[i]))
@@ -61,4 +61,16 @@ char	*parse_signs(char *str, char **env)
 			i++;
 	}
 	return (str);
+}
+
+bool	is_diff_sign(char *sign, char c)
+{
+	int	j;
+
+	j = 0;
+	while (c && sign[j] && c != sign[j])
+		j++;
+	if (!sign[j])
+		return (true);
+	return (false);
 }
