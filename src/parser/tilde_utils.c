@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:06:42 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 13:18:29 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:40:36 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	*get_var_tilde(char *arg, int i, char *home)
 	return (res);
 }
 
-char	*find_tilde(char *arg, char **env)
+char	*parse_tilde(char *arg, char **env)
 {
 	int		i;
 	char	*res;

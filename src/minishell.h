@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 15:13:22 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:23:48 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,39 +77,6 @@ typedef enum e_sigtype
 	E_SIG_HDOC
 }			t_sigtype;
 
-//Data struct (mostly used for parsing)
-typedef struct s_data
-{
-	int			nbr_tokens;
-	char		**tokens;
-	char		*str_cmd;
-	char		**env_p;
-	char		***cmds;
-	int			fd[2][2];
-	int			curr_cmd;
-	int			curr_fd;
-	int			count;
-	int			warning;
-	int			shlvl;
-	char		**here_doc;
-	char		*str_tmp;
-	int			error;
-}			t_data;
-
-//Command struct
-typedef struct s_cmd
-{
-	pid_t	pid;
-	int		pipes[2];
-	int		pos;
-	int		num;
-	int		fd;
-	int		in;
-	int		out;
-	int		heredoc;
-	char	***env;
-}			t_cmd;
-
 //Binary Tree struct (also known as Command Table)
 typedef struct s_tree
 {
@@ -122,14 +89,6 @@ typedef struct s_tree
 	int				pipe_num;
 }			t_tree;
 
-//Pipe struct used during parsing
-typedef struct s_pipe
-{
-	int				pos;
-	int				num;
-	struct s_pipe	*next;
-}			t_pipe;
-
 //Parser helper struct
 typedef struct s_parse
 {
@@ -138,6 +97,14 @@ typedef struct s_parse
 	char	**env;
 	t_tree	**tree;
 }			t_parse;
+
+//Pipe struct used during parsing
+typedef struct s_pipe
+{
+	int				pos;
+	int				num;
+	struct s_pipe	*next;
+}			t_pipe;
 
 //Exclusively used by add_var()
 typedef struct s_var
@@ -150,6 +117,20 @@ typedef struct s_var
 	char	*var;
 	char	**res;
 }			t_var;
+
+//Command struct for the executor
+typedef struct s_cmd
+{
+	pid_t	pid;
+	int		pipes[2];
+	int		pos;
+	int		num;
+	int		fd;
+	int		in;
+	int		out;
+	int		heredoc;
+	char	***env;
+}			t_cmd;
 
 //main.c
 void			set_exit_stts(int stts);
@@ -256,8 +237,5 @@ void			free_mtx(char **mtx);
 void			free_tree(t_tree **node);
 t_tree			**get_tree_root(t_tree **node);
 int				mtx_len(char **mtx);
-//data_utils.c
-t_data			*data(void);
-void			free_cmd_data(void);
 
 #endif

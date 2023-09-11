@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 22:30:24 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:35:00 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,15 @@ static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)
 	return (cmd);
 }
 
+static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num)
+{
+	*i = 0;
+	if (redir_hdoc(root, cmd))
+		return (true);
+	*cmd_num = get_cmd_num(*root);
+	return (false);
+}
+
 void	proc_exec_tree(t_tree **root, char ***env)
 {
 	int		p;
@@ -67,7 +76,7 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	t_cmd	cmd;
 	t_tree	*tmp;
 
-	if (redir_hdoc(root, &cmd))
+	if (pet_utils(root, &cmd, &p, &cmd_num))
 		return ;
 	if (cmd_num == 1 && is_builtin(*root, env, get_cmd(*root, 0)))
 		return ;

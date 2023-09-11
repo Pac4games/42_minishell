@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 14:43:33 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:19:07 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,12 @@ static void	tar_util2(char *arg, t_ndtype type, t_parse parse)
 
 static void	check_export(char *arg, t_ndtype type, t_parse parse)
 {
-	int		i;
 	char	*tmp;
 
-	i = 0;
 	tmp = quotes_rm(arg);
 	if (!ft_strncmp(tmp, "export", ft_strlen(tmp) && type == E_CMD))
 		*(parse.exp) = true;
+	free(tmp);
 }
 
 int	tree_add_redir(char *arg, int i, t_ndtype type, t_parse parse)

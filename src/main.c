@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 16:10:50 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:14:12 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,11 @@ int	main(int ac, char **av, char **envp)
 
 	(void)ac;
 	(void)av;
-	*syntax() = 0;
-	root = NULL;
+	in = NULL;
+	prompt = NULL;
 	env = get_cur_env(envp);
+	root = NULL;
+	*syntax() = 0;
 	le_loop(in, prompt, env, root);
 	return (g_stts);
 }

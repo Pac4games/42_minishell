@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 15:13:46 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:15:08 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,9 @@ static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env)
 //Our partner in crime and best-friend: the parser
 void	parsa(char *in, char ***env, t_tree **root, int num)
 {
-	int		i;
 	char	**mtx;
 	t_pipe	*pipes;
 
-	i = 0;
 	pipes = NULL;
 	in = parse_tilde(in, *env);
 	check_pipes(in);

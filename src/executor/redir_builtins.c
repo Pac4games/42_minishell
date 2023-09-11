@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 21:53:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 22:22:03 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:37:21 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int open_builtin_in(t_tree *node)
 
 	while (node)
 	{
-		if (node->type == E_IN)
+		if (node->type == E_STDIN)
 		{
 			fd = open(node->content, O_RDONLY, S_STDPERMS);
 			if (fd == -1)
@@ -62,7 +62,7 @@ int	redir_builtin_out(t_tree *node)
 	i = 0;
 	while (node)
 	{
-		if (node->type == E_OUT)
+		if (node->type == E_STDOUT)
 			fd = open(node->content, O_CREAT | O_WRONLY | O_TRUNC, S_STDPERMS);
 		else
 			fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, 0664);
