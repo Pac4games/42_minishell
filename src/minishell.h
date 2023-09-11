@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 10:28:44 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:15:43 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,12 +130,13 @@ typedef struct s_pipe
 	struct s_pipe	*next;
 }			t_pipe;
 
+//Parser helper struct
 typedef struct s_parse
 {
 	int		pos;
-	char	*exp;
+	int		*exp;
 	char	**env;
-	t_tree	**tmp;
+	t_tree	**tree;
 }			t_parse;
 
 //Exclusively used by add_var()
@@ -166,6 +167,8 @@ void			parse_all(t_tree **root, char *arg, t_pipe **pipes, int num);
 int				*syntax(void);
 //tree_init.c
 void			tree_add_node(char *arg, t_ndtype type, t_parse parse);
+//tree_utils.c
+void			tree_add_pipe(t_tree **root);
 //get_stts_utils.c
 char			*get_stts(char *str, int i, char *val);
 //var_utils.c
@@ -174,7 +177,9 @@ char			*add_var(char *str, char *var, int start, int end);
 char			*find_var(char *var, char **env);
 char			*get_var(char *str, int *i, char **env);
 //pipe_utils.c
-void			parse_pipes(char *arg);
+void			check_pipes(char *arg);
+void			pipe_add2pos(t_pipe **pipes, int pos, int num);
+char			**pipe_split(t_pipe *pipes, char *arg);
 //signs_utils.c
 int				find_eq_sign(char *str);
 char			*parse_signs(char *str, char **env);

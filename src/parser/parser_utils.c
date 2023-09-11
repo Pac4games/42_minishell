@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:35:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 10:30:10 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:32:45 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	parse_part1(char *arg, int *i)
 {
 	if (*syntax())
 		return ;
-	if (arg[*i] && !is_diff_sign("\"'", arg[*i]))
+	if (!is_diff_sign("\"'", arg[*i]))
 		*i = skip_quotes(arg, *i);
 }
 
@@ -30,9 +30,15 @@ void	parse_all(t_tree **root, char *arg, t_pipe **pipes, int num)
 		parse_part1(arg, &i);
 		if (*syntax())
 			return (free(arg));
-		if (arg[i] && arg[i] == '|' && arg[i + 1] && arg[i + 1] != '|')
+		if (arg[i] == '|' && arg[i + 1] && arg[i + 1] != '|')
 		{
-			
+			tree_add_pipe(root);
+			pipe_add2pos(pipes, i, num);
+			num++;
 		}
+		if (arg[i])
+			i++;
+		if (*syntax())
+			return (free(arg));
 	}
 }

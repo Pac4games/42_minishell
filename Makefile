@@ -6,7 +6,7 @@
 #    By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/09/09 11:23:28 by paugonca         ###   ########.fr        #
+#    Updated: 2023/09/11 12:42:47 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,17 +23,25 @@ OBJ_PATH    = ./obj
 
 SRC_NAME    = main.c						\
               env_utils.c					\
-              extra/free_utils.c			\
-			  extra/print_utils.c			\
-			  extra/data_utils.c			\
-#			  parser/parse_init.c			\
-#			  parser/parse_quotes.c			\
-#			  parser/parse_utils.c			\
-#			  parser/utils.c				\
-#			  parser/utils2.c				\
-#			  parser/utils3.c				\
-#			  parser/utils4.c				\
-#			  parser/utils5.c				\
+			  parser/parser.c				\
+			  parser/parser_utils.c			\
+			  parser/tree_init.c			\
+			  parser/tree_utils.c			\
+			  parser/pipe_utils.c			\
+			  parser/signs_utils.c			\
+			  parser/quote_utils.c			\
+			  parser/syntax_utils.c			\
+			  parser/var_utils.c			\
+			  parser/get_stts_utils.c		\
+			  builtins/builtin_utils.c		\
+			  builtins/ft_cd.c				\
+			  builtins/ft_echo.c			\
+			  builtins/ft_env.c				\
+			  builtins/ft_exit.c			\
+			  builtins/ft_export.c			\
+			  builtins/ft_export_utils.c	\
+			  builtins/ft_pwd.c				\
+			  builtins/ft_unset.c			\
               executor/executor.c			\
 			  executor/cmd_utils.c			\
               executor/path_utils.c			\
@@ -41,7 +49,10 @@ SRC_NAME    = main.c						\
 			  executor/redir_utils.c		\
 			  executor/redir_in_utils.c		\
 			  executor/redir_out_utils.c	\
-			  executor/heredoc_utils.c
+			  executor/heredoc_utils.c		\
+              extra/free_utils.c			\
+			  extra/print_utils.c			\
+			  extra/data_utils.c			
 
 SRC         = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJ         = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))

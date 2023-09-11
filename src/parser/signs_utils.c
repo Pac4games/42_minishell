@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:48:21 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 17:20:28 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:34:08 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ char	*parse_signs(char *str, char **env)
 	{
 		if (!str[i])
 			return (str);
-		if (str[i] && !is_diff_sign("\"", str[i]))
+		if (!is_diff_sign("\"", str[i]))
 			dol_sign_util(&tmp);
-		if (str[i] && !is_diff_sign("'", str[i]) && !tmp)
+		if (!is_diff_sign("'", str[i]) && !tmp)
 			i = skip_quotes(str, i);
 		if (*syntax())
 			return (free_str_ret_null(str));
-		if (str[i] && !is_diff_sign("$", str[i]))
+		if (!is_diff_sign("$", str[i]))
 			str = get_var(str, &i, env);
 		else
 			i++;

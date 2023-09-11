@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:06:42 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/10 12:32:49 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 12:34:33 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	find_tilde_utils(char *arg, int *i)
 {
-	if (arg[*i] && !is_diff_sign("\"'", arg[*i]))
+	if (!is_diff_sign("\"'", arg[*i]))
 		*i = skip_quotes(arg, *i);
 	if (*syntax())
 	{
