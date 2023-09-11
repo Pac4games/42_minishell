@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/10 12:34:53 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/11 10:28:44 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,12 +122,21 @@ typedef struct s_tree
 	int				pipe_num;
 }			t_tree;
 
+//Pipe struct used during parsing
 typedef struct s_pipe
 {
 	int				pos;
 	int				num;
 	struct s_pipe	*next;
 }			t_pipe;
+
+typedef struct s_parse
+{
+	int		pos;
+	char	*exp;
+	char	**env;
+	t_tree	**tmp;
+}			t_parse;
 
 //Exclusively used by add_var()
 typedef struct s_var
@@ -149,8 +158,14 @@ char			**get_cur_env(char **env);
 char			*get_env_var(char **env, char *var_name);
 
 /*					 PARSER						*/
+//parser.c
+void			parsa(char *in, char ***env, t_tree **root, int num);
+//parser_utils.c
+void			parse_all(t_tree **root, char *arg, t_pipe **pipes, int num);
 //syntax_utils.c
 int				*syntax(void);
+//tree_init.c
+void			tree_add_node(char *arg, t_ndtype type, t_parse parse);
 //get_stts_utils.c
 char			*get_stts(char *str, int i, char *val);
 //var_utils.c
@@ -158,6 +173,8 @@ bool			is_var(char c);
 char			*add_var(char *str, char *var, int start, int end);
 char			*find_var(char *var, char **env);
 char			*get_var(char *str, int *i, char **env);
+//pipe_utils.c
+void			parse_pipes(char *arg);
 //signs_utils.c
 int				find_eq_sign(char *str);
 char			*parse_signs(char *str, char **env);

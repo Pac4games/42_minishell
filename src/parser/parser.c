@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/10 12:35:13 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/10 16:40:09 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,8 @@ void	parsa(char *in, char ***env, t_tree **root, int num)
 	i = 0;
 	pipes = NULL;
 	in = parse_tilde(in, *env);
+	parse_pipes(in);
+	if (!in)
+		return ;
+	
 }
