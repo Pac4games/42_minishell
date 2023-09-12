@@ -6,7 +6,7 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:41:20 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/09 21:00:53 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:21:46 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	ft_export(char **args, char ***env, int fd)
 		free_mtx(args);
 		return (no_args(*env, fd));
 	}
+	i = 0;
 	while (args[i])
 		export_arg(ft_strdup(args[i++]), env);
 	free_mtx(args);

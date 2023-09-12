@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:24:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 11:41:57 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:23:18 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static char	*get_rel_path(char *cmd, char **env)
 	char	*pwd;
 	char	*cwd;
 
+	tmp = NULL;
 	if (cmd[0] && cmd[0] == '.')
 	{
 		cwd = getcwd(NULL, 0);
