@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 16:35:00 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:45:42 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,8 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	t_cmd	cmd;
 	t_tree	*tmp;
 
-	if (pet_utils(root, &cmd, &p, &cmd_num))
-		return ;
-	if (cmd_num == 1 && is_builtin(*root, env, get_cmd(*root, 0)))
+	if (pet_utils(root, &cmd, &p, &cmd_num) && cmd_num == 1 && \
+	is_builtin(*root, env, get_cmd(*root, 0)))
 		return ;
 	p = 0;
 	cmd_num = get_cmd_num(*root);

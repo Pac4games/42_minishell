@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 16:23:48 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:42:25 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,6 @@ void			set_exit_stts(int stts);
 char			*shlvl_up(char *shlvl);
 //env_utils.c
 char			**get_cur_env(char **env);
-char			*get_env_var(char **env, char *var_name);
 
 /*					 PARSER						*/
 //parser.c

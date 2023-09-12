@@ -6,7 +6,7 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:12:11 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/09 15:30:32 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:42:52 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static bool	is_flag(char *arg)
 
 int	ft_echo(char **args, int fd)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (mtx_len(args) > 1 && is_flag(args[1]))

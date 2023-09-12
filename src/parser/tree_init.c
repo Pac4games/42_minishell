@@ -6,13 +6,13 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:55:14 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 15:34:54 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:47:46 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool isleft)
+static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool left)
 {
 	t_tree	*branch;
 
@@ -27,7 +27,7 @@ static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool isleft
 		*node = branch;
 		branch = branch->parent;
 	}
-	else if (isleft)
+	else if (left)
 		(*node)->left = branch;
 	else
 		(*node)->right = branch;

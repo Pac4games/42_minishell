@@ -6,7 +6,7 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/09 12:58:46 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:43:07 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static bool	is_num(char *str)
 	return (false);
 }
 
-static int quit(char **args, bool isnum)
+static int	quit(char **args, bool isnum)
 {
 	if (isnum && args[2])
 	{

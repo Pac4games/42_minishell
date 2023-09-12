@@ -6,14 +6,14 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 21:53:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 16:37:21 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:43:59 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 #include <stdlib.h>
 
-static int open_builtin_in(t_tree *node)
+static int	open_builtin_in(t_tree *node)
 {
 	int	fd;
 

@@ -6,7 +6,7 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:42:13 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/09 21:29:24 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:43:22 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static bool	unset_fail(char *arg)
 	return (false);
 }
 
-static bool is_unsettable(char *arg)
+static bool	is_unsettable(char *arg)
 {
 	int	i;
 
