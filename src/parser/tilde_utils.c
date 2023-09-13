@@ -6,15 +6,15 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:06:42 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 16:40:36 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:21:23 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	find_tilde_utils(char *arg, int *i)
+static bool	parse_tilde_utils(char *arg, int *i)
 {
-	if (!is_diff_sign("\"'", arg[*i]))
+	if (arg[*i] && !is_diff_sign("\"'", arg[*i]))
 		*i = quotes_skip(arg, *i);
 	if (*syntax())
 	{
@@ -66,23 +66,24 @@ static char	*get_var_tilde(char *arg, int i, char *home)
 char	*parse_tilde(char *arg, char **env)
 {
 	int		i;
-	char	*res;
+	char	*tmp;
 
 	i = 0;
 	while (arg[i])
 	{
-		if (find_tilde_utils(arg, &i))
+		if (parse_tilde_utils(arg, &i))
 			return (NULL);
 		if (arg[i] == '~' \
 		&& (i == 0 || arg[i - 1] == ' ' || arg[i - 1] == '\t') \
 		&& (!arg[i + 1] || arg[i + 1] == ' ' || arg[i + 1] == '\t'))
 		{
-			res = get_var_tilde(arg, i, parse_signs(ft_strdup("$HOME"), env));
+			tmp = get_var_tilde(arg, i, parse_signs(ft_strdup("$HOME"), env));
 			free(arg);
+			arg = tmp;
 			i = 0;
 		}
 		else
 			i++;
 	}
-	return (res);
+	return (arg);
 }

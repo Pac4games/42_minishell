@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/12 12:46:32 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:50:42 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 		{
 			ft_putstr_fd("\nexit\n", STDOUT_FILENO);
 			rl_clear_history();
+			g_stts = EXIT_FAILURE;
 			exit(g_stts);
 		}
-		else if (ft_strlen(in))
+		else if (!ft_strlen(in))
 		{
 			free(in);
 			continue ;

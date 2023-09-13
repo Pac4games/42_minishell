@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 15:11:19 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:57:41 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	check_pipes(char *arg)
 	i = 0;
 	if (!arg)
 		return ;
-	while (arg[i] == ' ' || arg[i] == '\t')
+	while (arg[i] && (arg[i] == ' ' || arg[i] == '\t'))
 		i++;
-	if (!is_diff_sign("|", arg[i]))
+	if (!arg[i] || !is_diff_sign("|", arg[i]))
 		print_syntax_error();
 	parse_pipes_utils(arg, &i);
 	if (*syntax())
