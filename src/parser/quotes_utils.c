@@ -6,7 +6,7 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:51:58 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/13 12:10:12 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:16:24 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ char	*quotes_rm(char *str)
 	char	*res;
 
 	res = quotes_rm_fr(str, -1, 0, ' ');
+	printf("quotes_rm() str: %s\n", str);
+	printf("quotes_rm() res: %s\n", res);
 	free(str);
 	return (res);
 }
