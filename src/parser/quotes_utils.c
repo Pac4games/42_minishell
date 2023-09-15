@@ -6,7 +6,7 @@
 /*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:51:58 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/13 15:16:24 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/15 12:15:36 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	quotes_skip(char *str, int i)
 {
 	char	tmp;
 
-	tmp = str[i++];
+	tmp = str[i];
+	i++;
 	while (str[i] && str[i] != tmp)
 		i++;
 	if (!str[i])

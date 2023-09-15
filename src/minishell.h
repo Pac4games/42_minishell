@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/12 12:42:25 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/15 11:04:08 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void			tree_add_node(char *arg, t_ndtype type, t_parse parse);
 void			tree_add_n_parse(t_tree **node, char *arg, t_ndtype type);
 //tree_utils.c
 void			tree_add_pipe(t_tree **root);
-int				tree_add_redir(char *arg, int i, t_ndtype type, t_parse parse);
+int				tree_add_case(char *arg, int i, t_ndtype type, t_parse parse);
 //get_stts_utils.c
 char			*get_stts(char *str, int i, char *val);
 //var_utils.c

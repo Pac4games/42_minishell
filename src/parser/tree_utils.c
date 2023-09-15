@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/13 15:17:33 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/15 12:18:01 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,20 @@ void	tree_add_pipe(t_tree **root)
 		*root = pipe;
 		return ;
 	}
-	while (tmp)
+	while (tmp->parent)
 		tmp = tmp->parent;
+	tmp = tmp->parent;
 	pipe->left = tmp;
 }
 
 static void	tar_util(char *arg, int *i, int *j)
 {
-	while (arg[*i] == ' ' || arg[*i] == '\t')
+	while (arg[*i] && (arg[*i] == ' ' || arg[*i] == '\t'))
 		(*i)++;
 	if (!arg[*i])
 		print_syntax_error();
 	*j = *i;
-	while (arg[*j] == ' ' || arg[*j] == '\t')
+	while (arg[*j] && (arg[*j] == ' ' || arg[*j] == '\t'))
 		(*j)++;
 }
 
@@ -75,7 +76,7 @@ static void	check_export(char *arg, t_ndtype type, t_parse parse)
 	free(tmp);
 }
 
-int	tree_add_redir(char *arg, int i, t_ndtype type, t_parse parse)
+int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse)
 {
 	int	j;
 
@@ -93,7 +94,7 @@ int	tree_add_redir(char *arg, int i, t_ndtype type, t_parse parse)
 	}
 	if (*syntax())
 		return (0);
-	check_export(ft_substr(arg, i, j - 1), type, parse);
-	tar_util2(ft_substr(arg, i, j - 1), type, parse);
+	check_export(ft_substr(arg, i, j), type, parse);
+	tar_util2(ft_substr(arg, i, j), type, parse);
 	return (j);
 }

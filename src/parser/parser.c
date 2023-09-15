@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/13 12:21:45 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/15 11:51:34 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@ static bool	parse_str_redir(char *str, t_parse parse, int *i)
 	int	j;
 
 	j = *i;
-	if (str[j] == '>' && str[j + 1] && str[j + 1] != '>')
-		*i = tree_add_redir(str, j, E_STDOUT, parse);
-	else if (str[j] == '<' && str[j + 1] && str[j + 1] != '<')
-		*i = tree_add_redir(str, j, E_STDIN, parse);
-	else if (str[j] == '>' && str[j + 1] == '>' \
-	&& str[j + 2] && str[j + 2] != '>')
-		*i = tree_add_redir(str, j, E_APPEND, parse);
-	else if (str[j] == '<' && str[j + 1] == '<' \
-	&& str[j + 2] && str[j + 2] != '<')
-		*i = tree_add_redir(str, j, E_HDOC, parse);
+	if (str[j] && str[j] == '>' && str[j + 1] != '>')
+		*i = tree_add_case(str, j, E_STDOUT, parse);
+	else if (str[j] && str[j] == '<' && str[j + 1]
+		&& str[j + 1] != '<')
+		*i = tree_add_case(str, j, E_STDIN, parse);
+	else if (str[j] && str[j] == '>' && str[j + 1]
+		&& str[j + 1] == '>' && str[j + 2] != '>')
+		*i = tree_add_case(str, j, E_APPEND, parse);
+	else if (str[j] && str[j] == '<' && str[j + 1]
+		&& str[j + 1] == '<' && str[j + 2] != '<')
+		*i = tree_add_case(str, j, E_HDOC, parse);
 	else
 		return (false);
 	return (true);
@@ -34,11 +35,11 @@ static bool	parse_str_redir(char *str, t_parse parse, int *i)
 
 static void	parse_str(char *str, t_parse parse, bool exp)
 {
-	int		i;
-	bool	iscmd;
+	int	i;
+	int	cmd;
 
+	cmd = 0;
 	i = 0;
-	iscmd = false;
 	parse.exp = &exp;
 	while (str[i])
 	{
@@ -48,15 +49,15 @@ static void	parse_str(char *str, t_parse parse, bool exp)
 			i++;
 		if (parse_str_redir(str, parse, &i))
 			;
-		else if (str[i] && str[i] == '-' && str[i + 1] && \
-		is_diff_sign("&|<>", str[i + 1]) && iscmd)
-			i = tree_add_redir(str, i + 1, E_FLAG, parse);
-		else if (str[i] && !iscmd)
-			i = tree_add_redir(str, i + 1, E_ARG, parse);
+		else if (str[i] && str[i] == '-' && str[i + 1] && str[i + 1]
+			&& is_diff_sign("<>|&", str[i + 1]) && cmd)
+			i = tree_add_case(str, i - 1, E_FLAG, parse);
+		else if (str[i] && cmd != 0)
+			i = tree_add_case(str, i - 1, E_ARG, parse);
 		else if (str[i])
 		{
-			i = tree_add_redir(str, 1 + 1, E_CMD, parse);
-			iscmd = true;
+			i = tree_add_case(str, i - 1, E_CMD, parse);
+			cmd++;
 		}
 	}
 }
