@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 15:27:11 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/26 15:47:29 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ void	proc_exec_tree(t_tree **root, char ***env) //ok
 	if (pet_utils(root, &cmd, &p, &cmd_num) && cmd_num == 1 && \
 	is_builtin(*root, env, get_cmd(*root, 0)))
 		return ;
-	p = 0;
-	cmd_num = get_cmd_num(*root);
 	tmp = *root;
 	while (tmp)
 	{
