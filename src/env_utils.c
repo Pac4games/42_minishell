@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:30:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/12 12:41:40 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 07:54:15 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	**get_cur_env(char **env)
+//ok
+char	**get_cur_env(char **env)//ok
 {
 	int		p;
 	char	**res;

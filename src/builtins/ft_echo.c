@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:12:11 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/12 12:42:52 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:01:03 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	is_flag(char *arg)
+static bool	is_flag(char *arg)//ok
 {
 	int	i;
 
@@ -23,7 +23,7 @@ static bool	is_flag(char *arg)
 	return (true);
 }
 
-int	ft_echo(char **args, int fd)
+int	ft_echo(char **args, int fd) //ok
 {
 	int	i;
 

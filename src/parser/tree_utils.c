@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tree_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/15 12:18:01 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 09:05:08 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	tree_add_pipe(t_tree **root)
+void	tree_add_pipe(t_tree **root) //ok
 {
 	t_tree	*tmp;
 	t_tree	*pipe;
@@ -35,7 +35,7 @@ void	tree_add_pipe(t_tree **root)
 	pipe->left = tmp;
 }
 
-static void	tar_util(char *arg, int *i, int *j)
+static void	tar_util(char *arg, int *i, int *j) //?
 {
 	while (arg[*i] && (arg[*i] == ' ' || arg[*i] == '\t'))
 		(*i)++;
@@ -46,7 +46,7 @@ static void	tar_util(char *arg, int *i, int *j)
 		(*j)++;
 }
 
-static void	tar_util2(char *arg, t_ndtype type, t_parse parse)
+static void	tar_util2(char *arg, t_ndtype type, t_parse parse) //ok
 {
 	if (type == E_HDOC)
 	{
@@ -65,7 +65,7 @@ static void	tar_util2(char *arg, t_ndtype type, t_parse parse)
 	}
 }
 
-static void	check_export(char *arg, t_ndtype type, t_parse parse)
+static void	check_export(char *arg, t_ndtype type, t_parse parse) //?
 {
 	char	*tmp;
 
@@ -76,9 +76,9 @@ static void	check_export(char *arg, t_ndtype type, t_parse parse)
 	free(tmp);
 }
 
-int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse)
+int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse) //?
 {
-	int	j;
+	int	j; // quanto vale j? Onde esta inicializado?
 
 	if (type == E_HDOC || type == E_APPEND)
 		i++;
@@ -88,7 +88,7 @@ int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse)
 		print_syntax_error();
 	while (arg[j] && is_diff_sign("<>|& \t", arg[j]))
 	{
-		if (!is_diff_sign("\"'", arg[j]))
+		if (!is_diff_sign("\"'", arg[j])) // nivamente "'
 			j = quotes_skip(arg, j);
 		j++;
 	}

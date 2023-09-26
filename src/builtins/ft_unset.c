@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:42:13 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/12 12:43:22 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:43:06 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	unset_fail(char *arg)
+static bool	unset_fail(char *arg)//ok
 {
 	char	*msg;
 
@@ -21,7 +21,7 @@ static bool	unset_fail(char *arg)
 	return (false);
 }
 
-static bool	is_unsettable(char *arg)
+static bool	is_unsettable(char *arg)//ok
 {
 	int	i;
 
@@ -34,7 +34,7 @@ static bool	is_unsettable(char *arg)
 	return (true);
 }
 
-static void	unset_arg_new(char ***env, char ***new_env, char *arg)
+static void	unset_arg_new(char ***env, char ***new_env, char *arg)//ok
 {
 	int	i;
 	int	j;
@@ -49,7 +49,7 @@ static void	unset_arg_new(char ***env, char ***new_env, char *arg)
 	(*new_env)[j] = NULL;
 }
 
-static void	unset_arg(char *arg, char ***env)
+static void	unset_arg(char *arg, char ***env)//ok
 {
 	int		i;
 	char	**new_env;
@@ -72,7 +72,7 @@ static void	unset_arg(char *arg, char ***env)
 	}
 }
 
-int	ft_unset(char **args, char ***env)
+int	ft_unset(char **args, char ***env)//ok
 {
 	int	i;
 

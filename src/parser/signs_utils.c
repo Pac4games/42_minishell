@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   signs_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:48:21 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 13:19:06 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:17:11 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	find_eq_sign(char *str)
+int	find_eq_sign(char *str) //ok
 {
 	int	i;
 
@@ -24,7 +24,7 @@ int	find_eq_sign(char *str)
 	return (i);
 }
 
-static void	dol_sign_util(int *tmp)
+static void	dol_sign_util(int *tmp) //ok
 {
 	if (!(*tmp))
 		*tmp = 1;
@@ -32,13 +32,13 @@ static void	dol_sign_util(int *tmp)
 		*tmp = 0;
 }
 
-static char	*free_str_ret_null(char *str)
+static char	*free_str_ret_null(char *str) //ok
 {
 	free(str);
 	return (NULL);
 }
 
-char	*parse_signs(char *str, char **env)
+char	*parse_signs(char *str, char **env) // ok
 {
 	int	i;
 	int	tmp;
@@ -54,7 +54,7 @@ char	*parse_signs(char *str, char **env)
 		if (!is_diff_sign("'", str[i]) && !tmp)
 			i = quotes_skip(str, i);
 		if (*syntax())
-			return (free_str_ret_null(str));
+			return (free_str_ret_null(str));// ainda nao entendi o syntax :/
 		if (!is_diff_sign("$", str[i]))
 			str = get_var(str, &i, env);
 		else
@@ -63,7 +63,7 @@ char	*parse_signs(char *str, char **env)
 	return (str);
 }
 
-bool	is_diff_sign(char *sign, char c)
+bool	is_diff_sign(char *sign, char c) //ok
 {
 	int	j;
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   redir_out_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:21:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 11:42:15 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:38:42 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	redir_hdoc(t_tree **root, t_cmd *cmd)
+int	redir_hdoc(t_tree **root, t_cmd *cmd) //breve explicacao
 {
 	t_tree	*tmp;
 

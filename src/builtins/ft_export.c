@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:41:20 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/12 14:21:46 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:42:59 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	no_args(char **env, int fd)
+static int	no_args(char **env, int fd)//ok
 {
 	int	i;
 
@@ -25,7 +25,7 @@ static int	no_args(char **env, int fd)
 	return (1);
 }
 
-static void	export_arg(char *arg, char ***env)
+static void	export_arg(char *arg, char ***env)// breve explicacao
 {
 	int	i;
 
@@ -49,7 +49,7 @@ static void	export_arg(char *arg, char ***env)
 	export_arg_new(arg, env, i);
 }
 
-int	ft_export(char **args, char ***env, int fd)
+int	ft_export(char **args, char ***env, int fd)//ok
 {
 	int	i;
 

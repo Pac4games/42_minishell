@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:35:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 13:19:11 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 08:54:20 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	parse_part1(char *arg, int *i)
+static void	parse_part1(char *arg, int *i) // novamente "'
 {
 	if (*syntax())
 		return ;
@@ -20,7 +20,7 @@ static void	parse_part1(char *arg, int *i)
 		*i = quotes_skip(arg, *i);
 }
 
-void	parse_all(t_tree **root, char *arg, t_pipe **pipes, int num)
+void	parse_all(t_tree **root, char *arg, t_pipe **pipes, int num) //ok
 {
 	int	i;
 

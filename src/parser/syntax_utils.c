@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:20:15 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 16:21:28 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 08:01:20 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
+//?
 int	*syntax(void)
 {
 	static int	amogus;

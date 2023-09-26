@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:49:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 11:41:48 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:38:30 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //"Read The Frickin' Docs" (family friendly 'cause of Junior)
 //Takes the input for deezdocs()
-static void	rtfd(int fd, char *eof, int stts)
+static void	rtfd(int fd, char *eof, int stts) //ok I LOVED
 {
 	char	*in;
 	char	*res;
@@ -22,7 +22,7 @@ static void	rtfd(int fd, char *eof, int stts)
 	while (true)
 	{
 		sig_handle(E_SIG_HDOC);
-		in = readline("heredoc> ");
+		in = readline("heredoc> "); // tem mesmo esse espaco?
 		if (!in)
 			print_hdoc_warn(eof, in, stts);
 		res = ft_strjoin(in, "\n");
@@ -45,7 +45,7 @@ static void	rtfd(int fd, char *eof, int stts)
 
 //Yet another genius name (may change it later)
 //It's our heredoc if it ain't obvious lol
-int	deezdocs(t_tree **root, t_cmd *cmd, int p)
+int	deezdocs(t_tree **root, t_cmd *cmd, int p) // ok
 {
 	int	stts;
 
@@ -74,7 +74,7 @@ int	deezdocs(t_tree **root, t_cmd *cmd, int p)
 	return (false);
 }
 
-int	handle_hdoc(t_tree **root, t_cmd *cmd)
+int	handle_hdoc(t_tree **root, t_cmd *cmd) //ok
 {
 	int		p;
 	t_tree	*tmp;

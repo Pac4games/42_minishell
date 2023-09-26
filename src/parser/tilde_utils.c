@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   tilde_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:06:42 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/13 12:21:23 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 08:36:30 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	parse_tilde_utils(char *arg, int *i)
+static bool	parse_tilde_utils(char *arg, int *i)//duvida
 {
-	if (arg[*i] && !is_diff_sign("\"'", arg[*i]))
+	if (arg[*i] && !is_diff_sign("\"'", arg[*i])) // quando usa "'?
 		*i = quotes_skip(arg, *i);
 	if (*syntax())
 	{
@@ -24,7 +24,7 @@ static bool	parse_tilde_utils(char *arg, int *i)
 	return (false);
 }
 
-static void	gvt_utils(char *arg, int i, char *home, char **res)
+static void	gvt_utils(char *arg, int i, char *home, char **res) //ok
 {
 	int	j;
 	int	k;
@@ -53,17 +53,17 @@ static void	gvt_utils(char *arg, int i, char *home, char **res)
 	(*res)[j + k] = 0;
 }
 
-static char	*get_var_tilde(char *arg, int i, char *home)
+static char	*get_var_tilde(char *arg, int i, char *home) //?
 {
 	char	*res;
 
-	res = malloc(ft_strlen(arg) - 1 + 1 + ft_strlen(home) * sizeof(char));
+	res = malloc(ft_strlen(arg) - 1 + 1 + ft_strlen(home) * sizeof(char)); // -1 + 1 ?
 	gvt_utils(arg, i, home, &res);
 	free(home);
 	return (res);
 }
 
-char	*parse_tilde(char *arg, char **env)
+char	*parse_tilde(char *arg, char **env) // ?
 {
 	int		i;
 	char	*tmp;
@@ -71,7 +71,7 @@ char	*parse_tilde(char *arg, char **env)
 	i = 0;
 	while (arg[i])
 	{
-		if (parse_tilde_utils(arg, &i))
+		if (parse_tilde_utils(arg, &i)) //ok, com comentarios
 			return (NULL);
 		if (arg[i] == '~' \
 		&& (i == 0 || arg[i - 1] == ' ' || arg[i - 1] == '\t') \

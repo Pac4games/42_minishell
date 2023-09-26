@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/12 12:45:42 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:37:21 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	proc_child(t_tree *node, t_cmd *cmd)
+static void	proc_child(t_tree *node, t_cmd *cmd) //ok
 {
 	close((cmd->pipes)[0]);
 	sig_handle(E_SIG_DFL);
@@ -27,7 +27,7 @@ static void	proc_child(t_tree *node, t_cmd *cmd)
 }
 
 //The actual executor function. Cool name, right?
-void	xqt(t_tree *node, t_cmd *cmd, int *fd)
+void	xqt(t_tree *node, t_cmd *cmd, int *fd)// breve explicacao
 {
 	if (pipe(cmd->pipes) == -1)
 		print_err("failed to open pipe", EXIT_FAILURE);
@@ -45,7 +45,7 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd)
 	}
 }
 
-static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)
+static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)//ok
 {
 	t_cmd		cmd;
 	static int	fd;
@@ -59,7 +59,7 @@ static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)
 	return (cmd);
 }
 
-static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num)
+static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num) //ok
 {
 	*i = 0;
 	if (redir_hdoc(root, cmd))
@@ -68,10 +68,10 @@ static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num)
 	return (false);
 }
 
-void	proc_exec_tree(t_tree **root, char ***env)
+void	proc_exec_tree(t_tree **root, char ***env) //ok
 {
-	int		p;
-	int		cmd_num;
+	int		p; // nao eh necessario inicializar antes da linha 79?
+	int		cmd_num; // idem
 	int		proc_stts;
 	t_cmd	cmd;
 	t_tree	*tmp;

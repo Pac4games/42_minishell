@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_stts_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:32:50 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 16:40:38 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:03:10 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	get_stts_utils(char *str, int i, char *val, char **res)
+static void	get_stts_utils(char *str, int i, char *val, char **res) //ok
 {
 	int	j;
 	int	k;
@@ -41,7 +41,7 @@ static void	get_stts_utils(char *str, int i, char *val, char **res)
 	(*res)[j + k] = 0;
 }
 
-char	*get_stts(char *str, int i, char *val)
+char	*get_stts(char *str, int i, char *val) //ok
 {
 	char	*res;
 

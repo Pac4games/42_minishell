@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:50:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 16:24:13 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:19:58 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_mtx(char **mtx)
 		ft_putendl_fd(mtx[p++], STDOUT_FILENO);
 }
 
-void	print_err(char *msg, int stts)
+void	print_err(char *msg, int stts) // ok
 {
 	ft_putstr_fd("Error: ", STDERR_FILENO);
 	ft_putendl_fd(msg, STDERR_FILENO);
@@ -29,7 +29,7 @@ void	print_err(char *msg, int stts)
 	exit(g_stts);
 }
 
-void	print_shell_err(char *cmd, char *msg, int stts)
+void	print_shell_err(char *cmd, char *msg, int stts) //ok
 {
 	ft_putstr_fd(SHELL, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
@@ -44,7 +44,7 @@ void	print_shell_err(char *cmd, char *msg, int stts)
 	}
 }
 
-void	print_hdoc_warn(char *eof, char *in, int stts)
+void	print_hdoc_warn(char *eof, char *in, int stts) // breve explicacao
 {
 	ft_putstr_fd(SHELL, STDERR_FILENO);
 	ft_putstr_fd(": warning: here-document delimited by end-of-file (wanted `",
@@ -58,7 +58,7 @@ void	print_hdoc_warn(char *eof, char *in, int stts)
 	exit(g_stts);
 }
 
-void	print_syntax_error(void)
+void	print_syntax_error(void) //ok mudou syntax
 {
 	if ((*syntax()) == 1)
 		ft_putendl_fd("Syntax Error", STDOUT_FILENO);

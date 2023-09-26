@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:35:46 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 16:07:51 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:36:57 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	free_mtx(char **mtx)
+void	free_mtx(char **mtx) //ok
 {
 	int	p;
 
@@ -22,7 +22,7 @@ void	free_mtx(char **mtx)
 	free(mtx);
 }
 
-void	free_tree(t_tree **node)
+void	free_tree(t_tree **node)// ok
 {
 	if (!node || !(*node))
 		return ;
@@ -34,7 +34,7 @@ void	free_tree(t_tree **node)
 	*node = NULL;
 }
 
-t_tree	**get_tree_root(t_tree **node)
+t_tree	**get_tree_root(t_tree **node) //ok
 {
 	t_tree	*root;
 
@@ -47,7 +47,7 @@ t_tree	**get_tree_root(t_tree **node)
 	return (node);
 }
 
-int	mtx_len(char **mtx)
+int	mtx_len(char **mtx) //ok
 {
 	int	res;
 

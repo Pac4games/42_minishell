@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   redir_builtins.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 21:53:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/12 12:43:59 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:41:12 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 #include <stdlib.h>
 
-static int	open_builtin_in(t_tree *node)
+static int	open_builtin_in(t_tree *node) //ok
 {
 	int	fd;
 
@@ -31,7 +31,7 @@ static int	open_builtin_in(t_tree *node)
 	return (1);
 }
 
-int	redir_builtin_in(t_tree *node)
+int	redir_builtin_in(t_tree *node) //ok
 {
 	pid_t	pid;
 	int		stts;
@@ -52,7 +52,7 @@ int	redir_builtin_in(t_tree *node)
 	return (g_stts);
 }
 
-int	redir_builtin_out(t_tree *node)
+int	redir_builtin_out(t_tree *node) //ok
 {
 	t_cmd	cmd;
 	int		i;

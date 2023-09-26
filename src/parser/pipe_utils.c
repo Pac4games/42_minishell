@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/13 11:57:41 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 08:58:48 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	parse_pipes_utils(char *arg, int *i)
+static void	parse_pipes_utils(char *arg, int *i) //ok
 {
 	while (arg[*i])
 	{
-		if (!is_diff_sign("\"'", arg[*i]))
+		if (!is_diff_sign("\"'", arg[*i])) // novamente "'
 			*i = quotes_skip(arg, *i);
 		if (!is_diff_sign("|", arg[*i]))
 		{
@@ -33,7 +33,7 @@ static void	parse_pipes_utils(char *arg, int *i)
 	}
 }
 
-void	check_pipes(char *arg)
+void	check_pipes(char *arg) // com comentarios
 {
 	int	i;
 
@@ -42,14 +42,14 @@ void	check_pipes(char *arg)
 		return ;
 	while (arg[i] && (arg[i] == ' ' || arg[i] == '\t'))
 		i++;
-	if (!arg[i] || !is_diff_sign("|", arg[i]))
+	if (!arg[i] || !is_diff_sign("|", arg[i])) // se ele tiver | erro de syntax?
 		print_syntax_error();
 	parse_pipes_utils(arg, &i);
 	if (*syntax())
 		return ;
 }
 
-void	pipe_add2pos(t_pipe **pipes, int pos, int num)
+void	pipe_add2pos(t_pipe **pipes, int pos, int num) //ok
 {
 	t_pipe	*res;
 	t_pipe	*tmp;
@@ -69,7 +69,7 @@ void	pipe_add2pos(t_pipe **pipes, int pos, int num)
 	tmp->next = res;
 }
 
-char	**pipe_split(t_pipe *pipes, char *arg)
+char	**pipe_split(t_pipe *pipes, char *arg) // com comentarios
 {
 	int		i;
 	char	**res;
@@ -80,9 +80,9 @@ char	**pipe_split(t_pipe *pipes, char *arg)
 	tmp = pipes;
 	while (tmp->next)
 		tmp = tmp->next;
-	res = malloc((tmp->num * 3) * sizeof(char *));
+	res = malloc((tmp->num * 3) * sizeof(char *)); // pq *3?
 	i = 0;
-	while (pipes)
+	while (pipes) // nao compreendi
 	{
 		res[pipes->num] = ft_substr(arg, i, pipes->pos - 1);
 		i = pipes->pos + i;
@@ -96,7 +96,7 @@ char	**pipe_split(t_pipe *pipes, char *arg)
 	return (res);
 }
 
-void	free_pipes(t_pipe **pipes)
+void	free_pipes(t_pipe **pipes) //ok
 {
 	if (!pipes || !(*pipes))
 		return ;

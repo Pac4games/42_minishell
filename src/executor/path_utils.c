@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   path_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:24:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/12 14:23:18 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:36:25 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	is_valid_path(char *cmd, char *path)
+static int	is_valid_path(char *cmd, char *path)//ok
 {
 	struct stat	buf;
 
@@ -25,7 +25,7 @@ static int	is_valid_path(char *cmd, char *path)
 	return (false);
 }
 
-static char	*get_abs_path(char *cmd)
+static char	*get_abs_path(char *cmd)//ok
 {
 	DIR	*dir;
 
@@ -40,7 +40,7 @@ static char	*get_abs_path(char *cmd)
 	return (cmd);
 }
 
-static char	*join_rel_path(char *cmd, char **path, char *tmp)
+static char	*join_rel_path(char *cmd, char **path, char *tmp)//-
 {
 	int	p;
 
@@ -63,7 +63,7 @@ static char	*join_rel_path(char *cmd, char **path, char *tmp)
 	return (NULL);
 }
 
-static char	*get_rel_path(char *cmd, char **env)
+static char	*get_rel_path(char *cmd, char **env)//ok
 {
 	char	*tmp;
 	char	*pwd;
@@ -87,7 +87,7 @@ static char	*get_rel_path(char *cmd, char **env)
 	return (join_rel_path(cmd, env, tmp));
 }
 
-char	*get_cmd_path(char *cmd, char **env)
+char	*get_cmd_path(char *cmd, char **env)//ok
 {
 	if (!cmd)
 		return (NULL);

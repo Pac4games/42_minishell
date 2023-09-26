@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   var_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:48:54 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 17:18:53 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:19:10 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-bool	is_var(char c)
+bool	is_var(char c) //ok
 {
 	return (ft_isalnum(c) || c == '_');
 }
 
-static void	add_var_helper(t_var tmp)
+static void	add_var_helper(t_var tmp) // ?
 {
 	tmp.i = 0;
 	tmp.j = 0;
@@ -41,7 +41,7 @@ static void	add_var_helper(t_var tmp)
 	}
 }
 
-char	*add_var(char *str, char *var, int start, int end)
+char	*add_var(char *str, char *var, int start, int end) // poderia explicar?
 {
 	char	*res;
 	t_var	tmp;
@@ -65,7 +65,7 @@ char	*add_var(char *str, char *var, int start, int end)
 	return (res);
 }
 
-char	*find_var(char *var, char **env)
+char	*find_var(char *var, char **env) // ok
 {
 	int	i;
 	int	size;
@@ -83,7 +83,7 @@ char	*find_var(char *var, char **env)
 	return (ft_strdup(env[i] + size + 1));
 }
 
-char	*get_var(char *str, int *i, char **env)
+char	*get_var(char *str, int *i, char **env) //ok
 {
 	int		j;
 	char	*res;
@@ -102,7 +102,7 @@ char	*get_var(char *str, int *i, char **env)
 		return (str);
 	}
 	res = add_var(str, find_var(ft_substr(str, (*i) + 1, j - 1), env), \
-		(*i) + 1, j - 1);
+		(*i) + 1, j - 1); //breve explicacao
 	if (str)
 		free(str);
 	return (res);

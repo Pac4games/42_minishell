@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/13 11:50:42 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 10:32:45 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	g_stts = EXIT_SUCCESS;
 
-void	set_exit_stts(int stts)
+void	set_exit_stts(int stts)// ok
 {
 	if (WIFSIGNALED(stts))
 	{
@@ -26,7 +26,7 @@ void	set_exit_stts(int stts)
 		g_stts = WEXITSTATUS(stts);
 }
 
-char	*shlvl_up(char *shlvl)
+char	*shlvl_up(char *shlvl) // ok
 {
 	char	*tmp;
 	char	*res;
@@ -37,7 +37,7 @@ char	*shlvl_up(char *shlvl)
 	return (res);
 }
 
-static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
+static void	le_loop(char *in, char *prompt, char **env, t_tree *tree) //ok
 {
 	while (true)
 	{
@@ -79,7 +79,7 @@ int	main(int ac, char **av, char **envp)
 	prompt = NULL;
 	env = get_cur_env(envp);
 	tree = NULL;
-	*syntax() = 0;
+	*syntax() = 0; // ?
 	le_loop(in, prompt, env, tree);
 	return (g_stts);
 }

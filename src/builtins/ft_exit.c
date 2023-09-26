@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/12 12:43:07 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:42:09 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	is_num(char *str)
+static bool	is_num(char *str) //-
 {
 	int		i;
 	bool	check;
@@ -34,7 +34,7 @@ static bool	is_num(char *str)
 	return (false);
 }
 
-static int	quit(char **args, bool isnum)
+static int	quit(char **args, bool isnum) //ok
 {
 	if (isnum && args[2])
 	{
@@ -56,7 +56,7 @@ static int	quit(char **args, bool isnum)
 	return (-42);
 }
 
-int	ft_exit(char **args)
+int	ft_exit(char **args) //ok
 {
 	bool	isnum;
 

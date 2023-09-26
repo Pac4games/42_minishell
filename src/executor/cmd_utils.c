@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:48:22 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/21 12:19:32 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:24:07 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*get_cmd(t_tree *node, int pos)
+char	*get_cmd(t_tree *node, int pos)// breve explicacao
 {
 	if (!pos)
 		while (node && node->type != E_CMD)
@@ -37,7 +37,7 @@ char	*get_cmd(t_tree *node, int pos)
 //the binary tree: one to count the number of nodes for malloc(), and
 //another to duplicate the strings, so this was engineered in order to
 //avoid unecessary indentical "while" loops.
-static void	cmd_args_set(t_tree *node, int pos, char **args, int phase)
+static void	cmd_args_set(t_tree *node, int pos, char **args, int phase)//ok
 {
 	int	p;
 
@@ -62,7 +62,7 @@ static void	cmd_args_set(t_tree *node, int pos, char **args, int phase)
 		print_err("failed to allocate memory", EXIT_FAILURE);
 }
 
-char	**get_cmd_args(t_tree *node, int pos)
+char	**get_cmd_args(t_tree *node, int pos) //ok
 {
 	int		phase;
 	t_tree	*tmp;
@@ -78,7 +78,7 @@ char	**get_cmd_args(t_tree *node, int pos)
 	return (args);
 }
 
-int	get_cmd_num(t_tree *node)
+int	get_cmd_num(t_tree *node) //ok
 {
 	int	res;
 

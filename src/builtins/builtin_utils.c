@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:19:06 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 22:28:50 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/25 22:13:47 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	print_builtin_err(char *arg)
+int	print_builtin_err(char *arg) //ok
 {
 	ft_putstr_fd("Error: couldn't open file: ", STDERR_FILENO);
 	ft_putendl_fd(arg, STDERR_FILENO);
@@ -20,7 +20,7 @@ int	print_builtin_err(char *arg)
 	return (-1);
 }
 
-int	run_builtin(t_tree *node, char ***env, char *cmd, int fd)
+int	run_builtin(t_tree *node, char ***env, char *cmd, int fd) //ok
 {
 	if (cmd && !ft_strncmp(cmd, "pwd", 4))
 		return (ft_pwd(fd));
@@ -41,7 +41,7 @@ int	run_builtin(t_tree *node, char ***env, char *cmd, int fd)
 	return (0);
 }
 
-bool	is_builtin(t_tree *node, char ***env, char *cmd)
+bool	is_builtin(t_tree *node, char ***env, char *cmd) //ok
 {
 	int	fd;
 
@@ -62,7 +62,7 @@ bool	is_builtin(t_tree *node, char ***env, char *cmd)
 	return (false);
 }
 
-int	builtin_ret(t_tree *node, char ***env, char *cmd, int pos)
+int	builtin_ret(t_tree *node, char ***env, char *cmd, int pos) //-
 {
 	int	fd;
 

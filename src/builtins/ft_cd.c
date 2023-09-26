@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/09 17:35:22 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:43:21 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	is_valid_input(char **args, char **env)
+static bool	is_valid_input(char **args, char **env)//ok
 {
 	int	i;
 
@@ -29,7 +29,7 @@ static bool	is_valid_input(char **args, char **env)
 	return (false);
 }
 
-static int	print_cd_error(char **args)
+static int	print_cd_error(char **args) //ok
 {
 	char	*tmp;
 
@@ -44,7 +44,7 @@ static int	print_cd_error(char **args)
 	return (1);
 }
 
-static bool	set_oldpwd(char ***env, char *path)
+static bool	set_oldpwd(char ***env, char *path)//ok
 {
 	int	i;
 
@@ -61,7 +61,7 @@ static bool	set_oldpwd(char ***env, char *path)
 	return (false);
 }
 
-int	ft_cd(char **args, char ***env)
+int	ft_cd(char **args, char ***env)//ok
 {
 	char	path[1025];
 	char	*tmp;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/15 11:51:34 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 10:12:09 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	parse_str_redir(char *str, t_parse parse, int *i)
+static bool	parse_str_redir(char *str, t_parse parse, int *i) //?
 {
 	int	j;
 
@@ -33,7 +33,7 @@ static bool	parse_str_redir(char *str, t_parse parse, int *i)
 	return (true);
 }
 
-static void	parse_str(char *str, t_parse parse, bool exp)
+static void	parse_str(char *str, t_parse parse, bool exp) //ok com comentarios
 {
 	int	i;
 	int	cmd;
@@ -48,7 +48,7 @@ static void	parse_str(char *str, t_parse parse, bool exp)
 		while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 			i++;
 		if (parse_str_redir(str, parse, &i))
-			;
+			; // eh isso mesmo?
 		else if (str[i] && str[i] == '-' && str[i + 1] && str[i + 1]
 			&& is_diff_sign("<>|&", str[i + 1]) && cmd)
 			i = tree_add_case(str, i - 1, E_FLAG, parse);
@@ -62,7 +62,7 @@ static void	parse_str(char *str, t_parse parse, bool exp)
 	}
 }
 
-static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env)
+static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env) //ok
 {
 	t_parse	parse;
 
@@ -80,7 +80,7 @@ static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env)
 //Our partner in crime and best-friend: the parser
 void	parsa(char *in, char ***env, t_tree **root, int num)
 {
-	char	**mtx;
+	char	**mtx; // definicao?
 	t_pipe	*pipes;
 
 	pipes = NULL;

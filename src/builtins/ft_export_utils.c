@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 20:29:48 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 21:11:17 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:09:39 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	export_fail(char *arg)
+static bool	export_fail(char *arg)//ok
 {
 	char	*msg;
 
@@ -22,7 +22,7 @@ static bool	export_fail(char *arg)
 	return (false);
 }
 
-static bool	is_exportable(char *arg)
+static bool	is_exportable(char *arg)//ok
 {
 	int	i;
 
@@ -35,7 +35,7 @@ static bool	is_exportable(char *arg)
 	return (true);
 }
 
-static void	export_add(char *arg, char ***env, int size)
+static void	export_add(char *arg, char ***env, int size)// breve explicacao
 {
 	int		i;
 	char	**new_env;
@@ -52,7 +52,7 @@ static void	export_add(char *arg, char ***env, int size)
 	*env = new_env;
 }
 
-void	export_arg_new(char *arg, char ***env, int i)
+void	export_arg_new(char *arg, char ***env, int i)//ok
 {
 	if (!((*env)[i]))
 		export_add(arg, env, i);

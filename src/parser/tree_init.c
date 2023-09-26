@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tree_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:55:14 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/12 12:47:46 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 09:11:49 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool left)
+static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool left) // uma breve explicacao sera necessaria rs
 {
 	t_tree	*branch;
 
@@ -33,7 +33,7 @@ static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool left)
 		(*node)->right = branch;
 }
 
-void	tree_add_n_parse(t_tree **node, char *arg, t_ndtype type)
+void	tree_add_n_parse(t_tree **node, char *arg, t_ndtype type) // uma breve explicacao
 {
 	t_tree	*tmp;
 
@@ -48,7 +48,7 @@ void	tree_add_n_parse(t_tree **node, char *arg, t_ndtype type)
 	}
 }
 
-void	tree_add_node(char *arg, t_ndtype type, t_parse parse)
+void	tree_add_node(char *arg, t_ndtype type, t_parse parse) // breve explicacao
 {
 	t_tree	*node;
 

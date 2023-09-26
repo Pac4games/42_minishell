@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sig_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:44:55 by paugonca          #+#    #+#             */
-/*   Updated: 2023/08/23 16:54:31 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/25 20:00:20 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	sig_rl(int sig, siginfo_t *info, void *ucontext)
+static void	sig_rl(int sig, siginfo_t *info, void *ucontext) // ?
 {
 	(void)info;
 	(void)ucontext;
@@ -28,7 +28,7 @@ static void	sig_rl(int sig, siginfo_t *info, void *ucontext)
 	}
 }
 
-static void	sig_hdoc(int sig, siginfo_t *info, void *ucontext)
+static void	sig_hdoc(int sig, siginfo_t *info, void *ucontext) //pipe?
 {
 	(void)info;
 	(void)ucontext;
@@ -43,7 +43,7 @@ static void	sig_hdoc(int sig, siginfo_t *info, void *ucontext)
 	}
 }
 
-static void	sig_check(struct sigaction *sa, t_sigtype type)
+static void	sig_check(struct sigaction *sa, t_sigtype type) //?
 {
 	ft_memset(sa, 0, sizeof(*sa));
 	sa->sa_flags = SA_SIGINFO;
@@ -60,7 +60,7 @@ static void	sig_check(struct sigaction *sa, t_sigtype type)
 		return ;
 }
 
-void	sig_handle(t_sigtype type)
+void	sig_handle(t_sigtype type) //ok
 {
 	struct sigaction	sa;
 
