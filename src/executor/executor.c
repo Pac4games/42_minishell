@@ -6,15 +6,16 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/12 12:45:42 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:45:45 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	proc_child(t_tree *node, t_cmd *cmd)
+static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 {
 	close((cmd->pipes)[0]);
+	redir(node, cmd, fd);
 	sig_handle(E_SIG_DFL);
 	rl_clear_history();
 	if (builtin_ret(node, cmd->env, get_cmd(node, cmd->pos), cmd->pos))
@@ -35,7 +36,7 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd)
 	if (cmd->pid < 0)
 		print_err("failed to fork process", EXIT_FAILURE);
 	else if (cmd->pid == 0)
-		proc_child(node, cmd);
+		proc_child(node, cmd, fd);
 	if (cmd->num != 1)
 	{
 		if ((*fd) < 0)
@@ -79,8 +80,6 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	if (pet_utils(root, &cmd, &p, &cmd_num) && cmd_num == 1 && \
 	is_builtin(*root, env, get_cmd(*root, 0)))
 		return ;
-	p = 0;
-	cmd_num = get_cmd_num(*root);
 	tmp = *root;
 	while (tmp)
 	{
