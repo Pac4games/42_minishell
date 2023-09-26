@@ -6,15 +6,16 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 11:37:21 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/26 15:27:11 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	proc_child(t_tree *node, t_cmd *cmd) //ok
+static void	proc_child(t_tree *node, t_cmd *cmd, int *fd) //ok
 {
 	close((cmd->pipes)[0]);
+	redir(node, cmd, fd);
 	sig_handle(E_SIG_DFL);
 	rl_clear_history();
 	if (builtin_ret(node, cmd->env, get_cmd(node, cmd->pos), cmd->pos))
@@ -35,7 +36,7 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd)// breve explicacao
 	if (cmd->pid < 0)
 		print_err("failed to fork process", EXIT_FAILURE);
 	else if (cmd->pid == 0)
-		proc_child(node, cmd);
+		proc_child(node, cmd, fd);
 	if (cmd->num != 1)
 	{
 		if ((*fd) < 0)
