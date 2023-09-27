@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:42:13 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/26 11:43:06 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:31:30 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	unset_arg(char *arg, char ***env)//ok
 	}
 }
 
-int	ft_unset(char **args, char ***env)//ok
+int	ft_unset(char **args, char ***env)//ok unset
 {
 	int	i;
 

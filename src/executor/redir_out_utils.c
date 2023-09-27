@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:21:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 11:38:42 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:24:37 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	redir_hdoc(t_tree **root, t_cmd *cmd) //breve explicacao
 	return (false);
 }
 
-static int	redir_write_out(t_tree *node, int fd)
+static int	redir_write_out(t_tree *node, int fd) //ok
 {
 	if (node->type == E_STDOUT)
 		fd = open(node->content, O_CREAT | O_RDONLY | O_TRUNC, S_STDPERMS);
@@ -44,7 +44,7 @@ static int	redir_write_out(t_tree *node, int fd)
 	return (fd);
 }
 
-void	redir_out(t_tree *node, t_cmd *cmd, int out_num)
+void	redir_out(t_tree *node, t_cmd *cmd, int out_num) //ok
 {
 	int	p;
 	int	fd;

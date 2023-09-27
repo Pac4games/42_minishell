@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/26 11:42:09 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:25:44 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	quit(char **args, bool isnum) //ok
 	return (-42);
 }
 
-int	ft_exit(char **args) //ok
+int	ft_exit(char **args) //ok para exit
 {
 	bool	isnum;
 

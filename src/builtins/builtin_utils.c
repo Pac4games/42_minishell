@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:19:06 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/25 22:13:47 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:25:00 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ bool	is_builtin(t_tree *node, char ***env, char *cmd) //ok
 	return (false);
 }
 
-int	builtin_ret(t_tree *node, char ***env, char *cmd, int pos) //-
+int	builtin_ret(t_tree *node, char ***env, char *cmd, int pos) //ok
 {
 	int	fd;
 

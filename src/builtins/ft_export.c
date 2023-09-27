@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:41:20 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/26 11:42:59 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:31:36 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	export_arg(char *arg, char ***env)// breve explicacao
 	export_arg_new(arg, env, i);
 }
 
-int	ft_export(char **args, char ***env, int fd)//ok
+int	ft_export(char **args, char ***env, int fd)//ok export
 {
 	int	i;
 

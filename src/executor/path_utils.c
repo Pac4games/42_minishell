@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:24:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 11:36:25 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:33:19 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*get_abs_path(char *cmd)//ok
 	return (cmd);
 }
 
-static char	*join_rel_path(char *cmd, char **path, char *tmp)//-
+static char	*join_rel_path(char *cmd, char **path, char *tmp)// breve explicacao
 {
 	int	p;
 

@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:51:58 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/26 09:06:52 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:12:38 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	get_quote_num(char *str)//-
 	return (num);
 }
 
-static char	*quotes_rm_fr(char *str, int i, int j, char tmp)//?
+static char	*quotes_rm_fr(char *str, int i, int j, char tmp)// poucas duvidas, mais relacionada a repeticao "'
 {
 	char	*res;
 
@@ -69,7 +69,7 @@ static char	*quotes_rm_fr(char *str, int i, int j, char tmp)//?
 	return (res);
 }
 
-char	*quotes_rm(char *str)//?
+char	*quotes_rm(char *str)// ainda sobre "'
 {
 	char	*res;
 

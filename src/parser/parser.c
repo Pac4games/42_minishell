@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 09:35:16 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:19:13 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	parse_str_redir(char *str, t_parse parse, int *i) //?
+static bool	parse_str_redir(char *str, t_parse parse, int *i) // ok
 {
 	int	j;
 
@@ -33,7 +33,7 @@ static bool	parse_str_redir(char *str, t_parse parse, int *i) //?
 	return (true);
 }
 
-static void	parse_str(char *str, t_parse parse, bool exp) //ok com comentarios
+static void	parse_str(char *str, t_parse parse, bool exp) //ok com comentarios e duvidas
 {
 	int	i;
 	int	cmd;
@@ -46,11 +46,11 @@ static void	parse_str(char *str, t_parse parse, bool exp) //ok com comentarios
 		if (*syntax())
 			return ;
 		while (str[i] && (str[i] == ' ' || str[i] == '\t'))
-			i++;
+			i++; // se nao incrementar i aqui supondo nao ter " " ou /t, onde incrementa?
 		if (parse_str_redir(str, parse, &i))
-			; // eh isso mesmo?
+			; // eh isso mesmo? parece faltar algo aqui..
 		else if (str[i] && str[i] == '-' && str[i + 1] && str[i + 1]
-			&& is_diff_sign("<>|&", str[i + 1]) && cmd)
+			&& is_diff_sign("<>|&", str[i + 1]) && cmd) // repete str[i + 1] nessa chamada
 			i = tree_add_case(str, i - 1, E_FLAG, parse);
 		else if (str[i] && cmd != 0)
 			i = tree_add_case(str, i - 1, E_ARG, parse);
@@ -62,7 +62,7 @@ static void	parse_str(char *str, t_parse parse, bool exp) //ok com comentarios
 	}
 }
 
-static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env) //ok
+static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env) //ok, mas seria bom uma explicacao rs
 {
 	t_parse	parse;
 
@@ -91,7 +91,7 @@ void	parsa(char *in, char ***env, t_tree **root, int num)
 	parse_all(root, in, &pipes, num);
 	if (*syntax())
 		return ;
-	mtx = pipe_split(pipes, in);
+	mtx = pipe_split(pipes, in); // ate aqui, pipes ainda eh NULL ou quando assume a struct muda?
 	parse_pipes(in, mtx, root, *env);
 	free_pipes(&pipes);
 	free(in);

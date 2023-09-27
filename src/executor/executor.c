@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 15:47:29 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:21:28 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd) //ok
 }
 
 //The actual executor function. Cool name, right?
-void	xqt(t_tree *node, t_cmd *cmd, int *fd)// breve explicacao
+void	xqt(t_tree *node, t_cmd *cmd, int *fd) //ok
 {
 	if (pipe(cmd->pipes) == -1)
 		print_err("failed to open pipe", EXIT_FAILURE);
@@ -71,8 +71,8 @@ static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num) //ok
 
 void	proc_exec_tree(t_tree **root, char ***env) //ok
 {
-	int		p; // nao eh necessario inicializar antes da linha 79?
-	int		cmd_num; // idem
+	int		p; // nao eh necessario inicializar antes da linha 79? pela Norm?
+	int		cmd_num; // idem, inicializar?
 	int		proc_stts;
 	t_cmd	cmd;
 	t_tree	*tmp;

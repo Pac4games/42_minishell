@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/26 11:43:21 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:31:12 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	print_cd_error(char **args) //ok
 	return (1);
 }
 
-static bool	set_oldpwd(char ***env, char *path)//ok
+static bool	set_oldpwd(char ***env, char *path)//ok owlpwd
 {
 	int	i;
 
@@ -61,12 +61,12 @@ static bool	set_oldpwd(char ***env, char *path)//ok
 	return (false);
 }
 
-int	ft_cd(char **args, char ***env)//ok
+int	ft_cd(char **args, char ***env)//ok para cd
 {
 	char	path[1025];
 	char	*tmp;
 
-	if (!(is_valid_input(&args[1], *env) || getcwd(path, 1025)))
+	if (!(is_valid_input(&args[1], *env) || getcwd(path, 1025))) // pq 1025?
 	{
 		free_mtx(args);
 		return (1);

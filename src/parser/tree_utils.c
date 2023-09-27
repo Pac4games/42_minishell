@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 09:05:08 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:10:28 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,17 @@ static void	check_export(char *arg, t_ndtype type, t_parse parse) //?
 
 int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse) //?
 {
-	int	j; // quanto vale j? Onde esta inicializado?
+	int	j; // Onde esta inicializado? Podemos usar sem inicializar pela norminette?
 
 	if (type == E_HDOC || type == E_APPEND)
 		i++;
 	i++;
 	tar_util(arg, &i, &j);
-	if (!(arg[j] || is_diff_sign("<>|&", arg[j])))
+	if (!(arg[j] || is_diff_sign("<>|&", arg[j]))) // aqui nao entra /t mesmo?
 		print_syntax_error();
-	while (arg[j] && is_diff_sign("<>|& \t", arg[j]))
+	while (arg[j] && is_diff_sign("<>|& \t", arg[j])) // aqui temos um " " antes de /t. Intencional?
 	{
-		if (!is_diff_sign("\"'", arg[j])) // nivamente "'
+		if (!is_diff_sign("\"'", arg[j])) // novamente "'
 			j = quotes_skip(arg, j);
 		j++;
 	}
