@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:04:48 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 11:10:49 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	parse_pipes_utils(char *arg, int *i) //ok
+static void	parse_pipes_utils(char *arg, int *i) // 2ok
 {
 	while (arg[*i])
 	{
@@ -33,7 +33,7 @@ static void	parse_pipes_utils(char *arg, int *i) //ok
 	}
 }
 
-void	check_pipes(char *arg) // com comentarios
+void	check_pipes(char *arg) // 2 com comentarios
 {
 	int	i;
 
@@ -49,7 +49,7 @@ void	check_pipes(char *arg) // com comentarios
 		return ;
 }
 
-void	pipe_add2pos(t_pipe **pipes, int pos, int num) //ok
+void	pipe_add2pos(t_pipe **pipes, int pos, int num) //2 ok
 {
 	t_pipe	*res;
 	t_pipe	*tmp;
@@ -69,7 +69,7 @@ void	pipe_add2pos(t_pipe **pipes, int pos, int num) //ok
 	tmp->next = res;
 }
 
-char	**pipe_split(t_pipe *pipes, char *arg) // com comentarios
+char	**pipe_split(t_pipe *pipes, char *arg) //2 com comentarios
 {
 	int		i;
 	char	**res;
@@ -96,7 +96,7 @@ char	**pipe_split(t_pipe *pipes, char *arg) // com comentarios
 	return (res);
 }
 
-void	free_pipes(t_pipe **pipes) //ok
+void	free_pipes(t_pipe **pipes) // 2ok
 {
 	if (!pipes || !(*pipes))
 		return ;

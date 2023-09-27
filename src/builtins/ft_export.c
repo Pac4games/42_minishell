@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:41:20 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/27 10:31:36 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:59:23 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	no_args(char **env, int fd)//ok
+static int	no_args(char **env, int fd)//2 ok
 {
 	int	i;
 
@@ -25,7 +25,7 @@ static int	no_args(char **env, int fd)//ok
 	return (1);
 }
 
-static void	export_arg(char *arg, char ***env)// breve explicacao
+static void	export_arg(char *arg, char ***env)//2 breve explicacao
 {
 	int	i;
 
@@ -49,7 +49,7 @@ static void	export_arg(char *arg, char ***env)// breve explicacao
 	export_arg_new(arg, env, i);
 }
 
-int	ft_export(char **args, char ***env, int fd)//ok export
+int	ft_export(char **args, char ***env, int fd)//2 ok export
 {
 	int	i;
 

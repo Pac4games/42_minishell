@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:06:42 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 09:41:16 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:39:50 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	parse_tilde_utils(char *arg, int *i)// duvida na escrita do sinal, 'e mesmo "' ou seria " ?
+static bool	parse_tilde_utils(char *arg, int *i)// 2duvida na escrita do sinal, 'e mesmo "' ou seria " ?
 {
 	if (arg[*i] && !is_diff_sign("\"'", arg[*i]))
 		*i = quotes_skip(arg, *i);
@@ -24,7 +24,7 @@ static bool	parse_tilde_utils(char *arg, int *i)// duvida na escrita do sinal, '
 	return (false);
 }
 
-static void	gvt_utils(char *arg, int i, char *home, char **res) // ok
+static void	gvt_utils(char *arg, int i, char *home, char **res) // 2ok
 {
 	int	j;
 	int	k;
@@ -53,7 +53,7 @@ static void	gvt_utils(char *arg, int i, char *home, char **res) // ok
 	(*res)[j + k] = 0;
 }
 
-static char	*get_var_tilde(char *arg, int i, char *home) // duvidas
+static char	*get_var_tilde(char *arg, int i, char *home) // 2 duvidas
 {
 	char	*res;
 
@@ -63,7 +63,7 @@ static char	*get_var_tilde(char *arg, int i, char *home) // duvidas
 	return (res);
 }
 
-char	*parse_tilde(char *arg, char **env) // ?
+char	*parse_tilde(char *arg, char **env) // 2?
 {
 	int		i;
 	char	*tmp;

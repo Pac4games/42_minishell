@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:30:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 07:54:15 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:37:10 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 //ok
-char	**get_cur_env(char **env)//ok
+char	**get_cur_env(char **env)//ok2
 {
 	int		p;
 	char	**res;

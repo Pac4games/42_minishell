@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:55:14 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 09:11:49 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:50:51 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool left) // uma breve explicacao sera necessaria rs
+static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool left) // 2 uma breve explicacao sera necessaria rs
 {
 	t_tree	*branch;
 
@@ -33,7 +33,7 @@ static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool left) 
 		(*node)->right = branch;
 }
 
-void	tree_add_n_parse(t_tree **node, char *arg, t_ndtype type) // uma breve explicacao
+void	tree_add_n_parse(t_tree **node, char *arg, t_ndtype type) // 2uma breve explicacao
 {
 	t_tree	*tmp;
 
@@ -48,7 +48,7 @@ void	tree_add_n_parse(t_tree **node, char *arg, t_ndtype type) // uma breve expl
 	}
 }
 
-void	tree_add_node(char *arg, t_ndtype type, t_parse parse) // breve explicacao
+void	tree_add_node(char *arg, t_ndtype type, t_parse parse) // 2 breve explicacao
 {
 	t_tree	*node;
 

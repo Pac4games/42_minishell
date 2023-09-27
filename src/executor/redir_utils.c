@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:02:27 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:24:47 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 11:23:07 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	get_redir_num(t_tree *node, int pos, t_io io) // breve explicacao
+int	get_redir_num(t_tree *node, int pos, t_io io) // 2 breve explicacao
 {
 	int	res;
 
@@ -30,7 +30,7 @@ int	get_redir_num(t_tree *node, int pos, t_io io) // breve explicacao
 	return (res);
 }
 
-void	redir(t_tree *node, t_cmd *cmd, int *fd) //ok
+void	redir(t_tree *node, t_cmd *cmd, int *fd) // 2 ok
 {
 	int	in_num;
 	int	out_num;

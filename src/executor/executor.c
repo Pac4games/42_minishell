@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:21:28 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 11:23:03 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	proc_child(t_tree *node, t_cmd *cmd, int *fd) //ok
+static void	proc_child(t_tree *node, t_cmd *cmd, int *fd) //2 ok
 {
 	close((cmd->pipes)[0]);
 	redir(node, cmd, fd);
@@ -28,7 +28,7 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd) //ok
 }
 
 //The actual executor function. Cool name, right?
-void	xqt(t_tree *node, t_cmd *cmd, int *fd) //ok
+void	xqt(t_tree *node, t_cmd *cmd, int *fd) //2 ok
 {
 	if (pipe(cmd->pipes) == -1)
 		print_err("failed to open pipe", EXIT_FAILURE);
@@ -46,7 +46,7 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd) //ok
 	}
 }
 
-static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)//ok
+static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)// 2 ok
 {
 	t_cmd		cmd;
 	static int	fd;
@@ -60,7 +60,7 @@ static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)//ok
 	return (cmd);
 }
 
-static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num) //ok
+static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num) // 2ok
 {
 	*i = 0;
 	if (redir_hdoc(root, cmd))
@@ -69,7 +69,7 @@ static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num) //ok
 	return (false);
 }
 
-void	proc_exec_tree(t_tree **root, char ***env) //ok
+void	proc_exec_tree(t_tree **root, char ***env) // 2ok
 {
 	int		p; // nao eh necessario inicializar antes da linha 79? pela Norm?
 	int		cmd_num; // idem, inicializar?

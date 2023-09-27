@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:48:21 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 09:38:33 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:41:03 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	find_eq_sign(char *str) //ok
+int	find_eq_sign(char *str) // 2ok
 {
 	int	i;
 
@@ -24,7 +24,7 @@ int	find_eq_sign(char *str) //ok
 	return (i);
 }
 
-static void	dol_sign_util(int *tmp) //ok
+static void	dol_sign_util(int *tmp) //2ok
 {
 	if (!(*tmp))
 		*tmp = 1;
@@ -32,13 +32,13 @@ static void	dol_sign_util(int *tmp) //ok
 		*tmp = 0;
 }
 
-static char	*free_str_ret_null(char *str) //ok
+static char	*free_str_ret_null(char *str) // 2ok
 {
 	free(str);
 	return (NULL);
 }
 
-char	*parse_signs(char *str, char **env) // ok, porem o syntax ainda nao entendi..
+char	*parse_signs(char *str, char **env) // 2ok, porem o syntax ainda nao entendi..
 {
 	int	i;
 	int	tmp;
@@ -63,7 +63,7 @@ char	*parse_signs(char *str, char **env) // ok, porem o syntax ainda nao entendi
 	return (str);
 }
 
-bool	is_diff_sign(char *sign, char c) //ok
+bool	is_diff_sign(char *sign, char c) //2ok
 {
 	int	j;
 

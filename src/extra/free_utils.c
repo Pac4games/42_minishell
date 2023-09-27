@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:35:46 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 11:36:57 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 11:04:12 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	free_mtx(char **mtx) //ok
+void	free_mtx(char **mtx) // 2ok
 {
 	int	p;
 
@@ -22,7 +22,7 @@ void	free_mtx(char **mtx) //ok
 	free(mtx);
 }
 
-void	free_tree(t_tree **node)// ok
+void	free_tree(t_tree **node)// 2 ok
 {
 	if (!node || !(*node))
 		return ;
@@ -34,7 +34,7 @@ void	free_tree(t_tree **node)// ok
 	*node = NULL;
 }
 
-t_tree	**get_tree_root(t_tree **node) //ok
+t_tree	**get_tree_root(t_tree **node) //2 ok
 {
 	t_tree	*root;
 
@@ -47,7 +47,7 @@ t_tree	**get_tree_root(t_tree **node) //ok
 	return (node);
 }
 
-int	mtx_len(char **mtx) //ok
+int	mtx_len(char **mtx) // 2ok
 {
 	int	res;
 

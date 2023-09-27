@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:32:50 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/25 20:03:10 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:40:38 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	get_stts_utils(char *str, int i, char *val, char **res) //ok
+static void	get_stts_utils(char *str, int i, char *val, char **res) // 2ok
 {
 	int	j;
 	int	k;
@@ -41,7 +41,7 @@ static void	get_stts_utils(char *str, int i, char *val, char **res) //ok
 	(*res)[j + k] = 0;
 }
 
-char	*get_stts(char *str, int i, char *val) //ok
+char	*get_stts(char *str, int i, char *val) // 2ok
 {
 	char	*res;
 

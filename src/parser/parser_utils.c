@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:35:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 08:54:20 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:44:18 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	parse_part1(char *arg, int *i) // novamente "'
+static void	parse_part1(char *arg, int *i) // 2 novamente "'
 {
 	if (*syntax())
 		return ;
@@ -20,7 +20,7 @@ static void	parse_part1(char *arg, int *i) // novamente "'
 		*i = quotes_skip(arg, *i);
 }
 
-void	parse_all(t_tree **root, char *arg, t_pipe **pipes, int num) //ok
+void	parse_all(t_tree **root, char *arg, t_pipe **pipes, int num) //2 ok
 {
 	int	i;
 

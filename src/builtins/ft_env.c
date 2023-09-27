@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:08 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/27 10:31:42 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:58:48 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_env(char **env, int fd)//ok env
+int	ft_env(char **env, int fd)// 2 ok env
 {
 	int	i;
 

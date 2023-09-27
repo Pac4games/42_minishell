@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 08:28:39 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:54:43 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	g_stts = EXIT_SUCCESS;
 
-void	set_exit_stts(int stts)// ok
+void	set_exit_stts(int stts)// 2 ok
 {
 	if (WIFSIGNALED(stts))
 	{
@@ -26,7 +26,7 @@ void	set_exit_stts(int stts)// ok
 		g_stts = WEXITSTATUS(stts);
 }
 
-char	*shlvl_up(char *shlvl) // ok
+char	*shlvl_up(char *shlvl) // ok2
 {
 	char	*tmp;
 	char	*res;
@@ -37,7 +37,7 @@ char	*shlvl_up(char *shlvl) // ok
 	return (res);
 }
 
-static void	le_loop(char *in, char *prompt, char **env, t_tree *tree) // duvidas
+static void	le_loop(char *in, char *prompt, char **env, t_tree *tree) // duvidas2
 {
 	while (true)
 	{
@@ -66,7 +66,7 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree) // duvidas
 	}
 }
 
-int	main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **envp) //ok
 {
 	char	*in;
 	char	*prompt;

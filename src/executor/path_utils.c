@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:24:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:33:19 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 11:25:32 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	is_valid_path(char *cmd, char *path)//ok
+static int	is_valid_path(char *cmd, char *path)//2 ok
 {
 	struct stat	buf;
 
@@ -25,7 +25,7 @@ static int	is_valid_path(char *cmd, char *path)//ok
 	return (false);
 }
 
-static char	*get_abs_path(char *cmd)//ok
+static char	*get_abs_path(char *cmd)//2 ok
 {
 	DIR	*dir;
 
@@ -40,7 +40,7 @@ static char	*get_abs_path(char *cmd)//ok
 	return (cmd);
 }
 
-static char	*join_rel_path(char *cmd, char **path, char *tmp)// breve explicacao
+static char	*join_rel_path(char *cmd, char **path, char *tmp)//2  breve explicacao
 {
 	int	p;
 
@@ -63,7 +63,7 @@ static char	*join_rel_path(char *cmd, char **path, char *tmp)// breve explicacao
 	return (NULL);
 }
 
-static char	*get_rel_path(char *cmd, char **env)//ok
+static char	*get_rel_path(char *cmd, char **env)//2 ok
 {
 	char	*tmp;
 	char	*pwd;
@@ -87,7 +87,7 @@ static char	*get_rel_path(char *cmd, char **env)//ok
 	return (join_rel_path(cmd, env, tmp));
 }
 
-char	*get_cmd_path(char *cmd, char **env)//ok
+char	*get_cmd_path(char *cmd, char **env)//2 ok
 {
 	if (!cmd)
 		return (NULL);

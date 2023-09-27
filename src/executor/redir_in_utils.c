@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:10:56 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:23:02 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 11:23:23 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	redir_stdin(t_tree *node, int p, int in_num) // ok
+static void	redir_stdin(t_tree *node, int p, int in_num) // 2 ok
 {
 	int	fd;
 
@@ -27,7 +27,7 @@ static void	redir_stdin(t_tree *node, int p, int in_num) // ok
 				EXIT_FAILURE);
 }
 
-void	redir_in(t_tree *node, t_cmd *cmd, int in_num) //ok
+void	redir_in(t_tree *node, t_cmd *cmd, int in_num) //2 ok
 {
 	int	p;
 

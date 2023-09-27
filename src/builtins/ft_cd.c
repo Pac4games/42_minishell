@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/27 10:31:12 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 11:02:58 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	is_valid_input(char **args, char **env)//ok
+static bool	is_valid_input(char **args, char **env)// 2 ok
 {
 	int	i;
 
@@ -29,7 +29,7 @@ static bool	is_valid_input(char **args, char **env)//ok
 	return (false);
 }
 
-static int	print_cd_error(char **args) //ok
+static int	print_cd_error(char **args) //2 ok
 {
 	char	*tmp;
 
@@ -44,7 +44,7 @@ static int	print_cd_error(char **args) //ok
 	return (1);
 }
 
-static bool	set_oldpwd(char ***env, char *path)//ok owlpwd
+static bool	set_oldpwd(char ***env, char *path)//2 ok owlpwd
 {
 	int	i;
 
@@ -61,7 +61,7 @@ static bool	set_oldpwd(char ***env, char *path)//ok owlpwd
 	return (false);
 }
 
-int	ft_cd(char **args, char ***env)//ok para cd
+int	ft_cd(char **args, char ***env)//2 ok para cd
 {
 	char	path[1025];
 	char	*tmp;

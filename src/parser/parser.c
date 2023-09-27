@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:19:13 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 11:11:36 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	parse_str_redir(char *str, t_parse parse, int *i) // ok
+static bool	parse_str_redir(char *str, t_parse parse, int *i) // 2ok
 {
 	int	j;
 
@@ -33,7 +33,7 @@ static bool	parse_str_redir(char *str, t_parse parse, int *i) // ok
 	return (true);
 }
 
-static void	parse_str(char *str, t_parse parse, bool exp) //ok com comentarios e duvidas
+static void	parse_str(char *str, t_parse parse, bool exp) // 2 ok com comentarios e duvidas
 {
 	int	i;
 	int	cmd;
@@ -62,7 +62,7 @@ static void	parse_str(char *str, t_parse parse, bool exp) //ok com comentarios e
 	}
 }
 
-static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env) //ok, mas seria bom uma explicacao rs
+static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env) //2 ok, mas seria bom uma explicacao rs
 {
 	t_parse	parse;
 
@@ -78,7 +78,7 @@ static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env) //ok, 
 }
 
 //Our partner in crime and best-friend: the parser
-void	parsa(char *in, char ***env, t_tree **root, int num)
+void	parsa(char *in, char ***env, t_tree **root, int num) //2
 {
 	char	**mtx; // qual a definicao dessa sigla?
 	t_pipe	*pipes;

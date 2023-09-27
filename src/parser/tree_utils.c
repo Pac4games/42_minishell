@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:10:28 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 11:10:38 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	tree_add_pipe(t_tree **root) //ok
+void	tree_add_pipe(t_tree **root) //2 ok
 {
 	t_tree	*tmp;
 	t_tree	*pipe;
@@ -35,7 +35,7 @@ void	tree_add_pipe(t_tree **root) //ok
 	pipe->left = tmp;
 }
 
-static void	tar_util(char *arg, int *i, int *j) //?
+static void	tar_util(char *arg, int *i, int *j) // 2?
 {
 	while (arg[*i] && (arg[*i] == ' ' || arg[*i] == '\t'))
 		(*i)++;
@@ -46,7 +46,7 @@ static void	tar_util(char *arg, int *i, int *j) //?
 		(*j)++;
 }
 
-static void	tar_util2(char *arg, t_ndtype type, t_parse parse) //ok
+static void	tar_util2(char *arg, t_ndtype type, t_parse parse) // 2ok
 {
 	if (type == E_HDOC)
 	{
@@ -65,7 +65,7 @@ static void	tar_util2(char *arg, t_ndtype type, t_parse parse) //ok
 	}
 }
 
-static void	check_export(char *arg, t_ndtype type, t_parse parse) //?
+static void	check_export(char *arg, t_ndtype type, t_parse parse) // 2?
 {
 	char	*tmp;
 
@@ -76,7 +76,7 @@ static void	check_export(char *arg, t_ndtype type, t_parse parse) //?
 	free(tmp);
 }
 
-int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse) //?
+int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse) // 2?
 {
 	int	j; // Onde esta inicializado? Podemos usar sem inicializar pela norminette?
 

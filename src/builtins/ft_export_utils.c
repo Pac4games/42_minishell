@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 20:29:48 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 11:09:39 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:59:47 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	export_fail(char *arg)//ok
+static bool	export_fail(char *arg)//2 ok
 {
 	char	*msg;
 
@@ -22,7 +22,7 @@ static bool	export_fail(char *arg)//ok
 	return (false);
 }
 
-static bool	is_exportable(char *arg)//ok
+static bool	is_exportable(char *arg)//2 ok
 {
 	int	i;
 
@@ -35,7 +35,7 @@ static bool	is_exportable(char *arg)//ok
 	return (true);
 }
 
-static void	export_add(char *arg, char ***env, int size)// breve explicacao
+static void	export_add(char *arg, char ***env, int size)// 2 breve explicacao
 {
 	int		i;
 	char	**new_env;
@@ -52,7 +52,7 @@ static void	export_add(char *arg, char ***env, int size)// breve explicacao
 	*env = new_env;
 }
 
-void	export_arg_new(char *arg, char ***env, int i)//ok
+void	export_arg_new(char *arg, char ***env, int i)//2 ok
 {
 	if (!((*env)[i]))
 		export_add(arg, env, i);

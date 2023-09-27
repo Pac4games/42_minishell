@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:44:55 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 09:33:01 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 10:54:00 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	sig_rl(int sig, siginfo_t *info, void *ucontext) // poderia me dar uma breve explicacao sobre essa funcao?
+static void	sig_rl(int sig, siginfo_t *info, void *ucontext) // 2 poderia me dar uma breve explicacao sobre essa funcao?
 {
 	(void)info;
 	(void)ucontext;
@@ -28,7 +28,7 @@ static void	sig_rl(int sig, siginfo_t *info, void *ucontext) // poderia me dar u
 	}
 }
 
-static void	sig_hdoc(int sig, siginfo_t *info, void *ucontext) // pipe?
+static void	sig_hdoc(int sig, siginfo_t *info, void *ucontext) //2 pipe?
 {
 	(void)info;
 	(void)ucontext;
@@ -43,7 +43,7 @@ static void	sig_hdoc(int sig, siginfo_t *info, void *ucontext) // pipe?
 	}
 }
 
-static void	sig_check(struct sigaction *sa, t_sigtype type) // ok, unica duvida esta para hdoc
+static void	sig_check(struct sigaction *sa, t_sigtype type) // ok2, unica duvida esta para hdoc
 {
 	ft_memset(sa, 0, sizeof(*sa));
 	sa->sa_flags = SA_SIGINFO;
@@ -60,7 +60,7 @@ static void	sig_check(struct sigaction *sa, t_sigtype type) // ok, unica duvida 
 		return ;
 }
 
-void	sig_handle(t_sigtype type) //ok
+void	sig_handle(t_sigtype type) // 2ok
 {
 	struct sigaction	sa;
 

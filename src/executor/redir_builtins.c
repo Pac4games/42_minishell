@@ -6,14 +6,14 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 21:53:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 11:41:12 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 11:13:54 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 #include <stdlib.h>
 
-static int	open_builtin_in(t_tree *node) //ok
+static int	open_builtin_in(t_tree *node) // 2 ok
 {
 	int	fd;
 
@@ -31,7 +31,7 @@ static int	open_builtin_in(t_tree *node) //ok
 	return (1);
 }
 
-int	redir_builtin_in(t_tree *node) //ok
+int	redir_builtin_in(t_tree *node) // 2ok
 {
 	pid_t	pid;
 	int		stts;
@@ -52,7 +52,7 @@ int	redir_builtin_in(t_tree *node) //ok
 	return (g_stts);
 }
 
-int	redir_builtin_out(t_tree *node) //ok
+int	redir_builtin_out(t_tree *node) // 2ok
 {
 	t_cmd	cmd;
 	int		i;
