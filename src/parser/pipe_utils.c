@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 08:58:48 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 09:50:34 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ static void	parse_pipes_utils(char *arg, int *i) //ok
 			(*i)++;
 			while ((arg[*i] == ' ' || arg[*i == '\t']))
 				(*i)++;
-			if (!is_diff_sign("|", arg[*i]))
+			if (!is_diff_sign("|", arg[*i])) // aqui seria um | seguido de outro |, certo?
 				print_syntax_error();
 		}
 		else
 			(*i)++;
-		if (*syntax())
+		if (*syntax()) // no caso de ter um |, syntax esta 1, logo retorna vazio?
 			return ;
 	}
 }
@@ -42,10 +42,10 @@ void	check_pipes(char *arg) // com comentarios
 		return ;
 	while (arg[i] && (arg[i] == ' ' || arg[i] == '\t'))
 		i++;
-	if (!arg[i] || !is_diff_sign("|", arg[i])) // se ele tiver | erro de syntax?
+	if (!arg[i] || !is_diff_sign("|", arg[i])) // se ele tiver | erro de syntax? Sybtax passa a ser 1
 		print_syntax_error();
 	parse_pipes_utils(arg, &i);
-	if (*syntax())
+	if (*syntax()) //se tiver | syntax vale 1, logo retorna vazio?
 		return ;
 }
 

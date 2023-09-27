@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:48:21 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 11:17:11 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 09:38:33 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	*free_str_ret_null(char *str) //ok
 	return (NULL);
 }
 
-char	*parse_signs(char *str, char **env) // ok
+char	*parse_signs(char *str, char **env) // ok, porem o syntax ainda nao entendi..
 {
 	int	i;
 	int	tmp;

@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/25 18:28:37 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 08:28:32 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ typedef enum e_io
 //Signal types
 typedef enum e_sigtype
 {
-	E_SIG_IGN, // definicoes
-	E_SIG_DFL,
-	E_SIG_RL,
-	E_SIG_HDOC
+	E_SIG_IGN, // definicoes: ignorar
+	E_SIG_DFL, // definicao:default signal handling
+	E_SIG_RL, // definicao: readline
+	E_SIG_HDOC // definicao: heredoc
 }			t_sigtype;
 
 //Binary Tree struct (also known as Command Table)

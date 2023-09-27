@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 10:32:45 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/27 08:28:39 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*shlvl_up(char *shlvl) // ok
 	return (res);
 }
 
-static void	le_loop(char *in, char *prompt, char **env, t_tree *tree) //ok
+static void	le_loop(char *in, char *prompt, char **env, t_tree *tree) // duvidas
 {
 	while (true)
 	{
