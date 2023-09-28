@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 10:45:14 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 11:58:37 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	parse_pipes_utils(char *arg, int *i) // 2ok
 	printf("entrou parse_util\n");
 	while (arg[*i])
 	{
-		printf("arg[i] vale %c e i vale %d\n", arg[*i], *i);
+		//printf("arg[i] vale %c e i vale %d\n", arg[*i], *i);
 		if (!is_diff_sign("\"'", arg[*i])) // novamente "'
 			*i = quotes_skip(arg, *i);
 		if (!is_diff_sign("|", arg[*i]))
@@ -26,7 +26,7 @@ static void	parse_pipes_utils(char *arg, int *i) // 2ok
 			(*i)++;
 			while ((arg[*i] == ' ' || arg[*i] == '\t')) // aqui tinha um seg fault!!
 			{
-				printf("depois do pipe arg[i] vale %c e i vale %d\n", arg[*i], *i);
+				//printf("depois do pipe arg[i] vale %c e i vale %d\n", arg[*i], *i);
 				(*i)++;
 			}
 			if (!is_diff_sign("|", arg[*i])) // aqui seria um | seguido de outro |, certo?
@@ -78,6 +78,7 @@ void	pipe_add2pos(t_pipe **pipes, int pos, int num) //2 ok
 
 char	**pipe_split(t_pipe *pipes, char *arg) //2 com comentarios
 {
+	printf("entrou em pipe_split\n");
 	int		i;
 	char	**res;
 	t_pipe	*tmp;
@@ -91,6 +92,7 @@ char	**pipe_split(t_pipe *pipes, char *arg) //2 com comentarios
 	i = 0;
 	while (pipes) // nao compreendi, poderia explicar?
 	{
+		printf("entrou nesse loop que nao entendi lol\n");
 		res[pipes->num] = ft_substr(arg, i, pipes->pos - 1);
 		i = pipes->pos + i;
 		if (!pipes->next)

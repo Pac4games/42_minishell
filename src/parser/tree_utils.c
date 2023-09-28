@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 11:10:38 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 12:05:46 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,40 @@ static void	tar_util(char *arg, int *i, int *j) // 2?
 
 static void	tar_util2(char *arg, t_ndtype type, t_parse parse) // 2ok
 {
+	printf("entrou tar_util2\n");
 	if (type == E_HDOC)
 	{
 		if (!(*(parse.tree)))
+		{
+			printf("opcao 1\n");
 			tree_add_n_parse(parse.tree, quotes_rm(arg), type);
+		}
 		else
+		{
+			printf("opcao 2\n");
 			tree_add_node(quotes_rm(arg), type, parse);
+		}
 	}
 	else
 	{
 		if (!(parse.tree))
+		{
+			printf("opcao 3\n");
 			tree_add_n_parse(parse.tree, \
 			quotes_rm(parse_signs(arg, parse.env)), type);
+		}
 		else
+		{
+			printf("opcao 4\n");
 			tree_add_node(quotes_rm(parse_signs(arg, parse.env)), type, parse);
+		}
 	}
+	printf("saiu de tar_util2\n\n");
 }
 
 static void	check_export(char *arg, t_ndtype type, t_parse parse) // 2?
 {
+	printf("entrou check_export com arg %s\n", arg);
 	char	*tmp;
 
 	printf("check_export() arg: %s\n", arg);
@@ -74,10 +89,12 @@ static void	check_export(char *arg, t_ndtype type, t_parse parse) // 2?
 	if (!ft_strncmp(tmp, "export", ft_strlen(tmp)) && type == E_CMD)
 		*(parse.exp) = true;
 	free(tmp);
+	printf("saiu de check_export\n\n");
 }
 
 int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse) // 2?
 {
+	printf("entrou em tree_add_case\n\n");
 	int	j; // Onde esta inicializado? Podemos usar sem inicializar pela norminette?
 
 	if (type == E_HDOC || type == E_APPEND)

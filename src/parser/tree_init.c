@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:55:14 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:50:51 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 12:43:52 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool left) // 2 uma breve explicacao sera necessaria rs
 {
+	printf("entrou tree_add_branch\n");
 	t_tree	*branch;
 
 	branch = malloc(sizeof(*branch));
@@ -50,17 +51,29 @@ void	tree_add_n_parse(t_tree **node, char *arg, t_ndtype type) // 2uma breve exp
 
 void	tree_add_node(char *arg, t_ndtype type, t_parse parse) // 2 breve explicacao
 {
+	printf("entrou em tree_add\n");
 	t_tree	*node;
 
 	node = *(parse.tree);
 	while (parse.pos - 1 > 0)
 	{
+		printf("primeiro loop\n");
 		node = node->parent;
 		parse.pos--;
 	}
+	printf("saiu do loop\n");
 	if (parse.pos == 0)
-		while (node->left)
+	{
+		printf("parse.pos == 0\n");
+		printf("node eh %p\n", node);
+		while (node->left) // se node eh nil, esse while nao execulta. aqui esta nosso seg fault!!
+		{
+			printf("ta no loop\n");
+			printf("%p\n", node->left);
 			node = node->left;
+		}
+		printf("tchau loop again\n");
+	}
 	else
 		while (node->right)
 			node = node->right;
@@ -68,4 +81,5 @@ void	tree_add_node(char *arg, t_ndtype type, t_parse parse) // 2 breve explicaca
 		tree_add_branch(&node, arg, type, true);
 	else
 		tree_add_branch(&node, arg, type, false);
+	printf("saiu de tree_add\n");
 }

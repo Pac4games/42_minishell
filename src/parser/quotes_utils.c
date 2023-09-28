@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:51:58 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/27 10:49:53 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 11:17:37 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static char	*quotes_rm_fr(char *str, int i, int j, char tmp)// 2 poucas duvidas,
 	res = malloc(ft_strlen(str) - get_quote_num(str) + 1 * sizeof(char));
 	while (str[++i])
 	{
+		printf("str[i] %c\n", str[i]);
 		if (!is_diff_sign("\"'", str[i])) // novamente "'
 		{
 			tmp = str[i++];
@@ -63,7 +64,10 @@ static char	*quotes_rm_fr(char *str, int i, int j, char tmp)// 2 poucas duvidas,
 				res[j++] = str[i++];
 		}
 		else
-			res[j++] = res[i];
+		{
+			printf("str[i] eh %c nao achou aspas\n", str[i]);
+			res[j++] = str[i]; // nao sei se eh isso que pretendia, faz mais sentido pra mim que igualar a null
+		}
 	}
 	res[j] = 0;
 	return (res);
@@ -71,11 +75,13 @@ static char	*quotes_rm_fr(char *str, int i, int j, char tmp)// 2 poucas duvidas,
 
 char	*quotes_rm(char *str)// 2 ainda sobre "'
 {
+	printf("entrou em quotes_rm\n");
 	char	*res;
 
 	res = quotes_rm_fr(str, -1, 0, ' ');
 	printf("quotes_rm() str: %s\n", str);
 	printf("quotes_rm() res: %s\n", res);
 	free(str);
+	printf("saiu de quotes_rm\n\n");
 	return (res);
 }

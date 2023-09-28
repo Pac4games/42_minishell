@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:06:42 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 10:33:39 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 11:57:55 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ static bool	parse_tilde_utils(char *arg, int *i)// 2duvida na escrita do sinal, 
 {
 	if (arg[*i] && !is_diff_sign("\"'", arg[*i]))
 	{
-		printf("eh aspas\n");
+		//printf("eh aspas\n");
 		*i = quotes_skip(arg, *i);
 	}
 	if (*syntax())
 	{
-		printf("syntax %d\n", *syntax());
+		//printf("syntax %d\n", *syntax());
 		free(arg);
 		return (true);
 	}
-	printf("vai retornar false 0\n");
+	//printf("vai retornar false 0\n");
 	return (false);
 }
 
@@ -78,7 +78,7 @@ char	*parse_tilde(char *arg, char **env) // 2?
 	{
 		if (parse_tilde_utils(arg, &i)) //ok, com comentarios
 		{
-			printf("retornou 1 true\n");
+			//printf("retornou 1 true\n");
 			return (NULL);
 		}
 		if (arg[i] == '~' \
@@ -92,7 +92,7 @@ char	*parse_tilde(char *arg, char **env) // 2?
 		}
 		else
 		{
-			printf("nao tem til i vale %d\n", i);
+			//printf("nao tem til i vale %d\n", i);
 			i++;
 		}
 	}

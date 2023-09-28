@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 10:04:33 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 12:04:10 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static bool	parse_str_redir(char *str, t_parse parse, int *i) // 2ok
 {
+	printf("entrou em parse_str_redir e str eh %s\n", str);
 	int	j;
 
 	j = *i;
@@ -35,6 +36,7 @@ static bool	parse_str_redir(char *str, t_parse parse, int *i) // 2ok
 
 static void	parse_str(char *str, t_parse parse, bool exp) // 2 ok com comentarios e duvidas
 {
+	printf("entrou em parse_str\n");
 	int	i;
 	int	cmd;
 
@@ -53,28 +55,41 @@ static void	parse_str(char *str, t_parse parse, bool exp) // 2 ok com comentario
 			&& is_diff_sign("<>|&", str[i + 1]) && cmd) // repete str[i + 1] nessa chamada
 			i = tree_add_case(str, i - 1, E_FLAG, parse);
 		else if (str[i] && cmd != 0)
+		{
+			printf("opcao str[i] && cmd != 0\n");
 			i = tree_add_case(str, i - 1, E_ARG, parse);
+		}
 		else if (str[i])
 		{
+			printf("opcao so str[i] sendo str[i] %c\n", str[i]);
 			i = tree_add_case(str, i - 1, E_CMD, parse);
 			cmd++;
 		}
 	}
+	printf("saiu da funcao parse_str\n");
 }
 
 static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env) //2 ok, mas seria bom uma explicacao rs
 {
+	printf("entrou em parse_pipe\n");
 	t_parse	parse;
 
 	parse.pos = 0;
 	parse.env = env;
 	parse.tree = root;
 	if (!mtx)
+	{
+		printf("1\n\n");
 		parse_str(arg, parse, false);
+	}
 	else
 		while (mtx[parse.pos])
+		{
+			printf("2\n\n");
 			parse_str(mtx[parse.pos++], parse, false);
+		}
 	free_mtx(mtx);
+	printf("saiu de parse_pipes\n");
 }
 
 //Our partner in crime and best-friend: the parser

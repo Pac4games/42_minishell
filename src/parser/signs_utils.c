@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:48:21 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:41:03 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 12:09:44 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static char	*free_str_ret_null(char *str) // 2ok
 
 char	*parse_signs(char *str, char **env) // 2ok, porem o syntax ainda nao entendi..
 {
+	printf("entrou parse_sig\n");
 	int	i;
 	int	tmp;
 
@@ -60,6 +61,7 @@ char	*parse_signs(char *str, char **env) // 2ok, porem o syntax ainda nao entend
 		else
 			i++;
 	}
+	printf("saiu de parse_sig\n");
 	return (str);
 }
 
