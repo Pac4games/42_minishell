@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 12:05:46 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 15:09:49 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse) // 2?
 	}
 	if (*syntax())
 		return (0);
-	check_export(ft_substr(arg, i, j), type, parse);
-	tar_util2(ft_substr(arg, i, j), type, parse);
+	check_export(ft_substr(arg, i, j - 1), type, parse);
+	tar_util2(ft_substr(arg, i, j - 1), type, parse);
 	return (j);
 }
