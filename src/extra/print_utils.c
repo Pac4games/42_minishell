@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:50:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:56:23 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 10:37:24 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void	print_syntax_error(void) //2ok mudou syntax
 		ft_putendl_fd("Syntax Error", STDOUT_FILENO);
 	g_stts = EXIT_FAILURE;
 	(*syntax())++;
+	printf("syntax vale %ls\n", syntax());
 }

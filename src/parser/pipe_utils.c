@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 11:10:49 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 10:45:14 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,21 @@
 
 static void	parse_pipes_utils(char *arg, int *i) // 2ok
 {
+	printf("entrou parse_util\n");
 	while (arg[*i])
 	{
+		printf("arg[i] vale %c e i vale %d\n", arg[*i], *i);
 		if (!is_diff_sign("\"'", arg[*i])) // novamente "'
 			*i = quotes_skip(arg, *i);
 		if (!is_diff_sign("|", arg[*i]))
 		{
+			printf("achou pipe\n");
 			(*i)++;
-			while ((arg[*i] == ' ' || arg[*i == '\t']))
+			while ((arg[*i] == ' ' || arg[*i] == '\t')) // aqui tinha um seg fault!!
+			{
+				printf("depois do pipe arg[i] vale %c e i vale %d\n", arg[*i], *i);
 				(*i)++;
+			}
 			if (!is_diff_sign("|", arg[*i])) // aqui seria um | seguido de outro |, certo?
 				print_syntax_error();
 		}
@@ -35,6 +41,7 @@ static void	parse_pipes_utils(char *arg, int *i) // 2ok
 
 void	check_pipes(char *arg) // 2 com comentarios
 {
+	printf("vai checar pipes\n");
 	int	i;
 
 	i = 0;

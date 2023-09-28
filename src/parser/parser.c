@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 11:11:36 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 10:04:33 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env) //2 ok
 //Our partner in crime and best-friend: the parser
 void	parsa(char *in, char ***env, t_tree **root, int num) //2
 {
+	printf("entrou em parsa\n");
 	char	**mtx; // qual a definicao dessa sigla?
 	t_pipe	*pipes;
 
