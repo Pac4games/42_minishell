@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:55:14 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 12:43:52 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/28 12:49:25 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ void	tree_add_node(char *arg, t_ndtype type, t_parse parse) // 2 breve explicaca
 	while (parse.pos - 1 > 0)
 	{
 		printf("primeiro loop\n");
+		printf("node era %p\n", node);
 		node = node->parent;
+		printf("node assume %p\n", node);
 		parse.pos--;
 	}
 	printf("saiu do loop\n");
@@ -75,8 +77,11 @@ void	tree_add_node(char *arg, t_ndtype type, t_parse parse) // 2 breve explicaca
 		printf("tchau loop again\n");
 	}
 	else
+	{
+		printf("para else node eh %p\n", node);
 		while (node->right)
 			node = node->right;
+	}
 	if (parse.pos == 0)
 		tree_add_branch(&node, arg, type, true);
 	else
