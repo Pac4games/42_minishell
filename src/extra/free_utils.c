@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:35:46 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/29 11:35:45 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 15:50:17 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 void	free_mtx(char **mtx) // 2ok
 {
 	printf("entrou free_mtx\n");
-	printf("mtx[0] eh %s\n", mtx[0]);
 	int	p;
 
 	p = 0;
+	if (!mtx) //DEFENSIVA ADD
+		return ;
 	while (mtx[p])
-	{
-		printf("free_mtx com mtx[%d] %s\n", p, mtx[p]);
 		free(mtx[p++]);
-	}
 	free(mtx);
 }
 

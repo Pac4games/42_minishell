@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:55:14 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/29 13:48:30 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 15:43:54 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,13 @@ void	tree_add_n_parse(t_tree **node, char *arg, t_ndtype type) // 2uma breve exp
 	t_tree	*tmp;
 
 	if (!(*node))
+	{
+		printf("node eh nil\n");
 		tree_add_branch(node, arg, type, true);
+	}
 	else
 	{
+		printf("node nao eh nil\n");
 		tmp = *node;
 		while (tmp->left)
 			tmp = tmp->left;

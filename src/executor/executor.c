@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 11:23:03 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 16:02:59 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num) // 2ok
 
 void	proc_exec_tree(t_tree **root, char ***env) // 2ok
 {
+	printf("vai executar\n");
 	int		p; // nao eh necessario inicializar antes da linha 79? pela Norm?
 	int		cmd_num; // idem, inicializar?
 	int		proc_stts;
