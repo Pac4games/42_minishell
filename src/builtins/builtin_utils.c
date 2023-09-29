@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:19:06 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/29 16:30:37 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 16:37:29 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,12 @@ bool	is_builtin(t_tree *node, char ***env, char *cmd) // 2ok
 	{
 		printf("eh cmd\n");
 		if (redir_builtin_in(node))
+		{
+			printf("\ntrue\n");
 			return (true);
+		}
 		fd = redir_builtin_out(node);
+		printf("fd eh %d\n", fd);
 		run_builtin(node, env, cmd, fd);
 		printf("eh true\n");
 		return (true);

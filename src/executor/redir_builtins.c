@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 21:53:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 11:13:54 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 16:44:25 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,22 @@ int	redir_builtin_out(t_tree *node) // 2ok
 	i = 0;
 	while (node)
 	{
-		if (node->type == E_STDOUT)
-			fd = open(node->content, O_CREAT | O_WRONLY | O_TRUNC, S_STDPERMS);
-		else
-			fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, 0664);
-		i++;
-		if (fd == -1)
-			return (print_builtin_err(node->content));
-		if (i != cmd.out)
-			close(fd);
-		else
-			return (fd);
+		printf("entrou no loop\n");
+		if (node->type == E_STDOUT || node ->type == E_APPEND)
+		{
+			if (node->type == E_STDOUT)
+				fd = open(node->content, O_CREAT | O_WRONLY | O_TRUNC, S_STDPERMS);
+			else
+				fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, 0664);
+			i++;
+			if (fd == -1)
+				return (print_builtin_err(node->content));
+			if (i != cmd.out)
+				close(fd);
+			else
+				return (fd);
+		}
+		node = node->left;
 	}
 	return (1);
 }
