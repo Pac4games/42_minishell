@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/29 11:24:32 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 15:16:31 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	tar_util2(char *arg, t_ndtype type, t_parse parse) // 2ok
 	}
 	else
 	{
-		if (!(parse.tree))
+		if (!(*(parse.tree))) // MUDEI AQUI PARA DAR OPCAO 3...
 		{
 			printf("opcao 3\n");
 			tree_add_n_parse(parse.tree, \

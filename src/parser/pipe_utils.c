@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 11:58:37 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 14:07:29 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,10 @@ char	**pipe_split(t_pipe *pipes, char *arg) //2 com comentarios
 	t_pipe	*tmp;
 
 	if (!pipes)
+	{
+		printf("vai retornal NULL...\n");
 		return (NULL);
+	}
 	tmp = pipes;
 	while (tmp->next)
 		tmp = tmp->next;
@@ -102,6 +105,7 @@ char	**pipe_split(t_pipe *pipes, char *arg) //2 com comentarios
 		}
 		pipes = pipes->next;
 	}
+	printf("retornando res %p\n", res);
 	return (res);
 }
 

@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:55:14 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/29 11:48:15 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 13:48:30 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	tree_add_n_parse(t_tree **node, char *arg, t_ndtype type) // 2uma breve exp
 
 void	tree_add_node(char *arg, t_ndtype type, t_parse parse) // 2 breve explicacao
 {
-	printf("entrou em tree_add_node\n");
+	printf("entrou em tree_add_node com parse %p\n", parse.tree);
 	t_tree	*node;
 
 	node = *(parse.tree);
