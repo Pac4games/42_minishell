@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:19:06 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 11:24:10 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 16:30:37 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,24 @@ int	run_builtin(t_tree *node, char ***env, char *cmd, int fd) //2 ok
 bool	is_builtin(t_tree *node, char ***env, char *cmd) // 2ok
 {
 	int	fd;
-
-	if (cmd && !(ft_strncmp(cmd, "pwd", 4)
-			|| ft_strncmp(cmd, "exit", 5)
-			|| ft_strncmp(cmd, "echo", 5) 
-			|| ft_strncmp(cmd, "env", 4)
-			|| ft_strncmp(cmd, "export", 7)
-			|| ft_strncmp(cmd, "unset", 6)
-			|| ft_strncmp(cmd, "cd", 3)))
+	printf("cmd eh %s\n", cmd);
+	if (cmd && (!ft_strncmp(cmd, "pwd", 4)
+			|| !ft_strncmp(cmd, "exit", 5)
+			|| !ft_strncmp(cmd, "echo", 5) 
+			|| !ft_strncmp(cmd, "env", 4)
+			|| !ft_strncmp(cmd, "export", 7)
+			|| !ft_strncmp(cmd, "unset", 6)
+			|| !ft_strncmp(cmd, "cd", 3)))
 	{
+		printf("eh cmd\n");
 		if (redir_builtin_in(node))
 			return (true);
 		fd = redir_builtin_out(node);
 		run_builtin(node, env, cmd, fd);
+		printf("eh true\n");
 		return (true);
 	}
+	printf("nao eh cmd\n");
 	return (false);
 }
 

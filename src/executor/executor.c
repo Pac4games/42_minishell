@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/29 16:02:59 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 16:23:00 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd) //2 ok
 
 static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)// 2 ok
 {
+	printf("proc_exec\n");
 	t_cmd		cmd;
 	static int	fd;
 
@@ -78,9 +79,20 @@ void	proc_exec_tree(t_tree **root, char ***env) // 2ok
 	t_cmd	cmd;
 	t_tree	*tmp;
 
-	if (pet_utils(root, &cmd, &p, &cmd_num) && cmd_num == 1 && \
-	is_builtin(*root, env, get_cmd(*root, 0)))
+	p = 0;
+	if (pet_utils(root, &cmd, &p, &cmd_num))
+	{
+		printf("1\n");
 		return ;
+	}
+	int a = is_builtin(*root, env, get_cmd(*root, 0));
+	printf("%d\n\n", a);
+	if (cmd_num == 1 && is_builtin(*root, env, get_cmd(*root, 0)))
+	{
+		printf("2\n");
+		return ;
+	}
+	printf("teste\n");
 	tmp = *root;
 	while (tmp)
 	{

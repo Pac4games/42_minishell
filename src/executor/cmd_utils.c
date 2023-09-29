@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:48:22 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 11:03:28 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 16:14:05 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int	get_cmd_num(t_tree *node) // 2ok
 		res++;
 		node = node->parent;
 	}
+	printf("res %d\n", res);
 	return (res);
 }
