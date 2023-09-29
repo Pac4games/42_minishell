@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 12:04:10 by paula            ###   ########.fr       */
+/*   Updated: 2023/09/29 11:31:55 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,17 @@ static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env) //2 ok
 	{
 		printf("1\n\n");
 		parse_str(arg, parse, false);
+		printf("parse_pipes acabou aqui\n");
 	}
 	else
+	{
+		printf("se nao acabou entra\n");
 		while (mtx[parse.pos])
 		{
 			printf("2\n\n");
 			parse_str(mtx[parse.pos++], parse, false);
 		}
+	}
 	free_mtx(mtx);
 	printf("saiu de parse_pipes\n");
 }

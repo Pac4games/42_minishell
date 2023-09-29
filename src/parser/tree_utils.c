@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 15:09:49 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/09/29 11:24:32 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	tar_util(char *arg, int *i, int *j) // 2?
 
 static void	tar_util2(char *arg, t_ndtype type, t_parse parse) // 2ok
 {
-	printf("entrou tar_util2\n");
+	printf("entrou tar_util2 com arg %s type %d e parse.tree %p\n", arg, type, parse.tree);
 	if (type == E_HDOC)
 	{
 		if (!(*(parse.tree)))
@@ -113,5 +113,6 @@ int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse) // 2?
 		return (0);
 	check_export(ft_substr(arg, i, j - 1), type, parse);
 	tar_util2(ft_substr(arg, i, j - 1), type, parse);
+	printf("saiu de tree_add_case\n");
 	return (j);
 }
