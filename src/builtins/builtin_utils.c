@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:19:06 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/29 16:37:29 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/02 11:34:35 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ int	builtin_ret(t_tree *node, char ***env, char *cmd, int pos) //2 ok
 		return (ft_unset(get_cmd_args(node, pos), env));
 	if (cmd && !ft_strncmp(cmd, "cd", 3))
 		return (ft_cd(get_cmd_args(node, pos), env));
+	printf("vai sair de buildin ret\n");
 	return (0);
 }

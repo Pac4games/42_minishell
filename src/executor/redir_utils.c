@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:02:27 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/02 10:39:22 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/02 11:32:36 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	get_redir_num(t_tree *node, int pos, t_io io) // 2 breve explicacao
 
 void	redir(t_tree *node, t_cmd *cmd, int *fd) // 2 ok
 {
+	printf("entrou redir\n");
 	int	in_num;
 	int	out_num;
 
@@ -40,6 +41,7 @@ void	redir(t_tree *node, t_cmd *cmd, int *fd) // 2 ok
 	out_num = get_redir_num(node, cmd->pos, E_OUT);
 	if (in_num)
 	{
+		printf("in_num\n");
 		if (*fd)
 			close(*fd);
 		redir_in(node, cmd, in_num);
@@ -48,6 +50,7 @@ void	redir(t_tree *node, t_cmd *cmd, int *fd) // 2 ok
 		dup2(*fd, STDIN_FILENO);
 	if (out_num)
 	{
+		printf("out_num\n");
 		close((cmd->pipes)[0]);
 		redir_out(node, cmd, out_num);
 	}
@@ -58,4 +61,5 @@ void	redir(t_tree *node, t_cmd *cmd, int *fd) // 2 ok
 		else
 			dup2((cmd->pipes)[1], STDOUT_FILENO);
 	}
+	printf("saiu redir\n");
 }

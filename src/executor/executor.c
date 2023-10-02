@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/02 10:58:20 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/02 11:28:06 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd) //2 ok
 		proc_child(node, cmd, fd);
 	if (cmd->num != 1)
 	{
-		if ((*fd) < 0)
+		if ((*fd) > 0)
 			close(*fd);
 		close((cmd->pipes[1]));
 		*fd = cmd->pipes[0];
@@ -110,6 +110,7 @@ void	proc_exec_tree(t_tree **root, char ***env) // 2ok
 		}
 		p++;
 	}
+	printf("proc_stts cmd.pid cmd_num %d %d %d\n", proc_stts, cmd.pid, cmd.num);
 	waitpid(cmd.pid, &proc_stts, 0);
 	printf("escreve2\n");
 	set_exit_stts(proc_stts);
