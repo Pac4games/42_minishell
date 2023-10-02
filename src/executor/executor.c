@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/29 16:23:00 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/02 10:58:20 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	proc_child(t_tree *node, t_cmd *cmd, int *fd) //2 ok
 {
+	printf("child process\n");
 	close((cmd->pipes)[0]);
 	redir(node, cmd, fd);
 	sig_handle(E_SIG_DFL);
@@ -72,7 +73,7 @@ static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num) // 2ok
 
 void	proc_exec_tree(t_tree **root, char ***env) // 2ok
 {
-	printf("vai executar\n");
+	printf("\nvai executar\n");
 	int		p; // nao eh necessario inicializar antes da linha 79? pela Norm?
 	int		cmd_num; // idem, inicializar?
 	int		proc_stts;
@@ -86,7 +87,7 @@ void	proc_exec_tree(t_tree **root, char ***env) // 2ok
 		return ;
 	}
 	int a = is_builtin(*root, env, get_cmd(*root, 0));
-	printf("%d\n\n", a);
+	printf("retorno is_builtin%d\n\n", a);
 	if (cmd_num == 1 && is_builtin(*root, env, get_cmd(*root, 0)))
 	{
 		printf("2\n");
@@ -96,15 +97,23 @@ void	proc_exec_tree(t_tree **root, char ***env) // 2ok
 	tmp = *root;
 	while (tmp)
 	{
-		if (p != 1 && tmp->right)
+		printf("loop\n");
+		if (!(p == 1 && !(tmp->right)))
+		{
+			printf("escreve 0\n");
 			cmd = proc_exec_cmd(tmp, env, p, cmd_num);
+		}
 		if (p)
+		{
+			printf("escreve 1\n");
 			tmp = tmp->parent;
+		}
 		p++;
 	}
 	waitpid(cmd.pid, &proc_stts, 0);
+	printf("escreve2\n");
 	set_exit_stts(proc_stts);
 	p = 0;
-	while (p++ <= cmd_num)
+	while (p++ < cmd_num)
 		wait(NULL);
 }

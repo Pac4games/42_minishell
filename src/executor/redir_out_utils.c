@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:21:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 11:23:50 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/02 10:36:04 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	redir_hdoc(t_tree **root, t_cmd *cmd) // 2 breve explicacao
 	tmp = *root;
 	while (tmp)
 	{
-		if (cmd->pos != 1 && tmp->right)
+		if (!(cmd->pos == 1 && !(tmp->right)))
 		{
 			cmd->in = get_redir_num(tmp, cmd->pos, E_IN);
 			if (handle_hdoc(&tmp, cmd))

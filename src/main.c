@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:54:43 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/02 10:30:04 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	g_stts = EXIT_SUCCESS;
 
 void	set_exit_stts(int stts)// 2 ok
 {
+	printf("chamou set_exit\n");
 	if (WIFSIGNALED(stts))
 	{
 		g_stts = WTERMSIG(stts) + 128;

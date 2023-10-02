@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:02:27 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 11:23:07 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/02 10:39:22 by paula            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	get_redir_num(t_tree *node, int pos, t_io io) // 2 breve explicacao
 		else
 			node = node->right;
 	}
+	printf("\nem get_redir_nbr res eh %d\n", res);
 	return (res);
 }
 
