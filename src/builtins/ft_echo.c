@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:12:11 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/27 10:58:12 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/03 12:13:49 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	ft_echo(char **args, int fd) // 2 ok para echo
 		if (args[++i])
 			ft_putstr_fd(" ", fd);
 	}
-	if (mtx_len(args) <= 1 && !is_flag(args[1]))
-		ft_putendl_fd(NULL, fd);
+	if (!(mtx_len(args) > 1 && is_flag(args[1])))
+		ft_putchar_fd('\n', fd);
 	free_mtx(args);
 	g_stts = EXIT_SUCCESS;
 	return (1);
