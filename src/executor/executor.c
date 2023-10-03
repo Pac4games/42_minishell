@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/02 11:28:06 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/03 12:02:26 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num) // 2ok
 void	proc_exec_tree(t_tree **root, char ***env) // 2ok
 {
 	printf("\nvai executar\n");
-	int		p; // nao eh necessario inicializar antes da linha 79? pela Norm?
-	int		cmd_num; // idem, inicializar?
+	int		p;
+	int		cmd_num;
 	int		proc_stts;
 	t_cmd	cmd;
 	t_tree	*tmp;
@@ -110,7 +110,7 @@ void	proc_exec_tree(t_tree **root, char ***env) // 2ok
 		}
 		p++;
 	}
-	printf("proc_stts cmd.pid cmd_num %d %d %d\n", proc_stts, cmd.pid, cmd.num);
+	printf("cmd.pid cmd_num %d %d \n", cmd.pid, cmd.num);
 	waitpid(cmd.pid, &proc_stts, 0);
 	printf("escreve2\n");
 	set_exit_stts(proc_stts);
