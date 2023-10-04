@@ -6,14 +6,14 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:49:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/03 11:55:56 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:23:44 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 //Takes the input for deezdocs()
-static void	rtfd(int fd, char *eof, int stts) //2 ok I LOVED
+static void	rtfd(int fd, char *eof, int stts)
 {
 	char	*in;
 	char	*res;
@@ -21,7 +21,7 @@ static void	rtfd(int fd, char *eof, int stts) //2 ok I LOVED
 	while (true)
 	{
 		sig_handle(E_SIG_HDOC);
-		in = readline("heredoc> "); // tem mesmo esse espaco?
+		in = readline("heredoc> ");
 		if (!in)
 			print_hdoc_warn(eof, in, stts);
 		res = ft_strjoin(in, "\n");

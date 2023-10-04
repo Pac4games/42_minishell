@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/02 10:30:04 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:40:03 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	g_stts = EXIT_SUCCESS;
 
-void	set_exit_stts(int stts)// 2 ok
+void	set_exit_stts(int stts)
 {
-	printf("chamou set_exit\n");
 	if (WIFSIGNALED(stts))
 	{
 		g_stts = WTERMSIG(stts) + 128;
@@ -27,7 +26,7 @@ void	set_exit_stts(int stts)// 2 ok
 		g_stts = WEXITSTATUS(stts);
 }
 
-char	*shlvl_up(char *shlvl) // ok2
+char	*shlvl_up(char *shlvl)
 {
 	char	*tmp;
 	char	*res;
@@ -38,7 +37,7 @@ char	*shlvl_up(char *shlvl) // ok2
 	return (res);
 }
 
-static void	le_loop(char *in, char *prompt, char **env, t_tree *tree) // duvidas2
+static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 {
 	while (true)
 	{
@@ -67,7 +66,7 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree) // duvidas
 	}
 }
 
-int	main(int ac, char **av, char **envp) //ok
+int	main(int ac, char **av, char **envp)
 {
 	char	*in;
 	char	*prompt;
@@ -80,7 +79,7 @@ int	main(int ac, char **av, char **envp) //ok
 	prompt = NULL;
 	env = get_cur_env(envp);
 	tree = NULL;
-	*syntax() = 0; // ?
+	*syntax() = 0;
 	le_loop(in, prompt, env, tree);
 	return (g_stts);
 }

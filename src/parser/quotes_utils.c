@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:51:58 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/29 15:40:27 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:33:35 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	quotes_skip(char *str, int i) //2ok
+int	quotes_skip(char *str, int i)
 {
 	char	tmp;
 
@@ -28,7 +28,7 @@ int	quotes_skip(char *str, int i) //2ok
 	return (i);
 }
 
-int	get_quote_num(char *str)//2-
+int	get_quote_num(char *str)
 {
 	int		i;
 	int		num;
@@ -38,12 +38,12 @@ int	get_quote_num(char *str)//2-
 	num = 0;
 	while (str[++i])
 	{
-		if (str[i] && !is_diff_sign("\"'", str[i])) // novamente "'
+		if (str[i] && !is_diff_sign("\"'", str[i]))
 		{
 			tmp = str[i++];
 			while (str[i] && str[i] != tmp)
 				i++;
-			num += 2; //pq +2? Duas aspas abre e fecha?
+			num += 2;
 		}
 	}
 	return (num);

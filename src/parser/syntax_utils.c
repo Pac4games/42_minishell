@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:20:15 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 10:37:49 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:34:30 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-//?
-int	*syntax(void)// 2
+
+int	*syntax(void)
 {
 	static int	amogus;
 

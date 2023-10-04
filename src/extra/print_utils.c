@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:50:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 10:37:24 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:29:24 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_mtx(char **mtx)
 		ft_putendl_fd(mtx[p++], STDOUT_FILENO);
 }
 
-void	print_err(char *msg, int stts) // 2ok
+void	print_err(char *msg, int stts)
 {
 	ft_putstr_fd("Error: ", STDERR_FILENO);
 	ft_putendl_fd(msg, STDERR_FILENO);
@@ -29,7 +29,7 @@ void	print_err(char *msg, int stts) // 2ok
 	exit(g_stts);
 }
 
-void	print_shell_err(char *cmd, char *msg, int stts) // 2ok
+void	print_shell_err(char *cmd, char *msg, int stts)
 {
 	ft_putstr_fd(SHELL, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
@@ -44,7 +44,7 @@ void	print_shell_err(char *cmd, char *msg, int stts) // 2ok
 	}
 }
 
-void	print_hdoc_warn(char *eof, char *in, int stts) // 2 breve explicacao
+void	print_hdoc_warn(char *eof, char *in, int stts)
 {
 	ft_putstr_fd(SHELL, STDERR_FILENO);
 	ft_putstr_fd(": warning: here-document delimited by end-of-file (wanted `",
@@ -58,11 +58,10 @@ void	print_hdoc_warn(char *eof, char *in, int stts) // 2 breve explicacao
 	exit(g_stts);
 }
 
-void	print_syntax_error(void) //2ok mudou syntax
+void	print_syntax_error(void)
 {
 	if ((*syntax()) == 1)
 		ft_putendl_fd("Syntax Error", STDOUT_FILENO);
 	g_stts = EXIT_FAILURE;
 	(*syntax())++;
-	printf("syntax vale %ls\n", syntax());
 }

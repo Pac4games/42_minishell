@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/27 11:34:42 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:19:43 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	is_num(char *str) //2 -
+static bool	is_num(char *str)
 {
 	int		i;
 	bool	check;
@@ -34,7 +34,7 @@ static bool	is_num(char *str) //2 -
 	return (false);
 }
 
-static int	quit(char **args, bool isnum) // 2ok
+static int	quit(char **args, bool isnum)
 {
 	if (isnum && args[2])
 	{
@@ -56,7 +56,7 @@ static int	quit(char **args, bool isnum) // 2ok
 	return (-42);
 }
 
-int	ft_exit(char **args) // 2ok para exit
+int	ft_exit(char **args)
 {
 	bool	isnum;
 

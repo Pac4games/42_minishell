@@ -6,26 +6,25 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:35:46 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/29 15:50:17 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:28:50 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	free_mtx(char **mtx) // 2ok
+void	free_mtx(char **mtx)
 {
-	printf("entrou free_mtx\n");
 	int	p;
 
 	p = 0;
-	if (!mtx) //DEFENSIVA ADD
+	if (!mtx)
 		return ;
 	while (mtx[p])
 		free(mtx[p++]);
 	free(mtx);
 }
 
-void	free_tree(t_tree **node)// 2 ok
+void	free_tree(t_tree **node)
 {
 	if (!node || !(*node))
 		return ;
@@ -37,7 +36,7 @@ void	free_tree(t_tree **node)// 2 ok
 	*node = NULL;
 }
 
-t_tree	**get_tree_root(t_tree **node) //2 ok
+t_tree	**get_tree_root(t_tree **node)
 {
 	t_tree	*root;
 
@@ -50,7 +49,7 @@ t_tree	**get_tree_root(t_tree **node) //2 ok
 	return (node);
 }
 
-int	mtx_len(char **mtx) // 2ok
+int	mtx_len(char **mtx)
 {
 	int	res;
 

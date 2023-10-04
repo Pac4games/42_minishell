@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:12:11 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/03 12:13:49 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:19:11 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	is_flag(char *arg)//2 ok
+static bool	is_flag(char *arg)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ static bool	is_flag(char *arg)//2 ok
 	return (true);
 }
 
-int	ft_echo(char **args, int fd) // 2 ok para echo
+int	ft_echo(char **args, int fd)
 {
 	int	i;
 

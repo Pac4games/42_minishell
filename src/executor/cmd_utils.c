@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:48:22 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/03 11:46:04 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:21:52 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*get_cmd(t_tree *node, int pos)// 2 breve explicacao
+char	*get_cmd(t_tree *node, int pos)
 {
 	if (!pos)
 		while (node && node->type != E_CMD)
@@ -64,7 +64,7 @@ char	**get_cmd_args(t_tree *node, int pos)
 	return (args);
 }
 
-int	get_cmd_num(t_tree *node) // 2ok
+int	get_cmd_num(t_tree *node)
 {
 	int	res;
 

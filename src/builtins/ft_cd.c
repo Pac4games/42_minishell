@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/27 11:02:58 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:18:59 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	is_valid_input(char **args, char **env)// 2 ok
+static bool	is_valid_input(char **args, char **env)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ static bool	is_valid_input(char **args, char **env)// 2 ok
 	return (false);
 }
 
-static int	print_cd_error(char **args) //2 ok
+static int	print_cd_error(char **args)
 {
 	char	*tmp;
 
@@ -44,7 +44,7 @@ static int	print_cd_error(char **args) //2 ok
 	return (1);
 }
 
-static bool	set_oldpwd(char ***env, char *path)//2 ok owlpwd
+static bool	set_oldpwd(char ***env, char *path)
 {
 	int	i;
 
@@ -61,12 +61,12 @@ static bool	set_oldpwd(char ***env, char *path)//2 ok owlpwd
 	return (false);
 }
 
-int	ft_cd(char **args, char ***env)//2 ok para cd
+int	ft_cd(char **args, char ***env)
 {
 	char	path[1025];
 	char	*tmp;
 
-	if (!(is_valid_input(&args[1], *env) || getcwd(path, 1025))) // pq 1025?
+	if (!(is_valid_input(&args[1], *env) || getcwd(path, 1025)))
 	{
 		free_mtx(args);
 		return (1);

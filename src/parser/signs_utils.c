@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:48:21 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/29 15:42:01 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:34:20 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	find_eq_sign(char *str) // 2ok
+int	find_eq_sign(char *str)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ int	find_eq_sign(char *str) // 2ok
 	return (i);
 }
 
-static void	dol_sign_util(int *tmp) //2ok
+static void	dol_sign_util(int *tmp)
 {
 	if (!(*tmp))
 		*tmp = 1;
@@ -32,15 +32,14 @@ static void	dol_sign_util(int *tmp) //2ok
 		*tmp = 0;
 }
 
-static char	*free_str_ret_null(char *str) // 2ok
+static char	*free_str_ret_null(char *str)
 {
 	free(str);
 	return (NULL);
 }
 
-char	*parse_signs(char *str, char **env) // 2ok, porem o syntax ainda nao entendi..
+char	*parse_signs(char *str, char **env)
 {
-	//printf("entrou parse_sig\n");
 	int	i;
 	int	tmp;
 
@@ -55,17 +54,16 @@ char	*parse_signs(char *str, char **env) // 2ok, porem o syntax ainda nao entend
 		if (!is_diff_sign("'", str[i]) && !tmp)
 			i = quotes_skip(str, i);
 		if (*syntax())
-			return (free_str_ret_null(str));// ainda nao entendi o syntax :/
+			return (free_str_ret_null(str));
 		if (!is_diff_sign("$", str[i]))
 			str = get_var(str, &i, env);
 		else
 			i++;
 	}
-	//printf("saiu de parse_sig\n");
 	return (str);
 }
 
-bool	is_diff_sign(char *sign, char c) //2ok
+bool	is_diff_sign(char *sign, char c)
 {
 	int	j;
 

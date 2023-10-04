@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:24:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/02 11:02:50 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:25:06 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	is_valid_path(char *cmd, char *path)//2 ok
+static int	is_valid_path(char *cmd, char *path)
 {
 	struct stat	buf;
 
@@ -20,15 +20,12 @@ static int	is_valid_path(char *cmd, char *path)//2 ok
 	if (S_ISDIR(buf.st_mode))
 		print_shell_err(cmd, "Is a directory", 126);
 	else if (access(path, X_OK) >= 0)
-	{
-		printf("free em check_path\n");
 		return (true);
-	}
 	free(path);
 	return (false);
 }
 
-static char	*get_abs_path(char *cmd)//2 ok
+static char	*get_abs_path(char *cmd)
 {
 	DIR	*dir;
 
@@ -43,7 +40,7 @@ static char	*get_abs_path(char *cmd)//2 ok
 	return (cmd);
 }
 
-static char	*join_rel_path(char *cmd, char **path, char *tmp)//2  breve explicacao
+static char	*join_rel_path(char *cmd, char **path, char *tmp)
 {
 	int	p;
 
@@ -66,9 +63,8 @@ static char	*join_rel_path(char *cmd, char **path, char *tmp)//2  breve explicac
 	return (NULL);
 }
 
-static char	*get_rel_path(char *cmd, char **env)//2 ok
+static char	*get_rel_path(char *cmd, char **env)
 {
-	printf("not absolute\n");
 	char	*tmp;
 	char	*pwd;
 	char	*cwd;
@@ -91,9 +87,8 @@ static char	*get_rel_path(char *cmd, char **env)//2 ok
 	return (join_rel_path(cmd, env, tmp));
 }
 
-char	*get_cmd_path(char *cmd, char **env)//2 ok
+char	*get_cmd_path(char *cmd, char **env)
 {
-	printf("entrou get_cmp_path\n");
 	if (!cmd)
 		return (NULL);
 	else if (ft_strlen(cmd) == 1 && cmd[0] == '.')

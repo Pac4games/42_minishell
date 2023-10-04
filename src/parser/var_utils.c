@@ -6,18 +6,18 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:48:54 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/27 11:08:43 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:39:13 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-bool	is_var(char c) // 2ok
+bool	is_var(char c)
 {
 	return (ft_isalnum(c) || c == '_');
 }
 
-static void	add_var_helper(t_var tmp) // 2 ?
+static void	add_var_helper(t_var tmp)
 {
 	tmp.i = 0;
 	tmp.j = 0;
@@ -41,7 +41,7 @@ static void	add_var_helper(t_var tmp) // 2 ?
 	}
 }
 
-char	*add_var(char *str, char *var, int start, int end) // 2 poderia explicar?
+char	*add_var(char *str, char *var, int start, int end)
 {
 	char	*res;
 	t_var	tmp;
@@ -65,7 +65,7 @@ char	*add_var(char *str, char *var, int start, int end) // 2 poderia explicar?
 	return (res);
 }
 
-char	*find_var(char *var, char **env) // 2ok
+char	*find_var(char *var, char **env)
 {
 	int	i;
 	int	size;
@@ -83,7 +83,7 @@ char	*find_var(char *var, char **env) // 2ok
 	return (ft_strdup(env[i] + size + 1));
 }
 
-char	*get_var(char *str, int *i, char **env) // 2ok
+char	*get_var(char *str, int *i, char **env)
 {
 	int		j;
 	char	*res;
@@ -102,7 +102,7 @@ char	*get_var(char *str, int *i, char **env) // 2ok
 		return (str);
 	}
 	res = add_var(str, find_var(ft_substr(str, (*i) + 1, j - 1), env), \
-		(*i) + 1, j - 1); //breve explicacao
+		(*i) + 1, j - 1);
 	if (str)
 		free(str);
 	return (res);

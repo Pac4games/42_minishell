@@ -6,42 +6,35 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/29 14:07:29 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:33:13 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	parse_pipes_utils(char *arg, int *i) // 2ok
+static void	parse_pipes_utils(char *arg, int *i)
 {
-	printf("entrou parse_util\n");
 	while (arg[*i])
 	{
-		//printf("arg[i] vale %c e i vale %d\n", arg[*i], *i);
-		if (!is_diff_sign("\"'", arg[*i])) // novamente "'
+		if (!is_diff_sign("\"'", arg[*i]))
 			*i = quotes_skip(arg, *i);
 		if (!is_diff_sign("|", arg[*i]))
 		{
-			printf("achou pipe\n");
 			(*i)++;
-			while ((arg[*i] == ' ' || arg[*i] == '\t')) // aqui tinha um seg fault!!
-			{
-				//printf("depois do pipe arg[i] vale %c e i vale %d\n", arg[*i], *i);
+			while ((arg[*i] == ' ' || arg[*i] == '\t'))
 				(*i)++;
-			}
-			if (!is_diff_sign("|", arg[*i])) // aqui seria um | seguido de outro |, certo?
+			if (!is_diff_sign("|", arg[*i]))
 				print_syntax_error();
 		}
 		else
 			(*i)++;
-		if (*syntax()) // no caso de ter um |, syntax esta 1, logo retorna vazio?
+		if (*syntax())
 			return ;
 	}
 }
 
-void	check_pipes(char *arg) // 2 com comentarios
+void	check_pipes(char *arg)
 {
-	printf("vai checar pipes\n");
 	int	i;
 
 	i = 0;
@@ -49,14 +42,14 @@ void	check_pipes(char *arg) // 2 com comentarios
 		return ;
 	while (arg[i] && (arg[i] == ' ' || arg[i] == '\t'))
 		i++;
-	if (!arg[i] || !is_diff_sign("|", arg[i])) // se ele tiver | erro de syntax? Sybtax passa a ser 1
+	if (!arg[i] || !is_diff_sign("|", arg[i]))
 		print_syntax_error();
 	parse_pipes_utils(arg, &i);
-	if (*syntax()) //se tiver | syntax vale 1, logo retorna vazio?
+	if (*syntax())
 		return ;
 }
 
-void	pipe_add2pos(t_pipe **pipes, int pos, int num) //2 ok
+void	pipe_add2pos(t_pipe **pipes, int pos, int num)
 {
 	t_pipe	*res;
 	t_pipe	*tmp;
@@ -76,26 +69,21 @@ void	pipe_add2pos(t_pipe **pipes, int pos, int num) //2 ok
 	tmp->next = res;
 }
 
-char	**pipe_split(t_pipe *pipes, char *arg) //2 com comentarios
+char	**pipe_split(t_pipe *pipes, char *arg)
 {
-	printf("entrou em pipe_split\n");
 	int		i;
 	char	**res;
 	t_pipe	*tmp;
 
 	if (!pipes)
-	{
-		printf("vai retornal NULL...\n");
 		return (NULL);
-	}
 	tmp = pipes;
 	while (tmp->next)
 		tmp = tmp->next;
 	res = malloc((tmp->num * 3) * sizeof(char *)); // pq *3?
 	i = 0;
-	while (pipes) // nao compreendi, poderia explicar?
+	while (pipes)
 	{
-		printf("entrou nesse loop que nao entendi lol\n");
 		res[pipes->num] = ft_substr(arg, i, pipes->pos - 1);
 		i = pipes->pos + i;
 		if (!pipes->next)
@@ -105,7 +93,6 @@ char	**pipe_split(t_pipe *pipes, char *arg) //2 com comentarios
 		}
 		pipes = pipes->next;
 	}
-	printf("retornando res %p\n", res);
 	return (res);
 }
 

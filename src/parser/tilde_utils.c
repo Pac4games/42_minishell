@@ -6,30 +6,25 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:06:42 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 11:57:55 by paula            ###   ########.fr       */
+/*   Updated: 2023/10/04 11:35:55 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	parse_tilde_utils(char *arg, int *i)// 2duvida na escrita do sinal, 'e mesmo "' ou seria " ?
+static bool	parse_tilde_utils(char *arg, int *i)
 {
 	if (arg[*i] && !is_diff_sign("\"'", arg[*i]))
-	{
-		//printf("eh aspas\n");
 		*i = quotes_skip(arg, *i);
-	}
 	if (*syntax())
 	{
-		//printf("syntax %d\n", *syntax());
 		free(arg);
 		return (true);
 	}
-	//printf("vai retornar false 0\n");
 	return (false);
 }
 
-static void	gvt_utils(char *arg, int i, char *home, char **res) // 2ok
+static void	gvt_utils(char *arg, int i, char *home, char **res)
 {
 	int	j;
 	int	k;
@@ -58,17 +53,17 @@ static void	gvt_utils(char *arg, int i, char *home, char **res) // 2ok
 	(*res)[j + k] = 0;
 }
 
-static char	*get_var_tilde(char *arg, int i, char *home) // 2 duvidas
+static char	*get_var_tilde(char *arg, int i, char *home)
 {
 	char	*res;
 
-	res = malloc(ft_strlen(arg) - 1 + 1 + ft_strlen(home) * sizeof(char)); // pq o -1 + 1 ?
+	res = malloc(ft_strlen(arg) - 1 + 1 + ft_strlen(home) * sizeof(char));
 	gvt_utils(arg, i, home, &res);
 	free(home);
 	return (res);
 }
 
-char	*parse_tilde(char *arg, char **env) // 2?
+char	*parse_tilde(char *arg, char **env)
 {
 	int		i;
 	char	*tmp;
@@ -76,11 +71,8 @@ char	*parse_tilde(char *arg, char **env) // 2?
 	i = 0;
 	while (arg[i])
 	{
-		if (parse_tilde_utils(arg, &i)) //ok, com comentarios
-		{
-			//printf("retornou 1 true\n");
+		if (parse_tilde_utils(arg, &i))
 			return (NULL);
-		}
 		if (arg[i] == '~' \
 		&& (i == 0 || arg[i - 1] == ' ' || arg[i - 1] == '\t') \
 		&& (!arg[i + 1] || arg[i + 1] == ' ' || arg[i + 1] == '\t'))
@@ -91,10 +83,7 @@ char	*parse_tilde(char *arg, char **env) // 2?
 			i = 0;
 		}
 		else
-		{
-			//printf("nao tem til i vale %d\n", i);
 			i++;
-		}
 	}
 	return (arg);
 }
