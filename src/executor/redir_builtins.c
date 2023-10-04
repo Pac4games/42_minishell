@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   redir_builtins.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 21:53:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/12 12:43:59 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:25:38 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-#include <stdlib.h>
 
 static int	open_builtin_in(t_tree *node)
 {
@@ -62,17 +61,21 @@ int	redir_builtin_out(t_tree *node)
 	i = 0;
 	while (node)
 	{
-		if (node->type == E_STDOUT)
-			fd = open(node->content, O_CREAT | O_WRONLY | O_TRUNC, S_STDPERMS);
-		else
-			fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, 0664);
-		i++;
-		if (fd == -1)
-			return (print_builtin_err(node->content));
-		if (i != cmd.out)
-			close(fd);
-		else
-			return (fd);
+		if (node->type == E_STDOUT || node ->type == E_APPEND)
+		{
+			if (node->type == E_STDOUT)
+				fd = open(node->content, O_CREAT | O_WRONLY | O_TRUNC, S_STDPERMS);
+			else
+				fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, 0664);
+			i++;
+			if (fd == -1)
+				return (print_builtin_err(node->content));
+			if (i != cmd.out)
+				close(fd);
+			else
+				return (fd);
+		}
+		node = node->left;
 	}
 	return (1);
 }

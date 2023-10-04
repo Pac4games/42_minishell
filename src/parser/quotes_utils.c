@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jferreir <jferreir@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:51:58 by jferreir          #+#    #+#             */
-/*   Updated: 2023/09/15 12:15:36 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:52:53 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	*quotes_rm_fr(char *str, int i, int j, char tmp)
 				res[j++] = str[i++];
 		}
 		else
-			res[j++] = res[i];
+			res[j++] = str[i];
 	}
 	res[j] = 0;
 	return (res);
@@ -74,8 +74,6 @@ char	*quotes_rm(char *str)
 	char	*res;
 
 	res = quotes_rm_fr(str, -1, 0, ' ');
-	printf("quotes_rm() str: %s\n", str);
-	printf("quotes_rm() res: %s\n", res);
 	free(str);
 	return (res);
 }

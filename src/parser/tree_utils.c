@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tree_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/15 12:18:01 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:38:35 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	tar_util2(char *arg, t_ndtype type, t_parse parse)
 	}
 	else
 	{
-		if (!(parse.tree))
+		if (!(*(parse.tree)))
 			tree_add_n_parse(parse.tree, \
 			quotes_rm(parse_signs(arg, parse.env)), type);
 		else
@@ -69,14 +69,13 @@ static void	check_export(char *arg, t_ndtype type, t_parse parse)
 {
 	char	*tmp;
 
-	printf("check_export() arg: %s\n", arg);
 	tmp = quotes_rm(arg);
 	if (!ft_strncmp(tmp, "export", ft_strlen(tmp)) && type == E_CMD)
 		*(parse.exp) = true;
 	free(tmp);
 }
 
-int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse)
+int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse) // 2?
 {
 	int	j;
 
@@ -94,7 +93,7 @@ int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse)
 	}
 	if (*syntax())
 		return (0);
-	check_export(ft_substr(arg, i, j), type, parse);
-	tar_util2(ft_substr(arg, i, j), type, parse);
+	check_export(ft_substr(arg, i, j - 1), type, parse);
+	tar_util2(ft_substr(arg, i, j - 1), type, parse);
 	return (j);
 }

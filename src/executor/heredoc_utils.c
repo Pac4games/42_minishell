@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:49:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 11:41:48 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:48:19 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-//"Read The Frickin' Docs" (family friendly 'cause of Junior)
 //Takes the input for deezdocs()
 static void	rtfd(int fd, char *eof, int stts)
 {

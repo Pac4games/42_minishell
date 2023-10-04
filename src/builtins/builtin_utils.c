@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:19:06 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/09 22:28:50 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:54:53 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,13 @@ int	run_builtin(t_tree *node, char ***env, char *cmd, int fd)
 bool	is_builtin(t_tree *node, char ***env, char *cmd)
 {
 	int	fd;
-
-	if (cmd && !(ft_strncmp(cmd, "pwd", 4)
-			|| ft_strncmp(cmd, "exit", 5)
-			|| ft_strncmp(cmd, "echo", 5) 
-			|| ft_strncmp(cmd, "env", 4)
-			|| ft_strncmp(cmd, "export", 7)
-			|| ft_strncmp(cmd, "unset", 6)
-			|| ft_strncmp(cmd, "cd", 3)))
+	if (cmd && (!ft_strncmp(cmd, "pwd", 4)
+			|| !ft_strncmp(cmd, "exit", 5)
+			|| !ft_strncmp(cmd, "echo", 5) 
+			|| !ft_strncmp(cmd, "env", 4)
+			|| !ft_strncmp(cmd, "export", 7)
+			|| !ft_strncmp(cmd, "unset", 6)
+			|| !ft_strncmp(cmd, "cd", 3)))
 	{
 		if (redir_builtin_in(node))
 			return (true);

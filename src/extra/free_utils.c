@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:35:46 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/11 16:07:51 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:28:50 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	free_mtx(char **mtx)
 	int	p;
 
 	p = 0;
+	if (!mtx)
+		return ;
 	while (mtx[p])
 		free(mtx[p++]);
 	free(mtx);

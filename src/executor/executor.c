@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/26 14:45:45 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:47:30 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd)
 		proc_child(node, cmd, fd);
 	if (cmd->num != 1)
 	{
-		if ((*fd) < 0)
+		if ((*fd) > 0)
 			close(*fd);
 		close((cmd->pipes[1]));
 		*fd = cmd->pipes[0];
@@ -77,13 +77,15 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	t_cmd	cmd;
 	t_tree	*tmp;
 
-	if (pet_utils(root, &cmd, &p, &cmd_num) && cmd_num == 1 && \
-	is_builtin(*root, env, get_cmd(*root, 0)))
+	p = 0;
+	if (pet_utils(root, &cmd, &p, &cmd_num))
+		return ;
+	if (cmd_num == 1 && is_builtin(*root, env, get_cmd(*root, 0)))
 		return ;
 	tmp = *root;
 	while (tmp)
 	{
-		if (p != 1 && tmp->right)
+		if (!(p == 1 && !(tmp->right)))
 			cmd = proc_exec_cmd(tmp, env, p, cmd_num);
 		if (p)
 			tmp = tmp->parent;
@@ -92,6 +94,6 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	waitpid(cmd.pid, &proc_stts, 0);
 	set_exit_stts(proc_stts);
 	p = 0;
-	while (p++ <= cmd_num)
+	while (p++ < cmd_num)
 		wait(NULL);
 }

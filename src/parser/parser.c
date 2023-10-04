@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/15 11:51:34 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:31:35 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,10 @@ static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env)
 	if (!mtx)
 		parse_str(arg, parse, false);
 	else
+	{
 		while (mtx[parse.pos])
 			parse_str(mtx[parse.pos++], parse, false);
+	}
 	free_mtx(mtx);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/13 11:57:41 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:52:04 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	parse_pipes_utils(char *arg, int *i)
 		if (!is_diff_sign("|", arg[*i]))
 		{
 			(*i)++;
-			while ((arg[*i] == ' ' || arg[*i == '\t']))
+			while ((arg[*i] == ' ' || arg[*i] == '\t'))
 				(*i)++;
 			if (!is_diff_sign("|", arg[*i]))
 				print_syntax_error();
@@ -96,7 +96,7 @@ char	**pipe_split(t_pipe *pipes, char *arg)
 	return (res);
 }
 
-void	free_pipes(t_pipe **pipes)
+void	free_pipes(t_pipe **pipes) // 2ok
 {
 	if (!pipes || !(*pipes))
 		return ;
