@@ -6,12 +6,13 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 20:18:40 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 15:08:26 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:37:11 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//Repurposed for this project
 char	*ft_substr(char const *s, int start, int end)
 {
 	char	*sub;
