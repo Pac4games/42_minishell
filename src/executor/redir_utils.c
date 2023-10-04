@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 16:02:27 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:27:48 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:48:55 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	get_redir_num(t_tree *node, int pos, t_io io)
 
 void	redir(t_tree *node, t_cmd *cmd, int *fd)
 {
-	printf("entrou redir\n");
 	int	in_num;
 	int	out_num;
 

@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:33:13 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:52:04 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	**pipe_split(t_pipe *pipes, char *arg)
 	tmp = pipes;
 	while (tmp->next)
 		tmp = tmp->next;
-	res = malloc((tmp->num * 3) * sizeof(char *)); // pq *3?
+	res = malloc((tmp->num * 3) * sizeof(char *));
 	i = 0;
 	while (pipes)
 	{

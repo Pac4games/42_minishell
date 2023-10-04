@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 11:19:06 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:18:08 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:54:53 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	run_builtin(t_tree *node, char ***env, char *cmd, int fd)
 bool	is_builtin(t_tree *node, char ***env, char *cmd)
 {
 	int	fd;
-	printf("cmd eh %s\n", cmd);
 	if (cmd && (!ft_strncmp(cmd, "pwd", 4)
 			|| !ft_strncmp(cmd, "exit", 5)
 			|| !ft_strncmp(cmd, "echo", 5) 
@@ -53,19 +52,12 @@ bool	is_builtin(t_tree *node, char ***env, char *cmd)
 			|| !ft_strncmp(cmd, "unset", 6)
 			|| !ft_strncmp(cmd, "cd", 3)))
 	{
-		printf("eh cmd\n");
 		if (redir_builtin_in(node))
-		{
-			printf("\ntrue\n");
 			return (true);
-		}
 		fd = redir_builtin_out(node);
-		printf("fd eh %d\n", fd);
 		run_builtin(node, env, cmd, fd);
-		printf("eh true\n");
 		return (true);
 	}
-	printf("nao eh cmd\n");
 	return (false);
 }
 
@@ -88,6 +80,5 @@ int	builtin_ret(t_tree *node, char ***env, char *cmd, int pos)
 		return (ft_unset(get_cmd_args(node, pos), env));
 	if (cmd && !ft_strncmp(cmd, "cd", 3))
 		return (ft_cd(get_cmd_args(node, pos), env));
-	printf("vai sair de buildin ret\n");
 	return (0);
 }

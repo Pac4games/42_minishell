@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:49:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:23:44 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:48:19 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	rtfd(int fd, char *eof, int stts)
 
 //Yet another genius name (may change it later)
 //It's our heredoc if it ain't obvious lol
-int	deezdocs(t_tree **root, t_cmd *cmd, int p) // 2ok
+int	deezdocs(t_tree **root, t_cmd *cmd, int p)
 {
 	int	stts;
 
@@ -73,7 +73,7 @@ int	deezdocs(t_tree **root, t_cmd *cmd, int p) // 2ok
 	return (false);
 }
 
-int	handle_hdoc(t_tree **root, t_cmd *cmd) // 2ok
+int	handle_hdoc(t_tree **root, t_cmd *cmd)
 {
 	int		p;
 	t_tree	*tmp;
