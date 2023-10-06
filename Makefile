@@ -53,7 +53,7 @@ SRC_NAME    = main.c						\
 			  executor/redir_builtins.c		\
 			  executor/heredoc_utils.c		\
               extra/free_utils.c			\
-			  extra/print_utils.c			
+			  extra/print_utils.c			\
 
 SRC         = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJ         = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))

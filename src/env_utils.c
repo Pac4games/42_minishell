@@ -35,3 +35,31 @@ char	**get_cur_env(char **env)
 	res[p] = NULL;
 	return (res);
 }
+/*
+char	**get_cur_env(char **env)
+{
+	char	**path;
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	while (env[i])
+	{
+		if (!ft_strncmp(env[i], "PATH=", 5))
+		{
+			path = ft_split(env[i] + 5, ':');
+			i = 0;
+			while (path[i])
+			{
+				tmp = ft_strdup(path[i]);
+				free(path[i]);
+				path[i] = ft_strjoin(tmp, "/");
+				free(tmp);
+				i++;
+			}
+			return (path);
+		}
+		i++;
+	}
+	return (NULL);
+}*/

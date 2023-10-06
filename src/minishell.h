@@ -237,4 +237,7 @@ void			free_tree(t_tree **node);
 t_tree			**get_tree_root(t_tree **node);
 int				mtx_len(char **mtx);
 
+//	TEST
+char	**get_path(char **env);
+
 #endif

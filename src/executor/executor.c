@@ -31,10 +31,18 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 void	xqt(t_tree *node, t_cmd *cmd, int *fd)
 {
 	if (pipe(cmd->pipes) == -1)
+	{
 		print_err("failed to open pipe", EXIT_FAILURE);
+		g_stts = 1;
+		exit (1);
+	}
 	cmd->pid = fork();
 	if (cmd->pid < 0)
+	{
 		print_err("failed to fork process", EXIT_FAILURE);
+		g_stts = 1;
+		exit (1);
+	}
 	else if (cmd->pid == 0)
 		proc_child(node, cmd, fd);
 	if (cmd->num != 1)

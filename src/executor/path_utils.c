@@ -104,5 +104,5 @@ char	*get_cmd_path(char *cmd, char **env)
 	if (cmd[0] == '/')
 		return (get_abs_path(cmd));
 	else 
-		return (get_rel_path(cmd, get_cur_env(env)));
+		return (get_rel_path(cmd, get_path(env)));
 }
