@@ -12,6 +12,18 @@
 
 #include "../minishell.h"
 
+static int	print_cd_error(char **args)
+{
+	if (mtx_len(args) > 1)
+	{
+		ft_putstr_fd("minishell: cd: ", STDERR_FILENO);
+		ft_putstr_fd(args[1], STDERR_FILENO);
+		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+	}
+	free_mtx(args);
+	return (1);
+}
+
 static bool	is_valid_input(char **args, char **env)
 {
 	int	i;
@@ -28,7 +40,7 @@ static bool	is_valid_input(char **args, char **env)
 	print_shell_err("cd", "HOME not set", NO_EXIT);
 	return (false);
 }
-
+/*
 static int	print_cd_error(char **args)
 {
 	char	*tmp;
@@ -43,7 +55,7 @@ static int	print_cd_error(char **args)
 	free_mtx(args);
 	return (1);
 }
-
+*/
 static bool	set_oldpwd(char ***env, char *path)
 {
 	int	i;

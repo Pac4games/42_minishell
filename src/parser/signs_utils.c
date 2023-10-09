@@ -49,13 +49,13 @@ char	*parse_signs(char *str, char **env)
 	{
 		if (!str[i])
 			return (str);
-		if (!is_diff_sign("\"", str[i]))
+		if (str[i] && !is_diff_sign("\"", str[i]))
 			dol_sign_util(&tmp);
-		if (!is_diff_sign("'", str[i]) && !tmp)
+		if (str[i] && !is_diff_sign("'", str[i]) && !tmp)
 			i = quotes_skip(str, i);
 		if (*syntax())
 			return (free_str_ret_null(str));
-		if (!is_diff_sign("$", str[i]))
+		if (str[i] && !is_diff_sign("$", str[i]))
 			str = get_var(str, &i, env);
 		else
 			i++;
