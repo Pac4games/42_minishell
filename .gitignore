@@ -6,3 +6,4 @@ obj/
 minishell
 vgcore.*
 .DS_Store
+*file
