@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/09 18:53:31 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:35:10 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ static int	is_nbr(char *str)
 
 static int	quit(char **args, int isnum)
 {
-	if (isnum == 1 && args[2])
+
+	if (args[1] && args[2] && isnum == 1)
 	{
 		ft_putstr_fd(SHELL, STDERR_FILENO);
 		ft_putstr_fd(": exit: too many arguments\n", STDERR_FILENO);
@@ -107,13 +108,18 @@ int	ft_exit(char **args)
 	int	nbr;
 
 	nbr = 0;
+	if (args[0] && !args[1])
+	{
+		ft_putstr_fd("exit\n", STDOUT_FILENO);
+		g_stts = 1;
+		free_mtx(args);
+		rl_clear_history();
+		exit(g_stts);
+	}
 	if ((args[1] && is_nbr(args[1])))
 		nbr = 1;
-	if (args[2])
-	{
-		free_mtx(args);
-		return (quit(args, nbr));
-	}
+	if (args && args + 2 && args[2])
+	 	return (quit(args, nbr));
 	if ((nbr == 1 || mtx_len(args) == 2) || mtx_len(args) == 1)
 	{
 		ft_putstr_fd("exit\n", STDOUT_FILENO);

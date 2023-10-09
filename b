@@ -1,0 +1,3 @@
+MiniHell:$ ^C
+MiniHell:$ 
+exit

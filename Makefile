@@ -6,7 +6,7 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/09 18:55:20 by psoares-         ###   ########.fr        #
+#    Updated: 2023/10/09 19:50:43 by psoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,5 +82,9 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+run: re
+	@clear
+	@valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all --track-origins=yes -s --track-fds=yes ./minishell
 
 .PHONY: all clean fclean re
