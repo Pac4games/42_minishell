@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:48:22 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:47:19 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:49:07 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**get_cmd_args(t_tree *node, int pos)
 	char	**args;
 
 	p = 0;
-	args = malloc((get_cmd_arg_num(node, pos + 1)) * sizeof(char *));
+	args = malloc(sizeof(char *) * (get_cmd_arg_num(node, pos) + 1));
 	if (!args)
 		print_err("failed to allocate memory", EXIT_FAILURE);
 	while (node)
@@ -60,7 +60,7 @@ char	**get_cmd_args(t_tree *node, int pos)
 		else
 			node = node->right;
 	}
-	args[p] = NULL;
+	args[p] = 0;
 	return (args);
 }
 
