@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/08 16:37:20 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:11:33 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,11 @@ int	ft_exit(char **args)
 	int	nbr;
 
 	nbr = 0;
-	if ((args[1] && is_nbr(args[1])) || args[0])
+	if ((args[1] && is_nbr(args[1])))
 		nbr = 1;
-	if ((nbr == 1 && mtx_len(args) == 2) || mtx_len(args) == 1)
+	if (args[2])
+		return (quit(args, nbr));
+	if ((nbr == 1 || mtx_len(args) == 2) || mtx_len(args) == 1)
 	{
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
 		if (nbr == 1)
