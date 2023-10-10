@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/10 15:27:44 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:03:31 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,28 @@ static bool	is_num(char *str)
 		return (true);
 	return (false);
 }*/
+static int	check_max_long(char *arg)
+{
+	int	i;
 
+	i = 0;
+	if (arg[i] == '+' || arg[i] == '-')
+		i = 1;
+	while (arg[i] == '0')
+		i++;
+	if (ft_strlen(&arg[i]) < 19)
+		return (1);
+	if (ft_strlen(&arg[i]) > 19)
+		return (0);
+	if (arg[0] == '-')
+	{
+		if (ft_strncmp(&arg[i], "9223372036854775808", ft_strlen(&arg[i])) > 0)
+			return (0);
+	}
+	else if (ft_strncmp(&arg[i], "9223372036854775807", ft_strlen(&arg[i])) > 0)
+		return (0);
+	return (1);
+}
 static int	is_nbr(char *str)
 {
 	int	i;
@@ -105,8 +126,7 @@ static int	quit(char **args, int isnum)
 
 int	ft_exit(char **args)
 {
-	int	nbr;
-
+	long long int	nbr;
 	nbr = 0;
 	if (args[0] && !args[1])
 	{
@@ -116,11 +136,13 @@ int	ft_exit(char **args)
 		rl_clear_history();
 		exit(*exit_stts());
 	}
+	if (args[1])
+	{
+		if (!check_max_long(args[1]))
+			return (quit(args, nbr));
+	}
 	if ((args[1] && is_nbr(args[1])))
 		nbr = 1;
-	if (nbr == 1 && ft_atoi(args[1]) == LONG_MAX && !args[2])
-		return (quit(args, nbr));
-		
 	if (args && args + 2 && args[2])
 	 	return (quit(args, nbr));
 	if ((nbr == 1 || mtx_len(args) == 2) || mtx_len(args) == 1)

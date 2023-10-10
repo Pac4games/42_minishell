@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:25:39 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/10 15:26:25 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:08:41 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_list
 }					t_list;
 
 //Part 1 - Libc functions
-long int		ft_atoi(const char *s);
+long long int		ft_atoi(const char *s);
 void	ft_bzero(void *b, size_t len);
 void	*ft_calloc(size_t number, size_t size);
 int		ft_isalnum(int c);

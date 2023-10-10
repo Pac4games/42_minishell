@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 23:07:52 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/10 15:26:10 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:04:32 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	skip_spaces(const char *str)
 	return (p);
 }
 
-long int	ft_atoi(const char *str)
+long long int	ft_atoi(const char *str)
 {
 	int	p;
 	int	res;
