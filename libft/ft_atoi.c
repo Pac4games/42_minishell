@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 23:07:52 by paugonca          #+#    #+#             */
-/*   Updated: 2022/10/12 00:05:11 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:26:10 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	skip_spaces(const char *str)
 	return (p);
 }
 
-int	ft_atoi(const char *str)
+long int	ft_atoi(const char *str)
 {
 	int	p;
 	int	res;

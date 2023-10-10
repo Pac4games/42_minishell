@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 23:21:16 by paugonca          #+#    #+#             */
-/*   Updated: 2022/10/20 16:19:45 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:25:08 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	signdef(int n)
 	return (-1);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long int n)
 {
 	char	*res;
 	size_t	len;

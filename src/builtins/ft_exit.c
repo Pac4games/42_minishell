@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/10 13:12:06 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:27:44 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,9 @@ int	ft_exit(char **args)
 	}
 	if ((args[1] && is_nbr(args[1])))
 		nbr = 1;
+	if (nbr == 1 && ft_atoi(args[1]) == LONG_MAX && !args[2])
+		return (quit(args, nbr));
+		
 	if (args && args + 2 && args[2])
 	 	return (quit(args, nbr));
 	if ((nbr == 1 || mtx_len(args) == 2) || mtx_len(args) == 1)

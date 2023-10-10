@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:25:39 by paugonca          #+#    #+#             */
-/*   Updated: 2023/09/28 15:08:19 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:26:25 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_list
 }					t_list;
 
 //Part 1 - Libc functions
-int		ft_atoi(const char *s);
+long int		ft_atoi(const char *s);
 void	ft_bzero(void *b, size_t len);
 void	*ft_calloc(size_t number, size_t size);
 int		ft_isalnum(int c);
@@ -47,7 +47,7 @@ char	*ft_strrchr(const char *s, int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 //Part 2 - Additional functions
-char	*ft_itoa(int n);
+char	*ft_itoa(long int n);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
