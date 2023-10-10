@@ -165,7 +165,7 @@ void			free_pipes(t_pipe **pipes);
 //signs_utils.c
 int				find_eq_sign(char *str);
 char			*parse_signs(char *str, char **env);
-bool			is_diff_sign(char *sign, char c);
+int			is_diff_sign(char *sign, char c);
 //quotes_utils.c
 int				quotes_skip(char *str, int i);
 int				get_quote_num(char *str);

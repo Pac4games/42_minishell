@@ -63,14 +63,15 @@ char	*parse_signs(char *str, char **env)
 	return (str);
 }
 
-bool	is_diff_sign(char *sign, char c)
+int is_diff_sign(char *sign, char c)
 {
-	int	j;
+    int j = 0;
+    
+    while (c && sign[j] && c != sign[j])
+        j++;
 
-	j = 0;
-	while (c && sign[j] && c != sign[j])
-		j++;
-	if (!sign[j])
-		return (true);
-	return (false);
+    if (!sign[j])
+        return 1;
+    
+    return 0;
 }
