@@ -6,7 +6,7 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/10 12:46:48 by paugonca         ###   ########.fr        #
+#    Updated: 2023/10/10 13:16:53 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ OBJ_PATH    = ./obj
 
 SRC_NAME    = main.c						\
               env_utils.c					\
+			  exit_stts.c					\
 			  parser/parser.c				\
 			  parser/parser_utils.c			\
 			  parser/tree_init.c			\
