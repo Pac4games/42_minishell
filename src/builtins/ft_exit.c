@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/09 19:35:10 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:12:06 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ static int	quit(char **args, int isnum)
 		ft_putstr_fd(SHELL, STDERR_FILENO);
 		ft_putstr_fd(": exit: too many arguments\n", STDERR_FILENO);
 		free_mtx(args);
-		g_stts = EXIT_FAILURE;
+		*exit_stts() = EXIT_FAILURE;
 		return (-1);
 	}
-	g_stts = 2;
+	*exit_stts() = 2;
 	ft_putstr_fd("exit\n", STDERR_FILENO);
 	ft_putstr_fd(SHELL, STDERR_FILENO);
 	ft_putstr_fd(": exit: ", STDERR_FILENO);
@@ -91,14 +91,14 @@ static int	quit(char **args, int isnum)
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
 		if (isnum)
 		{
-			g_stts = (unsigned int) ft_atoi(args[1]);
+			*exit_stts() = (unsigned int) ft_atoi(args[1]);
 			free_mtx(args);
 			rl_clear_history();
-			exit(g_stts);
+			exit(*exit_stts());
 		}
 		free_mtx(args);
 		rl_clear_history();
-		exit(g_stts);
+		exit(*exit_stts());
 	}
 	return (quit(args, isnum));
 }*/
@@ -111,10 +111,10 @@ int	ft_exit(char **args)
 	if (args[0] && !args[1])
 	{
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
-		g_stts = 1;
+		*exit_stts() = 1;
 		free_mtx(args);
 		rl_clear_history();
-		exit(g_stts);
+		exit(*exit_stts());
 	}
 	if ((args[1] && is_nbr(args[1])))
 		nbr = 1;
@@ -125,14 +125,14 @@ int	ft_exit(char **args)
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
 		if (nbr == 1)
 		{
-			g_stts = (unsigned int) ft_atoi(args[1]);
+			*exit_stts() = (unsigned int) ft_atoi(args[1]);
 			free_mtx(args);
 			rl_clear_history();
-			exit(g_stts);
+			exit(*exit_stts());
 		}
 		free_mtx(args);
 		rl_clear_history();
-		exit(g_stts);
+		exit(*exit_stts());
 	}
 	return (quit(args, nbr));
 }

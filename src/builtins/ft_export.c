@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:41:20 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/04 11:20:36 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:46:11 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	ft_export(char **args, char ***env, int fd)
 {
 	int	i;
 
+	print_mtx(args);
 	if (mtx_len(args) == 1)
 	{
 		free_mtx(args);

@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:12:11 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/04 11:19:11 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:12:00 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int	ft_echo(char **args, int fd)
 	if (!(mtx_len(args) > 1 && is_flag(args[1])))
 		ft_putchar_fd('\n', fd);
 	free_mtx(args);
-	g_stts = EXIT_SUCCESS;
+	*exit_stts() = EXIT_SUCCESS;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:40:31 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:10:15 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@
 //4 - group permissions (read)
 //4 - others permissions (read)
 # define S_STDPERMS 0644
-
-//Global variable declaration
-extern int	g_stts;
 
 //Node types
 typedef enum e_ndtype
@@ -137,6 +134,8 @@ void			set_exit_stts(int stts);
 char			*shlvl_up(char *shlvl);
 //env_utils.c
 char			**get_cur_env(char **env);
+//exit_stts.c
+int				*exit_stts(void);
 
 /*					 PARSER						*/
 //parser.c

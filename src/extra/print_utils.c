@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:50:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:29:24 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:11:05 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	print_err(char *msg, int stts)
 {
 	ft_putstr_fd("Error: ", STDERR_FILENO);
 	ft_putendl_fd(msg, STDERR_FILENO);
-	g_stts = stts;
-	exit(g_stts);
+	*exit_stts() = stts;
+	exit(*exit_stts());
 }
 
 void	print_shell_err(char *cmd, char *msg, int stts)
@@ -39,8 +39,8 @@ void	print_shell_err(char *cmd, char *msg, int stts)
 	ft_putendl_fd(msg, STDERR_FILENO);
 	if (stts != NO_EXIT)
 	{
-		g_stts = stts;
-		exit(g_stts);
+		*exit_stts() = stts;
+		exit(*exit_stts());
 	}
 }
 
@@ -54,14 +54,14 @@ void	print_hdoc_warn(char *eof, char *in, int stts)
 	free(eof);
 	free(in);
 	unlink(".heredoc_tmp");
-	g_stts = stts;
-	exit(g_stts);
+	*exit_stts() = stts;
+	exit(*exit_stts());
 }
 
 void	print_syntax_error(void)
 {
 	if ((*syntax()) == 1)
 		ft_putendl_fd("Syntax Error", STDOUT_FILENO);
-	g_stts = EXIT_FAILURE;
+	*exit_stts() = EXIT_FAILURE;
 	(*syntax())++;
 }

@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:24:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:25:06 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:11:28 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ char	*get_cmd_path(char *cmd, char **env)
 		ft_putstr_fd(SHELL, STDERR_FILENO);
 		ft_putendl_fd(": filename argument required", STDERR_FILENO);
 		ft_putendl_fd(".: usage: . filename [arguments]", STDERR_FILENO);
-		g_stts = 126;
-		exit(g_stts);
+		*exit_stts() = 126;
+		exit(*exit_stts());
 	}
 	else if (ft_strlen(cmd) == 2 && cmd[0] == '.' && cmd[1] == '.')
 		print_shell_err(cmd, "command not found", 127);

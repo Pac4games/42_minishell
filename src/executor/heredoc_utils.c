@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:49:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:48:19 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:11:21 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static void	rtfd(int fd, char *eof, int stts)
 	free(eof);
 	if (res)
 		free(res);
-	g_stts = EXIT_SUCCESS;
-	exit(g_stts);
+	*exit_stts() = EXIT_SUCCESS;
+	exit(*exit_stts());
 }
 
 //Yet another genius name (may change it later)
@@ -64,10 +64,10 @@ int	deezdocs(t_tree **root, t_cmd *cmd, int p)
 	close(((*root)->pipes)[1]);
 	waitpid(cmd->pid, &stts, 0);
 	set_exit_stts(stts);
-	if (g_stts == 129 || g_stts == 130)
+	if (*exit_stts() == 129 || *exit_stts() == 130)
 	{
-		if (g_stts == 129)
-			g_stts = EXIT_SUCCESS;
+		if (*exit_stts() == 129)
+			*exit_stts() = EXIT_SUCCESS;
 		return (true);
 	}
 	return (false);

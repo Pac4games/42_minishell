@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:44:55 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:28:09 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:11:49 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	sig_rl(int sig, siginfo_t *info, void *ucontext)
 		return ;
 	else if (sig == SIGINT)
 	{
-		g_stts = 130;
+		*exit_stts() = 130;
 		rl_replace_line("", 0);
 		ft_putendl_fd(NULL, STDOUT_FILENO);
 		rl_on_new_line();
@@ -38,8 +38,8 @@ static void	sig_hdoc(int sig, siginfo_t *info, void *ucontext)
 	{
 		ft_putendl_fd(NULL, 0);
 		unlink(".heredoc_tmp");
-		g_stts = 130;
-		exit(g_stts);
+		*exit_stts() = 130;
+		exit(*exit_stts());
 	}
 }
 

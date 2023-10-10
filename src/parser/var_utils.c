@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:48:54 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:39:13 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:10:34 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	*get_var(char *str, int *i, char **env)
 	j = (*i) + 1;
 	if (str[j] == '?')
 	{
-		return (get_stts(str, *i, ft_itoa(g_stts)));
+		return (get_stts(str, *i, ft_itoa(*exit_stts())));
 		(*i)++;
 	}
 	while (str[j] && is_var(str[j]))

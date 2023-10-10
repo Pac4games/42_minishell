@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:47:30 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:11:16 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 	sig_handle(E_SIG_DFL);
 	rl_clear_history();
 	if (builtin_ret(node, cmd->env, get_cmd(node, cmd->pos), cmd->pos))
-		exit(g_stts);
+		exit(*exit_stts());
 	execve(get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env)),
 		get_cmd_args(node, cmd->pos), *(cmd->env));
 	free_tree(get_tree_root(&node));
-	g_stts = 127;
+	*exit_stts() = 127;
 	exit(127);
 }
 
@@ -33,14 +33,14 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd)
 	if (pipe(cmd->pipes) == -1)
 	{
 		print_err("failed to open pipe", EXIT_FAILURE);
-		g_stts = 1;
+		*exit_stts() = 1;
 		exit (1);
 	}
 	cmd->pid = fork();
 	if (cmd->pid < 0)
 	{
 		print_err("failed to fork process", EXIT_FAILURE);
-		g_stts = 1;
+		*exit_stts() = 1;
 		exit (1);
 	}
 	else if (cmd->pid == 0)

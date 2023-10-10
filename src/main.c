@@ -6,24 +6,22 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:40:03 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:10:18 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	g_stts = EXIT_SUCCESS;
-
 void	set_exit_stts(int stts)
 {
 	if (WIFSIGNALED(stts))
 	{
-		g_stts = WTERMSIG(stts) + 128;
+		*exit_stts() = WTERMSIG(stts) + 128;
 		if (stts == SIGINT)
 			ft_putendl_fd(NULL, STDIN_FILENO);
 	}
 	else 
-		g_stts = WEXITSTATUS(stts);
+		*exit_stts() = WEXITSTATUS(stts);
 }
 
 char	*shlvl_up(char *shlvl)
@@ -52,8 +50,8 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 		{
 			ft_putstr_fd("\nexit\n", STDOUT_FILENO);
 			rl_clear_history();
-			g_stts = EXIT_FAILURE;
-			exit(g_stts);
+			*exit_stts() = EXIT_FAILURE;
+			exit(*exit_stts());
 		}
 		else if (!ft_strlen(in))
 		{
@@ -81,5 +79,5 @@ int	main(int ac, char **av, char **envp)
 	tree = NULL;
 	*syntax() = 0;
 	le_loop(in, prompt, env, tree);
-	return (g_stts);
+	return (*exit_stts());
 }

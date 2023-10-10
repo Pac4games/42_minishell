@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 21:53:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:25:38 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:11:32 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int	redir_builtin_in(t_tree *node)
 	if (pid == 0)
 		exit(open_builtin_in(node));
 	waitpid(pid, &stts, 0);
-	g_stts = WEXITSTATUS(stts);
-	if (g_stts == 255)
-		g_stts = EXIT_FAILURE;
+	*exit_stts() = WEXITSTATUS(stts);
+	if (*exit_stts() == 255)
+		*exit_stts() = EXIT_FAILURE;
 	else
-		g_stts = EXIT_SUCCESS;
-	return (g_stts);
+		*exit_stts() = EXIT_SUCCESS;
+	return (*exit_stts());
 }
 
 int	redir_builtin_out(t_tree *node)
