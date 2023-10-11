@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/10 11:21:08 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/11 12:05:06 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 static int	print_cd_error(char **args)
 {
-	if (mtx_len(args) > 1)
-	{
-		ft_putstr_fd("MiniHell: cd: ", STDERR_FILENO);
-		ft_putstr_fd(args[1], STDERR_FILENO);
-		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
-	}
+	ft_putstr_fd("MiniHell: cd: ", STDERR_FILENO);
+	ft_putstr_fd(args[1], STDERR_FILENO);
+	ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
 	free_mtx(args);
 	return (1);
 }
@@ -83,13 +80,6 @@ int	ft_cd(char **args, char ***env)
 	char	path[1025];
 	char	*tmp;
 
-	/*if (args[2])
-	{
-		print_shell_err("cd", "too many arguments", STDOUT_FILENO);
-		*exit_stts() = 2;
-		free_mtx(args);
-		return (1);
-	}*/
 	if ((is_valid_input(&args[1], *env) == 1 || getcwd(path, 1025) == NULL))
 	{
 		free_mtx(args);

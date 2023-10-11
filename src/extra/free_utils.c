@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:35:46 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:28:50 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/11 12:00:55 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	mtx_len(char **mtx)
 	int	res;
 
 	res = 0;
-	while (mtx[res++])
-		continue ;
+	while (mtx[res])
+		res++;
 	return (res);
 }
