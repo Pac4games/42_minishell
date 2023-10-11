@@ -70,13 +70,11 @@ char	*find_var(char *var, char **env)
 	int	i;
 	int	size;
 
-	i = 0;
-	while (env[i])
-	{	
-		if (!(ft_strncmp(env[i], "HOME=", 5)))
+	i = -1;
+	while (env[++i])
+		if (!ft_strncmp(env[i], var, find_eq_sign(env[i])) && \
+		!var[find_eq_sign(env[i])])
 			break ;
-		i++;
-	}
 	size = ft_strlen(var);
 	if (var)
 		free(var);
