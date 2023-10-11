@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/11 15:54:16 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:21:54 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ static int	is_valid_input(char **args, char **env)
 	while (env && env[i] != 0)
 	{
 		if (ft_strncmp(env[i], "HOME=", 5))
+		{
 			return (0);
+		}
 		i++;
 	}
 	ft_putstr_fd("minishell: cd: HOME not set\n", STDERR_FILENO);

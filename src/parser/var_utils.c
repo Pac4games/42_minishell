@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   var_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:48:54 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/10 13:10:34 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/11 20:16:43 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,13 @@ char	*find_var(char *var, char **env)
 	int	i;
 	int	size;
 
-	i = -1;
-	while (env[++i])
-		if (!(ft_strncmp(env[i], var, find_eq_sign(env[i])) \
-			&& var[find_eq_sign(env[i])]))
+	i = 0;
+	while (env[i])
+	{	
+		if (!(ft_strncmp(env[i], "HOME=", 5)))
 			break ;
+		i++;
+	}
 	size = ft_strlen(var);
 	if (var)
 		free(var);
@@ -96,6 +98,7 @@ char	*get_var(char *str, int *i, char **env)
 	}
 	while (str[j] && is_var(str[j]))
 		j++;
+
 	if (j == (*i) + 1)
 	{
 		(*i)++;
