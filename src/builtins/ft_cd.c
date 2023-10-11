@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/11 12:05:06 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:46:29 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,12 @@ int	ft_cd(char **args, char ***env)
 {
 	char	path[1025];
 	char	*tmp;
-
+	if (mtx_len(args) > 2)
+	{
+		printf("MiniHell: cd: too many arguments\n");
+		free_mtx(args);
+		return (1);
+	}
 	if ((is_valid_input(&args[1], *env) == 1 || getcwd(path, 1025) == NULL))
 	{
 		free_mtx(args);
