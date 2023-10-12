@@ -6,7 +6,7 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/11 16:17:41 by paugonca         ###   ########.fr        #
+#    Updated: 2023/10/12 10:51:06 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC_NAME    = main.c						\
 			  parser/get_stts_utils.c		\
 			  builtins/builtin_utils.c		\
 			  builtins/ft_cd.c				\
+			  builtins/ft_cd_utils.c		\
 			  builtins/ft_echo.c			\
 			  builtins/ft_env.c				\
 			  builtins/ft_exit.c			\

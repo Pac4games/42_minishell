@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/11 19:21:54 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:09:24 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	set_oldpwd(char ***env, char *path)
 	}
 	return (1);
 }
+
 static int	set_updpwd(char ***env, char *path)
 {
 	int	i;
@@ -85,10 +86,11 @@ static int	set_updpwd(char ***env, char *path)
 	}
 	return (1);
 }
+
 int	ft_cd(char **args, char ***env)
 {
 	char	path[1025];
-	char	*tmp;
+
 	if (mtx_len(args) > 2)
 	{
 		printf("MiniHell: cd: too many arguments\n");
@@ -100,13 +102,9 @@ int	ft_cd(char **args, char ***env)
 		free_mtx(args);
 		return (1);
 	}
-	if (mtx_len(args) == 1)
-	{
-		tmp = parse_signs(ft_strdup("$HOME"), *env);
-		chdir(tmp);
-		free(tmp);
-	}
-	else if (chdir(args[1]) == -1)
+	if (ft_cd_weird_args(args, env))
+		return (1);
+	if (chdir(args[1]) == -1)
 		return (print_cd_error(args));
 	if (!set_oldpwd(env, path) || getcwd(path, 1025) == NULL)
 	{
