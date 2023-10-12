@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:41:20 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/10 12:46:11 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:18:38 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,18 @@ int	ft_export(char **args, char ***env, int fd)
 {
 	int	i;
 
-	print_mtx(args);
 	if (mtx_len(args) == 1)
 	{
 		free_mtx(args);
 		return (no_args(*env, fd));
+	}
+	else if (ft_isdigit(args[1][0]))
+	{
+		ft_putstr_fd("MiniHell: export: ", STDERR_FILENO);
+		ft_putstr_fd(args[1], STDERR_FILENO);
+		ft_putendl_fd(": not a valid identifier", STDERR_FILENO);
+		free_mtx(args);
+		return (0);
 	}
 	i = 0;
 	while (args[i])
