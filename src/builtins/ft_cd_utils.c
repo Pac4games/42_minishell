@@ -21,13 +21,13 @@ int	ft_cd_weird_args(char **args, char ***env)
 	char	*tmp;
 
 	tmp = NULL;
-	if (mtx_len(args) == 1)
+	if (mtx_len(args) == 1 || (mtx_len(args) == 2 && args[1][1] == '-' && args[1][0] =='-'))
 	{
 		tmp = parse_signs(ft_strdup("$HOME"), *env);
 		chdir(tmp);
 	}
 	else if (((args[1][0] == '-') || !ft_strncmp(args[1], "--", 2)) && \
-	ft_strlen(args[1]) < 3)
+	ft_strlen(args[1]) < 2)
 	{
 		tmp = parse_signs(ft_strdup("$OLDPWD"), *env);
 		ft_putendl_fd(tmp, STDOUT_FILENO);
