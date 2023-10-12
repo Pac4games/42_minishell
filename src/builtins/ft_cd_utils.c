@@ -6,15 +6,15 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 10:49:32 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/12 11:11:49 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:43:49 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
 //If "cd" receives no arguments, it will navigate to the current user's
-//home directory. Otherwise, if "cd" is followed by a single "-", it will
-//navigate to the working directory before the last time that "cd" was
+//home directory. Otherwise, if "cd" is followed by a single or two "-", it
+//will navigate to the working directory before the last time that "cd" was
 //called.
 int	ft_cd_weird_args(char **args, char ***env)
 {
@@ -26,7 +26,8 @@ int	ft_cd_weird_args(char **args, char ***env)
 		tmp = parse_signs(ft_strdup("$HOME"), *env);
 		chdir(tmp);
 	}
-	else if (args[1][0] == '-' && ft_strlen(args[1]) == 1)
+	else if (((args[1][0] == '-') || !ft_strncmp(args[1], "--", 2)) && \
+	ft_strlen(args[1]) < 3)
 	{
 		tmp = parse_signs(ft_strdup("$OLDPWD"), *env);
 		ft_putendl_fd(tmp, STDOUT_FILENO);
