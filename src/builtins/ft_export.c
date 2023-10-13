@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:41:20 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/12 14:18:38 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:35:45 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,23 @@ static void	export_arg(char *arg, char ***env)
 	export_arg_new(arg, env, i);
 }
 
+static int	check_var_names(char **args)
+{
+	int	i;
+	int	res;
+
+	i = -1;
+	res = 0;
+	while (args[++i])
+	{
+		if (ft_isdigit(args[i][0]))
+			res = export_fail(args[i]);
+	}
+	if (res)
+		free_mtx(args);
+	return (res);
+}
+
 int	ft_export(char **args, char ***env, int fd)
 {
 	int	i;
@@ -58,15 +75,9 @@ int	ft_export(char **args, char ***env, int fd)
 		free_mtx(args);
 		return (no_args(*env, fd));
 	}
-	else if (ft_isdigit(args[1][0]))
-	{
-		ft_putstr_fd("MiniHell: export: ", STDERR_FILENO);
-		ft_putstr_fd(args[1], STDERR_FILENO);
-		ft_putendl_fd(": not a valid identifier", STDERR_FILENO);
-		free_mtx(args);
-		return (0);
-	}
 	i = 0;
+	if (check_var_names(args))
+		return (1);
 	while (args[i])
 		export_arg(ft_strdup(args[i++]), env);
 	free_mtx(args);

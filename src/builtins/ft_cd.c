@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/12 11:09:24 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:44:29 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 static int	print_cd_error(char **args)
 {
+	char	*msg;
+
+	msg = ft_strjoin(SHELL, ": cd: `");
 	if (access(args[1], X_OK == -1))
 	{
-		ft_putstr_fd("MiniHell: cd: ", STDERR_FILENO);
+		ft_putstr_fd(msg, STDERR_FILENO);
 		ft_putstr_fd(args[1], STDERR_FILENO);
-		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+		ft_putstr_fd("': No such file or directory\n", STDERR_FILENO);
 		free_mtx(args);
 		return (1);
 	}
-	ft_putstr_fd("MiniHell: cd: ", STDERR_FILENO);
+	ft_putstr_fd(msg, STDERR_FILENO);
 	ft_putstr_fd(args[1], STDERR_FILENO);
-	ft_putstr_fd(": Not a directory\n", STDERR_FILENO);
+	ft_putstr_fd("': Not a directory\n", STDERR_FILENO);
+	free(msg);
 	free_mtx(args);
 	return (1);
 }

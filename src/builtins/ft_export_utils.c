@@ -6,20 +6,22 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 20:29:48 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:20:57 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:42:07 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	export_fail(char *arg)
+int	export_fail(char *arg)
 {
 	char	*msg;
 
-	msg = ft_strjoin(arg, ": not a valid identifier");
-	print_shell_err("export", msg, NO_EXIT);
+	msg = ft_strjoin(SHELL, ": export: `");
+	ft_putstr_fd(msg, STDERR_FILENO);
+	ft_putstr_fd(arg, STDERR_FILENO);
+	ft_putendl_fd("': not a valid identifier", STDERR_FILENO);
 	free(msg);
-	return (false);
+	return (1);
 }
 
 static bool	is_exportable(char *arg)
