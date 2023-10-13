@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:49:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/10 13:11:21 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:34:01 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	rtfd(int fd, char *eof, int stts)
 	while (true)
 	{
 		sig_handle(E_SIG_HDOC);
-		in = readline("heredoc> ");
+		in = readline("> ");
 		if (!in)
 			print_hdoc_warn(eof, in, stts);
 		res = ft_strjoin(in, "\n");
