@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:52:04 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:50:53 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	**pipe_split(t_pipe *pipes, char *arg)
 		if (!pipes->next)
 		{
 			res[pipes->num + 1] = ft_substr(arg, i, ft_strlen(arg) - 1);
-			res[pipes->num + 2] = NULL;
+			res[pipes->num + 2] = 0;
 		}
 		pipes = pipes->next;
 	}

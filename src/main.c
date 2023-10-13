@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/11 20:14:13 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:39:42 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	main(int ac, char **av, char **envp)
 	env = get_cur_env(envp);
 	tree = NULL;
 	*syntax() = 0;
+	*exit_stts() = EXIT_SUCCESS;
 	le_loop(in, prompt, env, tree);
 	return (*exit_stts());
 }
