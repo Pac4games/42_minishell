@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:48:21 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/11 19:31:25 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/13 18:15:03 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*parse_signs(char *str, char **env)
 
 	i = 0;
 	tmp = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		if (!str[i])
 			return (str);

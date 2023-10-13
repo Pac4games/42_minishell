@@ -6,13 +6,13 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/13 17:35:26 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/13 18:06:37 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static bool	parse_str_redir(char *str, t_parse parse, int *i)
+static int	parse_str_redir(char *str, t_parse parse, int *i)
 {
 	int	j;
 
@@ -29,8 +29,8 @@ static bool	parse_str_redir(char *str, t_parse parse, int *i)
 		&& str[j + 1] == '<' && str[j + 2] != '<')
 		*i = tree_add_case(str, j, E_HDOC, parse);
 	else
-		return (false);
-	return (true);
+		return (0);
+	return (1);
 }
 
 static void	parse_str(char *str, t_parse parse, bool exp)
@@ -49,8 +49,8 @@ static void	parse_str(char *str, t_parse parse, bool exp)
 			i++;
 		if (parse_str_redir(str, parse, &i))
 			;
-		else if (str[i] && str[i] == '-' && str[i + 1] && str[i + 1]
-			&& is_diff_sign("<>|&", str[i + 1]) && cmd)
+		else if (str[i] && str[i] == '-' && str[i + 1] \
+		&& is_diff_sign("<>|&", str[i + 1]) && cmd)
 			i = tree_add_case(str, i - 1, E_FLAG, parse);
 		else if (str[i] && cmd != 0)
 			i = tree_add_case(str, i - 1, E_ARG, parse);

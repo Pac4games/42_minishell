@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 22:56:12 by paugonca          #+#    #+#             */
-/*   Updated: 2022/10/12 17:01:24 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/13 18:13:08 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *s)
 	size_t	p;
 
 	p = 0;
-	while (s[p])
+	while (s && s[p])
 		p++;
 	return (p);
 }

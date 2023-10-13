@@ -1,14 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
+	/* ************************************************************************** */
+	/*                                                                            */
+	/*                                                        :::      ::::::::   */
 /*   pipe_utils.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/13 17:50:53 by paugonca         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+	/*                                                    +:+ +:+         +:+     */
+	/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+	/*                                                +#+#+#+#+#+   +#+           */
+	/*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
+/*   Updated: 2023/10/13 18:09:41 by paugonca         ###   ########.fr       */
+	/*                                                                            */
+	/* ************************************************************************** */
 
 #include "../minishell.h"
 
@@ -80,18 +80,18 @@ char	**pipe_split(t_pipe *pipes, char *arg)
 	tmp = pipes;
 	while (tmp->next)
 		tmp = tmp->next;
-	res = malloc((tmp->num * 3) * sizeof(char *));
+	res = malloc((tmp->num + 3) * sizeof(char *));
 	i = 0;
 	while (pipes)
 	{
 		res[pipes->num] = ft_substr(arg, i, pipes->pos - 1);
 		i = pipes->pos + i;
-		if (!pipes->next)
-		{
-			res[pipes->num + 1] = ft_substr(arg, i, ft_strlen(arg) - 1);
-			res[pipes->num + 2] = 0;
-		}
-		pipes = pipes->next;
+	if (!pipes->next)
+	{
+		res[pipes->num + 1] = ft_substr(arg, i, ft_strlen(arg) - 1);
+		res[pipes->num + 2] = 0;
+	}
+	pipes = pipes->next;
 	}
 	return (res);
 }
