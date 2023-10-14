@@ -85,7 +85,7 @@ char	**pipe_split(t_pipe *pipes, char *arg)
 	while (pipes)
 	{
 		res[pipes->num] = ft_substr(arg, i, pipes->pos - 1);
-		i = pipes->pos + i;
+		i = pipes->pos + 1;
 		if (!pipes->next)
 		{
 			res[pipes->num + 1] = ft_substr(arg, i, ft_strlen(arg) - 1);
