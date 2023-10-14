@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:32:50 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:29:52 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:07:26 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,38 @@
 
 static void	get_stts_utils(char *str, int i, char *val, char **res)
 {
-	int	j;
-	int	k;
-	int	l;
+	int		k;
+	int		j;
+	int		l;
 
-	j = 0;
-	k = 0;
 	l = 0;
-	while (str[j + l])
+	k = 0;
+	j = 0;
+	while (str[k + l])
 	{
-		if ((j + k) == i)
+		if ((k + j) == i)
 		{
-			while (val[k])
+			while (val[j])
 			{
-				(*res)[j + k] = val[k];
-				k++;
+				(*res)[k + j] = val[j];
+				j++;
 			}
 			l = 2;
 		}
 		else
 		{
-			(*res)[j + k] = str[j + l];
-			j++;
+			(*res)[k + j] = str[k + l];
+			k++;
 		}
 	}
-	(*res)[j + k] = 0;
+	(*res)[k + j] = 0;
 }
 
 char	*get_stts(char *str, int i, char *val)
 {
 	char	*res;
 
-	res = malloc(ft_strlen(str) - 2 * ft_strlen(val) + 1);
+	res = malloc(ft_strlen(str) - 2 + ft_strlen(val) + 1);
 	get_stts_utils(str, i, val, &res);
 	free(val);
 	free(str);
