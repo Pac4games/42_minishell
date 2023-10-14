@@ -6,24 +6,24 @@
 	/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/09/10 16:44:19 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/14 18:17:27 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 18:47:30 by paugonca         ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	parse_pipes_utils(char *arg, int *i)
+static void	check_pipes_utils(char *arg, int *i)
 {
 	while (arg[*i])
 	{
-		if (!is_diff_sign("\"'", arg[*i]))
+		if (arg[*i] && !is_diff_sign("\"'", arg[*i]))
 			*i = quotes_skip(arg, *i);
-		if (!is_diff_sign("|", arg[*i]))
+		if (arg[*i] && !is_diff_sign("|", arg[*i]))
 		{
 			(*i)++;
-			while ((arg[*i] == ' ' || arg[*i] == '\t'))
+			while (arg[*i] && (arg[*i] == ' ' || arg[*i] == '\t'))
 				(*i)++;
-			if (!is_diff_sign("|", arg[*i]))
+			if (arg[*i] && !is_diff_sign("|", arg[*i]))
 				print_syntax_error();
 		}
 		else
@@ -42,9 +42,9 @@ void	check_pipes(char *arg)
 		return ;
 	while (arg[i] && (arg[i] == ' ' || arg[i] == '\t'))
 		i++;
-	if (!arg[i] || !is_diff_sign("|", arg[i]))
+	if (arg[i] && !is_diff_sign("|", arg[i]))
 		print_syntax_error();
-	parse_pipes_utils(arg, &i);
+	check_pipes_utils(arg, &i);
 	if (*syntax())
 		return ;
 }
@@ -64,7 +64,7 @@ void	pipe_add2pos(t_pipe **pipes, int pos, int num)
 		*pipes = res;
 		return ;
 	}
-	while (tmp)
+	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = res;
 }
@@ -96,7 +96,7 @@ char	**pipe_split(t_pipe *pipes, char *arg)
 	return (res);
 }
 
-void	free_pipes(t_pipe **pipes) // 2ok
+void	free_pipes(t_pipe **pipes)
 {
 	if (!pipes || !(*pipes))
 		return ;

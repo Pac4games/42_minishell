@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/14 17:57:46 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 18:29:53 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	check_export(char *arg, t_ndtype type, t_parse parse)
 
 	tmp = quotes_rm(arg);
 	if (!ft_strncmp(tmp, "export", ft_strlen(tmp)) && type == E_CMD)
-		*(parse.exp) = true;
+		*(parse.exp) = 1;
 	free(tmp);
 }
 
@@ -93,7 +93,7 @@ int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse)
 	}
 	if (*syntax())
 		return (0);
-	check_export(ft_substr(arg, i, j- 1), type, parse);
+	check_export(ft_substr(arg, i, j - 1), type, parse);
 	tar_util2(ft_substr(arg, i, j - 1), type, parse);
 	return (j);
 }
