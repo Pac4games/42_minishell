@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:02:23 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/13 11:22:47 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 18:20:31 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ typedef struct s_tree
 typedef struct s_parse
 {
 	int		pos;
-	bool	*exp;
+	int		*exp;
 	char	**env;
 	t_tree	**tree;
 }			t_parse;

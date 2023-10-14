@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:51:58 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/13 18:14:40 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 18:24:04 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,25 @@ static char	*quotes_rm_fr(char *str, int i, int j, char tmp)
 	char	*res;
 
 	res = malloc(sizeof(char) * ft_strlen(str) - get_quote_num(str) + 1);
-	while (str && str[++i])
+	while (str[i])
 	{
-		if (!is_diff_sign("\"'", str[i]))
+		if (str[i] && !is_diff_sign("'\"", str[i]))
 		{
-			tmp = str[i++];
+			tmp = str[i];
+			i++;
 			while (str[i] && str[i] != tmp)
-				res[j++] = str[i++];
+			{
+				res[j] = str[i];
+				j++;
+				i++;
+			}
 		}
 		else
-			res[j++] = str[i];
+		{
+			res[j] = str[i];
+			j++;
+		}
+		i++;
 	}
 	res[j] = 0;
 	return (res);
@@ -73,7 +82,7 @@ char	*quotes_rm(char *str)
 {
 	char	*res;
 
-	res = quotes_rm_fr(str, -1, 0, ' ');
+	res = quotes_rm_fr(str, 0, 0, ' ');
 	free(str);
 	return (res);
 }

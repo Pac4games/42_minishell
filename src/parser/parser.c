@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/14 16:35:59 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/14 18:20:16 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	parse_str_redir(char *str, t_parse parse, int *i)
 	return (1);
 }
 
-static void	parse_str(char *str, t_parse parse, bool exp)
+static void	parse_str(char *str, t_parse parse, int exp)
 {
 	int	i;
 	int	cmd;
@@ -50,7 +50,7 @@ static void	parse_str(char *str, t_parse parse, bool exp)
 		if (parse_str_redir(str, parse, &i))
 			;
 		else if (str[i] && str[i] == '-' && str[i + 1] \
-		&& !is_diff_sign("<>|&", str[i + 1]) && cmd&& printf("2sagddddddddddddddd"))
+		&& is_diff_sign("<>|&", str[i + 1]) && cmd && printf("2sagddddddddddddddd"))
 			i = tree_add_case(str, i - 1, E_FLAG, parse);
 		else if (str[i] && cmd != 0 && printf("1sagddddddddddddddd"))
 			i = tree_add_case(str, i - 1, E_ARG, parse);
@@ -70,11 +70,11 @@ static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env)
 	parse.env = env;
 	parse.tree = root;
 	if (!mtx)
-		parse_str(arg, parse, false);
+		parse_str(arg, parse, 0);
 	else
 	{
 		while (mtx[parse.pos])
-			parse_str(mtx[parse.pos++], parse, false);
+			parse_str(mtx[parse.pos++], parse, 0);
 	}
 	free_mtx(mtx);
 }

@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:06:42 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:35:55 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 17:59:44 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	gvt_utils(char *arg, int i, char *home, char **res)
 				(*res)[j + k] = home[k];
 				k++;
 			}
-			l = 2;
+			l = 1;
 		}
 		else
 		{
