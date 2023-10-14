@@ -86,12 +86,12 @@ char	**pipe_split(t_pipe *pipes, char *arg)
 	{
 		res[pipes->num] = ft_substr(arg, i, pipes->pos - 1);
 		i = pipes->pos + i;
-	if (!pipes->next)
-	{
-		res[pipes->num + 1] = ft_substr(arg, i, ft_strlen(arg) - 1);
-		res[pipes->num + 2] = 0;
-	}
-	pipes = pipes->next;
+		if (!pipes->next)
+		{
+			res[pipes->num + 1] = ft_substr(arg, i, ft_strlen(arg) - 1);
+			res[pipes->num + 2] = 0;
+		}
+		pipes = pipes->next;
 	}
 	return (res);
 }

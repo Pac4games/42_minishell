@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/13 18:06:37 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:35:59 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ static void	parse_str(char *str, t_parse parse, bool exp)
 		if (parse_str_redir(str, parse, &i))
 			;
 		else if (str[i] && str[i] == '-' && str[i + 1] \
-		&& is_diff_sign("<>|&", str[i + 1]) && cmd)
+		&& !is_diff_sign("<>|&", str[i + 1]) && cmd&& printf("2sagddddddddddddddd"))
 			i = tree_add_case(str, i - 1, E_FLAG, parse);
-		else if (str[i] && cmd != 0)
+		else if (str[i] && cmd != 0 && printf("1sagddddddddddddddd"))
 			i = tree_add_case(str, i - 1, E_ARG, parse);
-		else if (str[i])
+		else if (str[i] && printf("sagddddddddddddddd"))
 		{
 			i = tree_add_case(str, i - 1, E_CMD, parse);
 			cmd++;

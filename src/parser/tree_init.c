@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tree_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:55:14 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:37:09 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:32:58 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool left)
+static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, int left)
 {
 	t_tree	*branch;
 
@@ -25,9 +25,9 @@ static void	tree_add_branch(t_tree **node, char *arg, t_ndtype type, bool left)
 	if (!(*node))
 	{
 		*node = branch;
-		branch = branch->parent;
+		branch->parent = NULL;
 	}
-	else if (left)
+	else if (!left)
 		(*node)->left = branch;
 	else
 		(*node)->right = branch;
@@ -58,6 +58,8 @@ void	tree_add_node(char *arg, t_ndtype type, t_parse parse)
 		node = node->parent;
 		parse.pos--;
 	}
+	if (!node)
+		return ;
 	if (parse.pos == 0)
 		while (node->left)
 			node = node->left;
@@ -65,7 +67,7 @@ void	tree_add_node(char *arg, t_ndtype type, t_parse parse)
 		while (node->right)
 			node = node->right;
 	if (parse.pos == 0)
-		tree_add_branch(&node, arg, type, true);
+		tree_add_branch(&node, arg, type, 0);
 	else
-		tree_add_branch(&node, arg, type, false);
+		tree_add_branch(&node, arg, type, 1);
 }

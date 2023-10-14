@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tree_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 10:31:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:38:35 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:12:27 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	tree_add_pipe(t_tree **root)
 	}
 	while (tmp->parent)
 		tmp = tmp->parent;
-	tmp = tmp->parent;
+	tmp->parent = pipe;
 	pipe->left = tmp;
 }
 
