@@ -6,14 +6,14 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/12 14:10:14 by paugonca         ###   ########.fr        #
+#    Updated: 2023/10/14 19:12:23 by psoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = minishell
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror -g #-fsanitize=address
 
 RM          = rm -f
 MKD         = mkdir -p
@@ -66,11 +66,11 @@ LIBFT_PATH  = ./libft
 all: $(NAME)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	$(MKD) -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(MKD) -p $(@D)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(DEPS) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(DEPS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(DEPS) -o $(NAME)
 
 $(LIBFT_PATH)/libft.a:
 	make -C $(LIBFT_PATH)

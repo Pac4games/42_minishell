@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:51:58 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/14 18:29:35 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:01:39 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	get_quote_num(char *str)
 
 	i = 0;
 	count = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		if (str[i] && !is_diff_sign("'\"", str[i]))
 		{
@@ -55,7 +55,7 @@ static char	*quotes_rm_fr(char *str, int i, int j, char tmp)
 	char	*res;
 
 	res = malloc(sizeof(char) * ft_strlen(str) - get_quote_num(str) + 1);
-	while (str[i])
+	while (str && str[i])
 	{
 		if (str[i] && !is_diff_sign("'\"", str[i]))
 		{

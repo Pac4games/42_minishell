@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_out_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:21:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:27:23 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:52:53 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	redir_hdoc(t_tree **root, t_cmd *cmd)
 		{
 			cmd->in = get_redir_num(tmp, cmd->pos, E_IN);
 			if (handle_hdoc(&tmp, cmd))
-				return (true);
+				return (1);
 		}
 		if (cmd->pos)
 			tmp = tmp->parent;
 		cmd->pos++;
 	}
-	return (false);
+	return (0);
 }
 
 static int	redir_write_out(t_tree *node, int fd)

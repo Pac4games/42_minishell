@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_in_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:10:56 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:26:49 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:56:58 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	redir_in(t_tree *node, t_cmd *cmd, int in_num)
 	int	p;
 
 	p = 0;
-	cmd->heredoc = false;
+	cmd->heredoc = 0;
 	while (node)
 	{
 		if (node->type == E_STDIN || node->type == E_HDOC)
@@ -44,7 +44,7 @@ void	redir_in(t_tree *node, t_cmd *cmd, int in_num)
 			{
 				if (p == in_num)
 					dup2((node->pipes)[0], STDIN_FILENO);
-				cmd->heredoc = true;
+				cmd->heredoc = 1;
 			}
 		}
 		if (!(cmd->pos))

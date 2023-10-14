@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tilde_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:06:42 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/14 17:59:44 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:47:34 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static char	*get_var_tilde(char *arg, int i, char *home)
 {
 	char	*res;
 
-	res = malloc(ft_strlen(arg) - 1 + 1 + ft_strlen(home) * sizeof(char));
+	res = malloc(ft_strlen(arg)  + ft_strlen(home) * sizeof(char));
 	gvt_utils(arg, i, home, &res);
 	free(home);
 	return (res);
@@ -78,8 +78,8 @@ char	*parse_tilde(char *arg, char **env)
 		&& (!arg[i + 1] || arg[i + 1] == ' ' || arg[i + 1] == '\t'))
 		{
 			tmp = get_var_tilde(arg, i, parse_signs(ft_strdup("$HOME"), env));
-			free(arg);
 			arg = tmp;
+			free(arg);
 			i = 0;
 		}
 		else

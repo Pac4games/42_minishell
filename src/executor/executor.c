@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/10 13:11:16 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/14 20:00:06 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 {
-	close((cmd->pipes)[0]);
+	//printf("cu do teu pai e preto\n");
+	close((cmd->pipes[0]));
 	redir(node, cmd, fd);
 	sig_handle(E_SIG_DFL);
 	rl_clear_history();
+	//printf("cu do teu pai e branco %s\n", get_cmd_args(node, cmd->pos)[0]);
 	if (builtin_ret(node, cmd->env, get_cmd(node, cmd->pos), cmd->pos))
 		exit(*exit_stts());
 	execve(get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env)),
