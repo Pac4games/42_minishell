@@ -74,7 +74,10 @@ static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env)
 	else
 	{
 		while (mtx[parse.pos])
-			parse_str(mtx[parse.pos++], parse, 0);
+		{
+			parse_str(mtx[parse.pos], parse, 0);
+			parse.pos++;
+		}
 	}
 	free_mtx(mtx);
 }

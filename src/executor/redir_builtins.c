@@ -64,16 +64,16 @@ int	redir_builtin_out(t_tree *node)
 		if (node->type == E_STDOUT || node ->type == E_APPEND)
 		{
 			if (node->type == E_STDOUT)
-				fd = open(node->content, O_CREAT | O_WRONLY | O_TRUNC, S_STDPERMS);
+				fd = open(node->content, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 			else
-				fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, 0664);
+				fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, 0644);
 			i++;
 			if (fd == -1)
 				return (print_builtin_err(node->content));
 			if (i != cmd.out)
 				close(fd);
 			else
-				return (fd);
+				dup2(fd, STDOUT_FILENO);
 		}
 		node = node->left;
 	}

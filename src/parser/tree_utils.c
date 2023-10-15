@@ -83,7 +83,7 @@ int	tree_add_case(char *arg, int i, t_ndtype type, t_parse parse)
 		i++;
 	i++;
 	tar_util(arg, &i, &j);
-	if (!(arg[j] || !is_diff_sign("<>|&", arg[j])))
+	if (!arg[j] || !is_diff_sign("<>|&", arg[j]))
 		print_syntax_error();
 	while (arg[j] && is_diff_sign("<>|& \t", arg[j]))
 	{

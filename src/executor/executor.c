@@ -19,7 +19,7 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 	redir(node, cmd, fd);
 	sig_handle(E_SIG_DFL);
 	rl_clear_history();
-	//printf("cu do teu pai e branco %s\n", get_cmd_args(node, cmd->pos)[0]);
+	printf("cu do teu pai e branco %s\n", get_cmd_args(node, cmd->pos)[0]);
 	if (builtin_ret(node, cmd->env, get_cmd(node, cmd->pos), cmd->pos))
 		exit(*exit_stts());
 	execve(get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env)),
@@ -70,13 +70,13 @@ static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)
 	return (cmd);
 }
 
-static bool	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num)
+static int	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num)
 {
 	*i = 0;
 	if (redir_hdoc(root, cmd))
-		return (true);
+		return (1);
 	*cmd_num = get_cmd_num(*root);
-	return (false);
+	return (0);
 }
 
 void	proc_exec_tree(t_tree **root, char ***env)

@@ -22,7 +22,8 @@ char	*get_cmd(t_tree *node, int pos)
 			node = node->right;
 	if (node)
 		return (node->content);
-	return (NULL);
+	else
+		return (NULL);
 }
 
 static int	get_cmd_arg_num(t_tree *node, int pos)

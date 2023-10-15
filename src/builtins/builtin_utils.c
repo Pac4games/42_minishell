@@ -53,12 +53,12 @@ bool	is_builtin(t_tree *node, char ***env, char *cmd)
 			|| !ft_strncmp(cmd, "cd", 3)))
 	{
 		if (redir_builtin_in(node))
-			return (true);
+			return (1);
 		fd = redir_builtin_out(node);
 		run_builtin(node, env, cmd, fd);
-		return (true);
+		return (1);
 	}
-	return (false);
+	return (0);
 }
 
 int	builtin_ret(t_tree *node, char ***env, char *cmd, int pos)

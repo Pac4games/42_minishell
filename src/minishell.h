@@ -78,8 +78,8 @@ typedef enum e_sigtype
 typedef struct s_tree
 {
 	struct s_tree	*parent;
-	struct s_tree	*left;
 	struct s_tree	*right;
+	struct s_tree	*left;
 	enum e_ndtype	type;
 	char			*content;
 	int				pipes[2];
