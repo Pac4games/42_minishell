@@ -1,3 +1,0 @@
-MiniHell:$ ^C
-MiniHell:$ 
-exit

@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:21:00 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/14 19:52:53 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:28:17 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	redir_hdoc(t_tree **root, t_cmd *cmd)
 static int	redir_write_out(t_tree *node, int fd)
 {
 	if (node->type == E_STDOUT)
-		fd = open(node->content, O_CREAT | O_RDONLY | O_TRUNC, S_STDPERMS);
+		fd = open(node->content, O_CREAT | O_WRONLY | O_TRUNC, S_STDPERMS);
 	else if (node->type == E_APPEND)
-		fd = open(node->content, O_CREAT | O_RDONLY | O_APPEND, S_STDPERMS);
+		fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, S_STDPERMS);
 	if (fd < 0)
 		print_shell_err("failed to create file", node->content, EXIT_FAILURE);
 	return (fd);

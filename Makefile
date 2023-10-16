@@ -6,14 +6,14 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/14 19:12:23 by psoares-         ###   ########.fr        #
+#    Updated: 2023/10/16 15:11:39 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = minishell
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror -g #-fsanitize=address
 
 RM          = rm -f
 MKD         = mkdir -p
@@ -87,6 +87,7 @@ re: fclean all
 
 run: re
 	@clear
-	@valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all --track-origins=yes -s --track-fds=yes ./minishell
+#	@valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all --track-origins=yes -s --track-fds=yes ./minishell
+	@./minishell
 
 .PHONY: all clean fclean re

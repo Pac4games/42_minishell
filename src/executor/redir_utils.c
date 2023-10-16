@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redir_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/16 15:18:49 by paugonca          #+#    #+#             */
+/*   Updated: 2023/10/16 15:18:50 by paugonca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../minishell.h"
 
 int	get_redir_num(t_tree *node, int pos, t_io io)
@@ -35,7 +47,7 @@ void	redir(t_tree *node, t_cmd *cmd, int *fd)
 		dup2(*fd, STDIN_FILENO);
 	if (out_num)
 	{
-		close((cmd->pipes)[0]);
+		close((cmd->pipes)[1]);
 		redir_out(node, cmd, out_num);
 	}
 	else

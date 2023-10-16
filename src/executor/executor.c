@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/14 20:00:06 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/16 14:57:01 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 {
-	//printf("cu do teu pai e preto\n");
 	close((cmd->pipes[0]));
 	redir(node, cmd, fd);
 	sig_handle(E_SIG_DFL);
@@ -25,7 +24,7 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 		get_cmd_args(node, cmd->pos), *(cmd->env));
 	free_tree(get_tree_root(&node));
 	*exit_stts() = 127;
-	exit(127);
+	exit(*exit_stts());
 }
 
 //The actual executor function. Cool name, right?

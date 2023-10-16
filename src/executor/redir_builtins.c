@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:39:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 14:39:17 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:36:24 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ int	redir_builtin_out(t_tree *node)
 				fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, 0644);
 			i++;
 			if (fd == -1)
-				print_builtin_err(node->content);
+				return (print_builtin_err(node->content));
 			if (i != cmd.out)
 				close(fd);
 			else
-				dup2(fd, STDOUT_FILENO);
+				return (fd);
 		}
 		node = node->left;
 	}
