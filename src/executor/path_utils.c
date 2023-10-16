@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:39:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 14:39:11 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:32:52 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ static int	is_valid_path(char *cmd, char *path)
 {
 	struct stat	buf;
 
-	lstat(path, &buf);
-	if (S_ISDIR(buf.st_mode))
-		print_shell_err(cmd, "Is a directory", 126);
-	else if (access(path, X_OK) >= 0)
-		return (true);
+	if (lstat(path, &buf) == 0)
+	{
+		if (S_ISDIR(buf.st_mode))
+			print_shell_err(cmd, "Is a directory", 126);
+		else if (access(path, X_OK) == 0)
+			return (1);
+	}
 	free(path);
-	return (false);
+	return (0);
 }
 
 static char	*get_abs_path(char *cmd)

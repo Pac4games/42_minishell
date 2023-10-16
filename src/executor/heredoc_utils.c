@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:38:57 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 14:38:58 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:15:43 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ int	deezdocs(t_tree **root, t_cmd *cmd, int p)
 	{
 		if (*exit_stts() == 129)
 			*exit_stts() = EXIT_SUCCESS;
-		return (true);
+		return (1);
 	}
-	return (false);
+	return (0);
 }
 
 int	handle_hdoc(t_tree **root, t_cmd *cmd)
@@ -80,7 +80,7 @@ int	handle_hdoc(t_tree **root, t_cmd *cmd)
 
 	p = 0;
 	tmp = *root;
-	cmd->heredoc = false;
+	cmd->heredoc = 0;
 	while (tmp)
 	{
 		if (tmp->type == E_STDIN || tmp->type == E_HDOC)
@@ -88,12 +88,12 @@ int	handle_hdoc(t_tree **root, t_cmd *cmd)
 			p++;
 			if (tmp->type == E_HDOC)
 				if (deezdocs(&tmp, cmd, p))
-					return (true);
+					return (1);
 		}
 		if (!(cmd->pos))
 			tmp = tmp->left;
 		else
 			tmp = tmp->right;
 	}
-	return (false);
+	return (0);
 }
