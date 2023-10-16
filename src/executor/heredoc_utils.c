@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:49:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/13 16:34:01 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:00:37 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ static void	rtfd(int fd, char *eof, int stts)
 		free(in);
 		if (res)
 		{
-			if (!(ft_strlen(res) || ft_strncmp(res, eof, ft_strlen(eof))))
+			if (!ft_strlen(res))
+				break ;
+			if (!ft_strncmp(res, eof, ft_strlen(eof)))
 				break ;
 			if (fd > 0)
 				ft_putstr_fd(res, fd);
