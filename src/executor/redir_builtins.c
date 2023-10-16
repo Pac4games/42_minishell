@@ -6,7 +6,7 @@
 /*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 21:53:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/10 13:11:32 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:25:55 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	open_builtin_in(t_tree *node)
 		{
 			fd = open(node->content, O_RDONLY, S_STDPERMS);
 			if (fd == -1)
-				return (print_builtin_err(node->content));
+				print_builtin_err(node->content);
 			close(fd);
 		}
 		node = node->left;
@@ -69,7 +69,7 @@ int	redir_builtin_out(t_tree *node)
 				fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, 0644);
 			i++;
 			if (fd == -1)
-				return (print_builtin_err(node->content));
+				print_builtin_err(node->content);
 			if (i != cmd.out)
 				close(fd);
 			else
