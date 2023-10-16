@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paula <paula@student.42.fr>                +#+  +:+       +#+        */
+/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/10 12:30:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/04 11:39:30 by paugonca         ###   ########.fr       */
+/*   Created: 2023/10/16 14:37:02 by paugonca          #+#    #+#             */
+/*   Updated: 2023/10/16 14:37:03 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,3 @@ char	**get_cur_env(char **env)
 	res[p] = NULL;
 	return (res);
 }
-/*
-char	**get_cur_env(char **env)
-{
-	char	**path;
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	while (env[i])
-	{
-		if (!ft_strncmp(env[i], "PATH=", 5))
-		{
-			path = ft_split(env[i] + 5, ':');
-			i = 0;
-			while (path[i])
-			{
-				tmp = ft_strdup(path[i]);
-				free(path[i]);
-				path[i] = ft_strjoin(tmp, "/");
-				free(tmp);
-				i++;
-			}
-			return (path);
-		}
-		i++;
-	}
-	return (NULL);
-}*/
