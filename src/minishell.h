@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:38:18 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 15:27:37 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:07:46 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <limits.h>
 # include <dirent.h>
 # include <signal.h>
+# include <termios.h>
 # include <errno.h>
 # include <sys/stat.h>
 # include <sys/wait.h>

@@ -6,11 +6,23 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:39:32 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 14:39:33 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/17 17:13:18 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	sig_set_termios(void)
+{
+	struct termios	term;
+	struct termios	termbase;
+
+	if (tcgetattr(STDIN_FILENO, &term) != 0 || \
+	tcgetattr(STDIN_FILENO, &termbase) != 0)
+		print_err("failed to get terminal attributes", EXIT_FAILURE);
+	term.c_cc[VQUIT] = _POSIX_VDISABLE;
+	term.c_lflag &= ~ECHOCTL;
+}
 
 static void	sig_rl(int sig, siginfo_t *info, void *ucontext)
 {
