@@ -6,9 +6,11 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/16 17:33:35 by psoares-         ###   ########.fr        #
+#    Updated: 2023/10/17 14:19:49 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+$(VERBOSE).SILENT:
 
 NAME        = minishell
 
@@ -65,22 +67,27 @@ LIBFT_PATH  = ./libft
 
 all: $(NAME)
 
+$(LIBFT_PATH)/libft.a:
+	@echo "Compiling libft..."
+	make -C $(LIBFT_PATH)
+
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@$(MKD) -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(DEPS) $(OBJ)
+	@echo "Compiling minishell..."
 	@$(CC) $(CFLAGS) $(OBJ) $(DEPS) -o $(NAME)
-
-$(LIBFT_PATH)/libft.a:
-	make -C $(LIBFT_PATH)
+	@echo "minishell compiled sucessfully!"
 
 clean:
+	@echo "Removing object files..."
 	make clean -C $(LIBFT_PATH)
 	$(RM) -r $(OBJ_PATH)
 
 fclean: clean
 	make fclean -C $(LIBFT_PATH)
+	@echo "Removing minishell..."
 	$(RM) $(NAME)
 
 re: fclean all
