@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:48:54 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/11 20:16:43 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:43:19 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ char	*get_var(char *str, int *i, char **env)
 	}
 	while (str[j] && is_var(str[j]))
 		j++;
-
 	if (j == (*i) + 1)
 	{
 		(*i)++;

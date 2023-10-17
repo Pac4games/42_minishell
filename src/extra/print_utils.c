@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:38:46 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 14:38:47 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:59:34 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ void	print_hdoc_warn(char *eof, char *in, int stts)
 
 void	print_syntax_error(void)
 {
-	if ((*syntax()) == 1)
-		ft_putendl_fd("Syntax Error", STDOUT_FILENO);
+	ft_putendl_fd("Syntax Error", STDOUT_FILENO);
 	*exit_stts() = EXIT_FAILURE;
 	(*syntax())++;
 }
