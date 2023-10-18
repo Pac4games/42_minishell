@@ -18,7 +18,7 @@ static void	redir_stdin(t_tree *node, int p, int in_num)
 
 	fd = open(node->content, O_RDONLY, S_STDPERMS);
 	if (fd == -1)
-		print_shell_err("failed to open file", node->content, EXIT_FAILURE);
+		print_shell_err(node->content, "failed to open file", EXIT_FAILURE);
 	if (p != in_num)
 		close(fd);
 	else

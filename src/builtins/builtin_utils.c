@@ -14,8 +14,10 @@
 
 int	print_builtin_err(char *arg)
 {
+	
 	ft_putstr_fd("Error: couldn't open file: ", STDERR_FILENO);
 	ft_putendl_fd(arg, STDERR_FILENO);
+	*exit_stts() = 1;
 	free(arg);
 	return (-1);
 }

@@ -29,8 +29,8 @@ static void	export_arg(char *arg, char ***env)
 {
 	int	i;
 
-	i = -1;
-	while ((*env)[++i])
+	i = 0;
+	while ((*env)[i])
 	{
 		if ((find_eq_sign((*env)[i]) == -1 && \
 			!ft_strncmp((*env)[i], arg, ft_strlen((*env)[i]))))
@@ -42,9 +42,10 @@ static void	export_arg(char *arg, char ***env)
 				free(arg);
 				return ;
 			}
-			else if (arg[find_eq_sign((*env[i]))] == '=')
+			if (arg[find_eq_sign((*env)[i])] == '=')
 				break ;
 		}
+		i++;
 	}
 	export_arg_new(arg, env, i);
 }
@@ -75,7 +76,7 @@ int	ft_export(char **args, char ***env, int fd)
 		free_mtx(args);
 		return (no_args(*env, fd));
 	}
-	i = 0;
+	i = 1;
 	if (check_var_names(args))
 		return (1);
 	while (args[i])

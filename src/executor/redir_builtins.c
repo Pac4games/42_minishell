@@ -22,7 +22,11 @@ static int	open_builtin_in(t_tree *node)
 		{
 			fd = open(node->content, O_RDONLY, S_STDPERMS);
 			if (fd == -1)
+			{
+
 				print_builtin_err(node->content);
+				*exit_stts() = 1;
+			}
 			close(fd);
 		}
 		node = node->left;
@@ -69,7 +73,10 @@ int	redir_builtin_out(t_tree *node)
 				fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, 0644);
 			i++;
 			if (fd == -1)
+			{
+				*exit_stts() = 1;
 				return (print_builtin_err(node->content));
+			}
 			if (i != cmd.out)
 				close(fd);
 			else

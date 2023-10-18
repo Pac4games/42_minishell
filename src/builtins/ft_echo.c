@@ -33,12 +33,13 @@ int	ft_echo(char **args, int fd)
 	while (args[i])
 	{
 		ft_putstr_fd(args[i], fd);
-		if (args[++i])
+		if (args[i + 1])
 			ft_putstr_fd(" ", fd);
+		i++;
 	}
 	if (!(mtx_len(args) > 1 && is_flag(args[1])))
 		ft_putchar_fd('\n', fd);
 	free_mtx(args);
-	*exit_stts() = EXIT_SUCCESS;
+	*exit_stts() = 0;
 	return (1);
 }

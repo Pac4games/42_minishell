@@ -15,7 +15,7 @@ $(VERBOSE).SILENT:
 NAME        = minishell
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=address
 
 RM          = rm -f
 MKD         = mkdir -p

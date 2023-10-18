@@ -14,21 +14,19 @@
 
 static int	print_cd_error(char **args)
 {
-	char	*msg;
 
-	msg = ft_strjoin(SHELL, ": cd: `");
 	if (access(args[1], X_OK == -1))
 	{
-		ft_putstr_fd(msg, STDERR_FILENO);
+		ft_putstr_fd(SHELL ": cd: `", STDERR_FILENO);
 		ft_putstr_fd(args[1], STDERR_FILENO);
 		ft_putstr_fd("': No such file or directory\n", STDERR_FILENO);
 		free_mtx(args);
 		return (1);
 	}
-	ft_putstr_fd(msg, STDERR_FILENO);
+	ft_putstr_fd(SHELL ": cd: `", STDERR_FILENO);
+	//free(msg);
 	ft_putstr_fd(args[1], STDERR_FILENO);
 	ft_putstr_fd("': Not a directory\n", STDERR_FILENO);
-	free(msg);
 	free_mtx(args);
 	return (1);
 }
@@ -39,7 +37,8 @@ static int	is_valid_input(char **args, char **env)
 
 	if (mtx_len(args) > 2)
 	{
-		printf("MiniHell: cd: too many arguments\n");
+		ft_putstr_fd("MiniHell: cd: too many arguments\n", STDERR_FILENO);
+		*exit_stts() = 1;
 		return (1);
 	}
 	i = 0;
@@ -109,7 +108,10 @@ int	ft_cd(char **args, char ***env)
 	if (ft_cd_weird_args(args, env))
 		return (1);
 	if (chdir(args[1]) == -1)
+	{
+		*exit_stts() = 1;
 		return (print_cd_error(args));
+	}
 	if (!set_oldpwd(env, path) || getcwd(path, 1025) == NULL)
 	{
 		free_mtx(args);

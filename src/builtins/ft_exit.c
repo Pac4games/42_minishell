@@ -138,7 +138,7 @@ int	ft_exit(char **args)
 	}
 	if (args[1])
 	{
-		if (!check_max_long(args[1]))
+		if (!check_max_long(args[1]) || !is_nbr(args[1]))
 			return (quit(args, nbr));
 	}
 	if ((args[1] && is_nbr(args[1])))

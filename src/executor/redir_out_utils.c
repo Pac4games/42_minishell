@@ -40,7 +40,7 @@ static int	redir_write_out(t_tree *node, int fd)
 	else if (node->type == E_APPEND)
 		fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, S_STDPERMS);
 	if (fd < 0)
-		print_shell_err("failed to create file", node->content, EXIT_FAILURE);
+		print_shell_err(node->content, "failed to create file", EXIT_FAILURE);
 	return (fd);
 }
 

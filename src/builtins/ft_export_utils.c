@@ -14,27 +14,38 @@
 
 int	export_fail(char *arg)
 {
-	char	*msg;
 
-	msg = ft_strjoin(SHELL, ": export: `");
-	ft_putstr_fd(msg, STDERR_FILENO);
+	ft_putstr_fd(SHELL ": export:  `", STDERR_FILENO);
 	ft_putstr_fd(arg, STDERR_FILENO);
 	ft_putendl_fd("': not a valid identifier", STDERR_FILENO);
-	free(msg);
-	return (1);
+	return (0);
 }
 
-static bool	is_exportable(char *arg)
+static int	is_exportable(char *arg)
 {
 	int	i;
 
-	if (!(ft_strlen(arg) || ft_isalpha(arg[0])))
+	if (!(ft_strlen(arg)))
+	{
+		*exit_stts() = 1;
 		return (export_fail(arg));
+	}
+	if (!((arg[0] >= 'a' && arg[0] <= 'z') || (arg[0] >= 'A' && arg[0] <= 'Z')))
+	{
+		*exit_stts() = 1;
+		return (export_fail(arg));
+	}
 	i = 0;
 	while (arg[i] && arg[i] != '=')
-		if (!is_var(arg[i++]))
+	{
+		if (!is_var(arg[i]))
+		{
+			*exit_stts() = 1;
 			return (export_fail(arg));
-	return (true);
+		}
+		i++;
+	}
+	return (1);
 }
 
 static void	export_add(char *arg, char ***env, int size)
@@ -45,11 +56,11 @@ static void	export_add(char *arg, char ***env, int size)
 	if (!is_exportable(arg))
 		return ;
 	i = -1;
-	new_env = malloc((size + 2) * sizeof(char *));
+	new_env =  malloc(sizeof(char *) * (size + 2));
 	while (++i < size)
 		new_env[i] = ft_strdup((*env)[i]);
 	new_env[i] = ft_strdup(arg);
-	new_env[++i] = NULL;
+	new_env[i + 1] = NULL;
 	free_mtx(*env);
 	*env = new_env;
 }
