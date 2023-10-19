@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:39:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 15:36:24 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:38:56 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static int	open_builtin_in(t_tree *node)
 			fd = open(node->content, O_RDONLY, S_STDPERMS);
 			if (fd == -1)
 			{
-
 				print_builtin_err(node->content);
 				*exit_stts() = 1;
 			}
@@ -55,6 +54,16 @@ int	redir_builtin_in(t_tree *node)
 	return (*exit_stts());
 }
 
+static int	rdo_check_fd(int fd)
+{
+	if (fd == -1)
+	{
+		*exit_stts() = 1;
+		return (0);
+	}
+	return (1);
+}
+
 int	redir_builtin_out(t_tree *node)
 {
 	t_cmd	cmd;
@@ -72,11 +81,8 @@ int	redir_builtin_out(t_tree *node)
 			else
 				fd = open(node->content, O_CREAT | O_WRONLY | O_APPEND, 0644);
 			i++;
-			if (fd == -1)
-			{
-				*exit_stts() = 1;
+			if (!rdo_check_fd(fd))
 				return (print_builtin_err(node->content));
-			}
 			if (i != cmd.out)
 				close(fd);
 			else

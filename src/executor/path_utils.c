@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:39:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 17:32:52 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:29:53 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,6 @@ char	*get_cmd_path(char *cmd, char **env)
 		print_shell_err(cmd, "command not found", 127);
 	if (cmd[0] == '/')
 		return (get_abs_path(cmd));
-	else 
+	else
 		return (get_rel_path(cmd, get_path(env)));
 }

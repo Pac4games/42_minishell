@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 10:49:32 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/12 11:43:49 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:20:57 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 //home directory. Otherwise, if "cd" is followed by a single or two "-", it
 //will navigate to the working directory before the last time that "cd" was
 //called.
-int	ft_cd_weird_args(char **args, char ***env)
+static int	ft_cd_weird_args(char **args, char ***env)
 {
 	char	*tmp;
 
 	tmp = NULL;
-	if (mtx_len(args) == 1 || (mtx_len(args) == 2 && args[1][1] == '-' && args[1][0] =='-'))
+	if (mtx_len(args) == 1 || (mtx_len(args) == 2 && args[1][1] == '-' \
+	&& args[1][0] == '-'))
 	{
 		tmp = parse_signs(ft_strdup("$HOME"), *env);
 		chdir(tmp);
@@ -39,5 +40,46 @@ int	ft_cd_weird_args(char **args, char ***env)
 		free(tmp);
 		return (1);
 	}
+	return (0);
+}
+
+static int	is_valid_input(char **args, char **env)
+{
+	int	i;
+
+	if (mtx_len(args) > 2)
+	{
+		ft_putstr_fd("MiniHell: cd: too many arguments\n", STDERR_FILENO);
+		*exit_stts() = 1;
+		return (1);
+	}
+	i = 0;
+	while (env && env[i] != 0)
+	{
+		if (ft_strncmp(env[i], "HOME=", 5))
+		{
+			return (0);
+		}
+		i++;
+	}
+	ft_putstr_fd("minishell: cd: HOME not set\n", STDERR_FILENO);
+	return (1);
+}
+
+int	ft_cd_checker(char **args, char ***env, char *path)
+{
+	if (mtx_len(args) > 2)
+	{
+		printf("MiniHell: cd: too many arguments\n");
+		free_mtx(args);
+		return (1);
+	}
+	if ((is_valid_input(&args[1], *env) == 1 || getcwd(path, 1025) == NULL))
+	{
+		free_mtx(args);
+		return (1);
+	}
+	if (ft_cd_weird_args(args, env))
+		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:38:18 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/17 17:07:46 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:15:38 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ void			free_pipes(t_pipe **pipes);
 //signs_utils.c
 int				find_eq_sign(char *str);
 char			*parse_signs(char *str, char **env);
-int			is_diff_sign(char *sign, char c);
+int				is_diff_sign(char *sign, char c);
 //quotes_utils.c
 int				quotes_skip(char *str, int i);
 int				get_quote_num(char *str);
@@ -225,7 +225,7 @@ int				ft_unset(char **args, char ***env);
 //ft_cd.c
 int				ft_cd(char **args, char ***env);
 //ft_cd_utils.c
-int				ft_cd_weird_args(char **args, char ***env);
+int				ft_cd_checker(char **args, char ***env, char *path);
 
 /*					 EXTRA						*/
 //print_utils.c
@@ -241,6 +241,6 @@ t_tree			**get_tree_root(t_tree **node);
 int				mtx_len(char **mtx);
 
 //	TEST
-char	**get_path(char **env);
+char			**get_path(char **env);
 //void    handle_signals(void);
 #endif

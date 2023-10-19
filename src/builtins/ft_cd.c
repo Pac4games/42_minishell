@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/13 11:44:29 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:16:25 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	print_cd_error(char **args)
 {
-
 	if (access(args[1], X_OK == -1))
 	{
 		ft_putstr_fd(SHELL ": cd: `", STDERR_FILENO);
@@ -24,33 +23,9 @@ static int	print_cd_error(char **args)
 		return (1);
 	}
 	ft_putstr_fd(SHELL ": cd: `", STDERR_FILENO);
-	//free(msg);
 	ft_putstr_fd(args[1], STDERR_FILENO);
 	ft_putstr_fd("': Not a directory\n", STDERR_FILENO);
 	free_mtx(args);
-	return (1);
-}
-
-static int	is_valid_input(char **args, char **env)
-{
-	int	i;
-
-	if (mtx_len(args) > 2)
-	{
-		ft_putstr_fd("MiniHell: cd: too many arguments\n", STDERR_FILENO);
-		*exit_stts() = 1;
-		return (1);
-	}
-	i = 0;
-	while (env && env[i] != 0)
-	{
-		if (ft_strncmp(env[i], "HOME=", 5))
-		{
-			return (0);
-		}
-		i++;
-	}
-	ft_putstr_fd("minishell: cd: HOME not set\n", STDERR_FILENO);
 	return (1);
 }
 
@@ -94,18 +69,7 @@ int	ft_cd(char **args, char ***env)
 {
 	char	path[1025];
 
-	if (mtx_len(args) > 2)
-	{
-		printf("MiniHell: cd: too many arguments\n");
-		free_mtx(args);
-		return (1);
-	}
-	if ((is_valid_input(&args[1], *env) == 1 || getcwd(path, 1025) == NULL))
-	{
-		free_mtx(args);
-		return (1);
-	}
-	if (ft_cd_weird_args(args, env))
+	if (ft_cd_checker(args, env, path))
 		return (1);
 	if (chdir(args[1]) == -1)
 	{

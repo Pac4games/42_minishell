@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:06:42 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/14 19:47:34 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:42:53 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static char	*get_var_tilde(char *arg, int i, char *home)
 {
 	char	*res;
 
-	res = malloc(ft_strlen(arg)  + ft_strlen(home) * sizeof(char));
+	res = malloc(ft_strlen(arg) + ft_strlen(home) * sizeof(char));
 	gvt_utils(arg, i, home, &res);
 	free(home);
 	return (res);

@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 15:48:21 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/13 18:15:03 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:42:32 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,14 @@ char	*parse_signs(char *str, char **env)
 	return (str);
 }
 
-int is_diff_sign(char *sign, char c)
+int	is_diff_sign(char *sign, char c)
 {
-    int j = 0;
-    
-    while (c && sign[j] && c != sign[j])
-        j++;
+	int	j;
 
-    if (!sign[j])
-        return 1;
-    
-    return 0;
+	j = 0;
+	while (c && sign[j] && c != sign[j])
+		j++;
+	if (!sign[j])
+		return (1);
+	return (0);
 }

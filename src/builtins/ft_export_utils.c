@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:40:30 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 14:40:32 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:29:10 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	export_fail(char *arg)
 {
-
 	ft_putstr_fd(SHELL ": export:  `", STDERR_FILENO);
 	ft_putstr_fd(arg, STDERR_FILENO);
 	ft_putendl_fd("': not a valid identifier", STDERR_FILENO);
@@ -56,7 +55,7 @@ static void	export_add(char *arg, char ***env, int size)
 	if (!is_exportable(arg))
 		return ;
 	i = -1;
-	new_env =  malloc(sizeof(char *) * (size + 2));
+	new_env = malloc(sizeof(char *) * (size + 2));
 	while (++i < size)
 		new_env[i] = ft_strdup((*env)[i]);
 	new_env[i] = ft_strdup(arg);

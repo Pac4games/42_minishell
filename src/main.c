@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/17 16:07:30 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:08:30 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	set_exit_stts(int stts)
 		if (stts == SIGINT)
 			ft_putendl_fd(NULL, STDIN_FILENO);
 	}
-	else 
+	else
 		*exit_stts() = WEXITSTATUS(stts);
 }
 
@@ -40,7 +40,6 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 	while (true)
 	{
 		rl_catch_signals = 0;
-		//handle_signals();
 		sig_handle(E_SIG_RL);
 		prompt = ft_strjoin(SHELL, ":$ ");
 		in = readline(prompt);
@@ -71,7 +70,7 @@ int	main(int ac, char **av, char **envp)
 	char	*prompt;
 	char	**env;
 	t_tree	*tree;
-	
+
 	(void)ac;
 	(void)av;
 	in = NULL;

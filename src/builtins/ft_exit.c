@@ -6,33 +6,12 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:43:43 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/16 17:46:59 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:26:10 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-/*
-static bool	is_num(char *str)
-{
-	int		i;
-	bool	check;
 
-	i = 0;
-	check = false;
-	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] && ft_isdigit(str[i]))
-	{
-		if (!check)
-			check = true;
-		i++;
-	}
-	if (!str[i] && check)
-		return (true);
-	return (false);
-}*/
 static int	check_max_long(char *arg)
 {
 	int	i;
@@ -55,6 +34,7 @@ static int	check_max_long(char *arg)
 		return (0);
 	return (1);
 }
+
 static int	is_nbr(char *str)
 {
 	int	i;
@@ -79,7 +59,6 @@ static int	is_nbr(char *str)
 
 static int	quit(char **args, int isnum)
 {
-
 	if (args[1] && args[2] && isnum == 1)
 	{
 		ft_putstr_fd(SHELL, STDERR_FILENO);
@@ -100,19 +79,14 @@ static int	quit(char **args, int isnum)
 	return (-42);
 }
 
-/*int	ft_exit(char **args)
+static void	ft_exit_args(char **args, int nbr)
 {
-	bool	isnum;
-
-	isnum = is_num(args[1]);
-	if (args[1] && isnum)
-		isnum = true;
-	if ((isnum && mtx_len(args) == 2) || mtx_len(args) == 1)
+	if ((nbr == 1 || mtx_len(args) == 2) || mtx_len(args) == 1)
 	{
 		ft_putstr_fd("exit\n", STDOUT_FILENO);
-		if (isnum)
+		if (nbr == 1)
 		{
-			*exit_stts() = (unsigned int) ft_atoi(args[1]);
+			*exit_stts() = (unsigned int)ft_atoi(args[1]);
 			free_mtx(args);
 			rl_clear_history();
 			exit(*exit_stts());
@@ -121,12 +95,12 @@ static int	quit(char **args, int isnum)
 		rl_clear_history();
 		exit(*exit_stts());
 	}
-	return (quit(args, isnum));
-}*/
+}
 
 int	ft_exit(char **args)
 {
 	long long int	nbr;
+
 	nbr = 0;
 	if (args[0] && !args[1])
 	{
@@ -144,20 +118,7 @@ int	ft_exit(char **args)
 	if ((args[1] && is_nbr(args[1])))
 		nbr = 1;
 	if (args && args + 2 && args[2])
-	 	return (quit(args, nbr));
-	if ((nbr == 1 || mtx_len(args) == 2) || mtx_len(args) == 1)
-	{
-		ft_putstr_fd("exit\n", STDOUT_FILENO);
-		if (nbr == 1)
-		{
-			*exit_stts() = (unsigned int) ft_atoi(args[1]);
-			free_mtx(args);
-			rl_clear_history();
-			exit(*exit_stts());
-		}
-		free_mtx(args);
-		rl_clear_history();
-		exit(*exit_stts());
-	}
+		return (quit(args, nbr));
+	ft_exit_args(args, nbr);
 	return (quit(args, nbr));
 }
