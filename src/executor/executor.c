@@ -16,7 +16,7 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 {
 	close((cmd->pipes[0]));
 	redir(node, cmd, fd);
-	//sig_handle(E_SIG_DFL);
+	sig_handle(E_SIG_DFL);
 	rl_clear_history();
 	if (builtin_ret(node, cmd->env, get_cmd(node, cmd->pos), cmd->pos))
 		exit(*exit_stts());

@@ -40,11 +40,11 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 	while (true)
 	{
 		rl_catch_signals = 0;
-		handle_signals();
+		//handle_signals();
+		sig_handle(E_SIG_RL);
 		prompt = ft_strjoin(SHELL, ":$ ");
 		in = readline(prompt);
 		free(prompt);
-		sig_handle(E_SIG_IGN);
 		if (in && ft_strlen(in))
 			add_history(in);
 		else if (!in)

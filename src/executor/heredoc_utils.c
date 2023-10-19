@@ -20,7 +20,7 @@ static void	rtfd(int fd, char *eof, int stts)
 
 	while (true)
 	{
-		handle_signals();
+		sig_handle(E_SIG_HDOC);
 		in = readline("> ");
 		if (!in)
 			print_hdoc_warn(eof, in, stts);
