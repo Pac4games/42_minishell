@@ -39,7 +39,8 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 {
 	while (true)
 	{
-		sig_handle(E_SIG_RL);
+		rl_catch_signals = 0;
+		handle_signals();
 		prompt = ft_strjoin(SHELL, ":$ ");
 		in = readline(prompt);
 		free(prompt);

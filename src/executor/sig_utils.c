@@ -80,3 +80,28 @@ void	sig_handle(t_sigtype type)
 	if (sigaction(SIGQUIT, &sa, NULL) < 0 || sigaction(SIGINT, &sa, NULL) < 0)
 		exit(EXIT_FAILURE);
 }
+
+static void	ft_handler(int sig)
+{
+
+	if (sig == SIGINT)
+	{
+		*exit_stts() = 130;
+		ft_putstr_fd("^C\n", 0);
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
+	}
+	else if (sig == SIGQUIT)
+	{
+		
+		*exit_stts() = 131;
+		ft_putstr_fd("", 2);
+	}
+}
+
+void    handle_signals(void)
+{
+    signal(SIGINT, ft_handler);
+    signal(SIGQUIT, ft_handler);
+}

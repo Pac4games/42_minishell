@@ -30,13 +30,13 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 //The actual executor function. Cool name, right?
 void	xqt(t_tree *node, t_cmd *cmd, int *fd)
 {
+	cmd->pid = fork();
 	if (pipe(cmd->pipes) == -1)
 	{
 		print_err("failed to open pipe", EXIT_FAILURE);
 		*exit_stts() = 1;
 		exit (1);
 	}
-	cmd->pid = fork();
 	if (cmd->pid < 0)
 	{
 		print_err("failed to fork process", EXIT_FAILURE);

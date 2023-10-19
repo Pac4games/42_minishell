@@ -242,5 +242,5 @@ int				mtx_len(char **mtx);
 
 //	TEST
 char	**get_path(char **env);
-
+void    handle_signals(void);
 #endif
