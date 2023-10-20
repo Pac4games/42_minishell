@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/19 16:08:30 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/20 13:38:00 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ int	main(int ac, char **av, char **envp)
 	char	**env;
 	t_tree	*tree;
 
-	(void)ac;
 	(void)av;
+	if (ac != 1)
+		print_err("invalid number of arguments", EXIT_FAILURE);
 	in = NULL;
 	prompt = NULL;
 	env = get_cur_env(envp);
