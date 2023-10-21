@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sopas.c                                            :+:      :+:    :+:   */
+/*   reset_the_term.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/21 19:15:56 by psoares-          #+#    #+#             */
-/*   Updated: 2023/10/21 19:15:57 by psoares-         ###   ########.fr       */
+/*   Created: 2023/10/21 20:11:10 by paugonca          #+#    #+#             */
+/*   Updated: 2023/10/21 20:13:44 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int *is_inside(void){
-    static int i;
-
-    return (&i);
-}
-
-struct termios *term(){
-    static struct termios t;
-
-    return (&t);
+//reaching the point of insanity.
+void	reset_the_terminal(void)
+{
+	tcsetattr(0, 0, term());
 }

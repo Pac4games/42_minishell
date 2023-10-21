@@ -6,7 +6,7 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/21 17:44:05 by psoares-         ###   ########.fr        #
+#    Updated: 2023/10/21 20:22:49 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,17 +48,19 @@ SRC_NAME    = main.c						\
 			  builtins/ft_pwd.c				\
 			  builtins/ft_unset.c			\
               executor/executor.c			\
+			  executor/letter_soup.c		\
 			  executor/cmd_utils.c			\
               executor/path_utils.c			\
 			  executor/sig_utils.c			\
+			  executor/termios_utils.c		\
 			  executor/redir_utils.c		\
 			  executor/redir_in_utils.c		\
 			  executor/redir_out_utils.c	\
 			  executor/redir_builtins.c		\
 			  executor/heredoc_utils.c		\
+			  executor/reset_the_term.c		\
               extra/free_utils.c			\
-			  extra/print_utils.c			\
-			  executor/sopas.c
+			  extra/print_utils.c
 
 SRC         = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJ         = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))

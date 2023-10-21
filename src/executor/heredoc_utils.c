@@ -6,16 +6,11 @@
 /*   By: dcarvalh <dcarvalh@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:38:57 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/20 18:42:58 by dcarvalh         ###   ########.fr       */
+/*   Updated: 2023/10/21 20:17:05 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-void	reset_the_terminal(void)
-{
-	tcsetattr(0, 0, term());
-}
 
 void	term_change(void)
 {
@@ -39,6 +34,7 @@ void	term_change(void)
 		return ;
 	}
 }
+
 //Takes the input for deezdocs()
 static void	rtfd(int fd, char *eof, int stts)
 {
@@ -70,14 +66,11 @@ static void	rtfd(int fd, char *eof, int stts)
 
 //Yet another genius name (may change it later)
 //It's our heredoc if it ain't obvious lol
-int	deezdocs(t_tree **root, t_cmd *cmd, int p)
+static int	deezdocs(t_tree **root, t_cmd *cmd, int p, int stts)
 {
-	int	stts;
-
 	if (pipe((*root)->pipes) < 0)
 		print_err("failed to open pipe", EXIT_FAILURE);
 	cmd->pid = fork();
-
 	if (cmd->pid < 0)
 		print_err("failed to fork process", EXIT_FAILURE);
 	else if (cmd->pid == 0)
@@ -118,7 +111,7 @@ int	handle_hdoc(t_tree **root, t_cmd *cmd)
 		{
 			p++;
 			if (tmp->type == E_HDOC)
-				if (deezdocs(&tmp, cmd, p))
+				if (deezdocs(&tmp, cmd, p, 0))
 					return (1);
 		}
 		if (!(cmd->pos))
@@ -128,4 +121,3 @@ int	handle_hdoc(t_tree **root, t_cmd *cmd)
 	}
 	return (0);
 }
-

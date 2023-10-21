@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/21 18:51:36 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/21 20:17:39 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 {
-	char *path;
-	char **cmds;
+	char	*path;
+	char	**cmds;
 
 	path = get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env));
 	cmds = get_cmd_args(node, cmd->pos);
@@ -29,10 +29,8 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 		cmds = ft_split(" ", 0);
 	if (!path)
 		path = *cmds;
-	//fprintf(stderr, "--%s--%s--%s--\n", path, *cmds,**(cmd->env));
 	execve(path, cmds, *(cmd->env));
-	for (int i = 0; cmds[i]; i++)free(cmds[i]);
-	free (cmds);
+	free_mtx(cmds);
 	free_tree(get_tree_root(&node));
 	*exit_stts() = 127;
 	exit(*exit_stts());
@@ -109,9 +107,8 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	{
 		if (!(p == 1 && !(tmp->right)))
 			cmd = proc_exec_cmd(tmp, env, p, cmd_num);
-		if (p)
+		if (p++)
 			tmp = tmp->parent;
-		p++;
 	}
 	waitpid(cmd.pid, &proc_stts, 0);
 	set_exit_stts(proc_stts);

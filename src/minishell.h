@@ -6,7 +6,7 @@
 /*   By: dcarvalh <dcarvalh@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:38:18 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/20 18:41:55 by dcarvalh         ###   ########.fr       */
+/*   Updated: 2023/10/21 20:17:08 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,8 @@ int				redir_builtin_in(t_tree *node);
 int				redir_builtin_out(t_tree *node);
 //heredoc_utils.c
 int				handle_hdoc(t_tree **root, t_cmd *cmd);
-int				deezdocs(t_tree **root, t_cmd *cmd, int p);
+//reset_the_term.c
+void			reset_the_terminal(void);
 
 /*				   BUILTINS					*/
 //buitin_utils.c
@@ -241,10 +242,11 @@ void			free_tree(t_tree **node);
 t_tree			**get_tree_root(t_tree **node);
 int				mtx_len(char **mtx);
 
-//	TEST
+//TEST
 char			**get_path(char **env);
 //void    handle_signals(void);
-void signal_here();
-int *is_inside(void);
-struct termios *term();
+void			signal_here(void);
+int				*is_inside(void);
+struct termios	*term(void);
+
 #endif
