@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/20 13:38:00 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/21 19:16:26 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 	while (true)
 	{
 		rl_catch_signals = 0;
-		sig_handle(E_SIG_RL);
+		sig_handle();
 		prompt = ft_strjoin(SHELL, ":$ ");
 		in = readline(prompt);
 		free(prompt);

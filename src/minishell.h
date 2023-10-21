@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dcarvalh <dcarvalh@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:38:18 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/19 16:15:38 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:41:55 by dcarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_tree
 	char			*content;
 	int				pipes[2];
 	int				pipe_num;
+	int				inter;
 }			t_tree;
 
 //Parser helper struct
@@ -185,7 +186,7 @@ int				get_cmd_num(t_tree *node);
 //path_utils.c
 char			*get_cmd_path(char *cmd, char **env);
 //sig_utils.c
-void			sig_handle(t_sigtype type);
+void			sig_handle(void);
 //redir_utils.c
 int				get_redir_num(t_tree *node, int pos, t_io io);
 void			redir(t_tree *node, t_cmd *cmd, int *fd);
@@ -243,4 +244,7 @@ int				mtx_len(char **mtx);
 //	TEST
 char			**get_path(char **env);
 //void    handle_signals(void);
+void signal_here();
+int *is_inside(void);
+struct termios *term();
 #endif

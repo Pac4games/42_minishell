@@ -6,7 +6,7 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/17 14:19:49 by paugonca         ###   ########.fr        #
+#    Updated: 2023/10/21 17:44:05 by psoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ $(VERBOSE).SILENT:
 NAME        = minishell
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror -g #-fsanitize=address
 
 RM          = rm -f
 MKD         = mkdir -p
@@ -58,6 +58,7 @@ SRC_NAME    = main.c						\
 			  executor/heredoc_utils.c		\
               extra/free_utils.c			\
 			  extra/print_utils.c			\
+			  executor/sopas.c
 
 SRC         = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJ         = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))
