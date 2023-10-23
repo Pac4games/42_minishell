@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcarvalh <dcarvalh@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 14:38:18 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/21 20:17:08 by paugonca         ###   ########.fr       */
+/*   Created: 2023/10/23 10:13:37 by paugonca          #+#    #+#             */
+/*   Updated: 2023/10/23 10:13:38 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

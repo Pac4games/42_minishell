@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 10:49:32 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/19 16:20:57 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/23 10:09:15 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_cd_checker(char **args, char ***env, char *path)
 {
 	if (mtx_len(args) > 2)
 	{
-		printf("MiniHell: cd: too many arguments\n");
+		print_shell_err("cd", "too many arguments", NO_EXIT);
 		free_mtx(args);
 		return (1);
 	}

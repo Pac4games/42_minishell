@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcarvalh <dcarvalh@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 14:39:32 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/21 20:20:30 by paugonca         ###   ########.fr       */
+/*   Created: 2023/10/23 10:12:20 by paugonca          #+#    #+#             */
+/*   Updated: 2023/10/23 10:12:21 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ctrl_bs(int sig)
 	else
 	{
 		*exit_stts() = 131;
-		printf("Quit (core dumped)\n");
+		ft_putendl_fd("Quit (core dumped)\n", STDERR_FILENO);
 	}
 }
 

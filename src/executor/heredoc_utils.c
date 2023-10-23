@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcarvalh <dcarvalh@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 14:38:57 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/21 20:17:05 by paugonca         ###   ########.fr       */
+/*   Created: 2023/10/23 10:10:28 by paugonca          #+#    #+#             */
+/*   Updated: 2023/10/23 10:10:32 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

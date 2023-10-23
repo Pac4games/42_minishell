@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:40:24 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 14:40:25 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/23 10:33:01 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	export_arg(char *arg, char ***env)
 	while ((*env)[i])
 	{
 		if ((find_eq_sign((*env)[i]) == -1 && \
-			!ft_strncmp((*env)[i], arg, ft_strlen((*env)[i]))))
-			return (export_arg_new(arg, env, i));
+		!ft_strncmp((*env)[i], arg, ft_strlen((*env)[i]))))
+			break ;
 		else if (!ft_strncmp((*env)[i], arg, find_eq_sign((*env)[i])))
 		{
 			if (!arg[find_eq_sign((*env)[i])])
