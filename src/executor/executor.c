@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/21 20:17:39 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:37:53 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	t_cmd	cmd;
 	t_tree	*tmp;
 
-	p = 0;
 	if (pet_utils(root, &cmd, &p, &cmd_num))
 		return ;
 	if (cmd_num == 1 && is_builtin(*root, env, get_cmd(*root, 0)))
@@ -110,6 +109,7 @@ void	proc_exec_tree(t_tree **root, char ***env)
 		if (p++)
 			tmp = tmp->parent;
 	}
+	holy_pid_initializer(&cmd.pid, &proc_stts);
 	waitpid(cmd.pid, &proc_stts, 0);
 	set_exit_stts(proc_stts);
 	p = 0;

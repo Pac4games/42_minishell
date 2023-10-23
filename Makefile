@@ -6,7 +6,7 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/21 20:22:49 by paugonca         ###   ########.fr        #
+#    Updated: 2023/10/23 12:34:33 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRC_NAME    = main.c						\
 			  builtins/ft_pwd.c				\
 			  builtins/ft_unset.c			\
               executor/executor.c			\
+			  executor/executor_handy.c		\
 			  executor/letter_soup.c		\
 			  executor/cmd_utils.c			\
               executor/path_utils.c			\
