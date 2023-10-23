@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:10:28 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/23 10:10:32 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:11:26 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	term_change(void)
 }
 
 //Takes the input for deezdocs()
-static void	rtfd(int fd, char *eof, int stts)
+static void	rtfd(int fd, char *eof, int stts, t_tree **root)
 {
 	char	*in;
 	char	*res;
@@ -52,7 +52,7 @@ static void	rtfd(int fd, char *eof, int stts)
 		{
 			if (!ft_strlen(res) || !ft_strncmp(res, eof, ft_strlen(eof)))
 				break ;
-			if (fd > 0)
+			if (*num_cmds() > 0 && fd > 0)
 				ft_putstr_fd(res, fd);
 			free(res);
 		}
@@ -61,6 +61,9 @@ static void	rtfd(int fd, char *eof, int stts)
 	if (res)
 		free(res);
 	*exit_stts() = EXIT_SUCCESS;
+	if (*num_cmds()>0 )
+		fodase3(root);
+	// (void)root;
 	exit(*exit_stts());
 }
 
@@ -68,7 +71,7 @@ static void	rtfd(int fd, char *eof, int stts)
 //It's our heredoc if it ain't obvious lol
 static int	deezdocs(t_tree **root, t_cmd *cmd, int p, int stts)
 {
-	if (pipe((*root)->pipes) < 0)
+	if (*num_cmds()>0 && pipe((*root)->pipes) < 0)
 		print_err("failed to open pipe", EXIT_FAILURE);
 	cmd->pid = fork();
 	if (cmd->pid < 0)
@@ -78,11 +81,12 @@ static int	deezdocs(t_tree **root, t_cmd *cmd, int p, int stts)
 		signal_here();
 		if (p == cmd->in)
 			rtfd(((*root)->pipes)[1], ft_strjoin((*root)->content, "\n"),
-				EXIT_SUCCESS);
+				EXIT_SUCCESS, root);
 		else
-			rtfd(-1, ft_strjoin((*root)->content, "\n"), 129);
+			rtfd(-1, ft_strjoin((*root)->content, "\n"), 129, root);
 	}
-	close(((*root)->pipes)[1]);
+	if (*num_cmds()>0 )
+		close(((*root)->pipes)[1]);
 	waitpid(cmd->pid, &stts, 0);
 	sig_handle();
 	set_exit_stts(stts);
@@ -92,6 +96,7 @@ static int	deezdocs(t_tree **root, t_cmd *cmd, int p, int stts)
 			*exit_stts() = EXIT_SUCCESS;
 		return (1);
 	}
+
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:13:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/23 18:25:27 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:10:23 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef enum e_io
 	E_IN,
 	E_OUT
 }			t_io;
+
 
 //Signal types
 typedef enum e_sigtype
@@ -177,7 +178,8 @@ char			*parse_tilde(char *arg, char **env);
 
 /*					EXECUTOR					*/
 //executor.c
-void			xqt(t_tree *root, t_cmd *cmd, int *fd);
+// void	xqt(t_tree *node, t_cmd *cmd, int *fd, t_tree **root);
+
 void			proc_exec_tree(t_tree **root, char ***env);
 //executor_handy.c
 void			holy_pid_initializer(int *cmdpid, int *proc_stts);
@@ -211,6 +213,9 @@ void			reset_the_terminal(void);
 int				print_builtin_err(char *arg);
 int				run_builtin(t_tree *node, char ***env, char *cmd, int fd);
 int				builtin_ret(t_tree *node, char ***env, char *cmd, int pos);
+void	fodase2(t_tree **node); 	
+void	fodase3(t_tree **node); 	
+
 bool			is_builtin(t_tree *node, char ***env, char *cmd);
 //ft_pwd.c
 int				ft_pwd(int fd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:38:46 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/17 13:59:34 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:56:56 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,18 @@ void	print_err(char *msg, int stts)
 
 void	print_shell_err(char *cmd, char *msg, int stts)
 {
+	(void)stts;
 	ft_putstr_fd(SHELL, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putstr_fd(cmd, STDERR_FILENO);
-	free(cmd);
+	// free(cmd);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(msg, STDERR_FILENO);
-	if (stts != NO_EXIT)
-	{
-		*exit_stts() = stts;
-		exit(*exit_stts());
-	}
+	// if (stts != NO_EXIT)
+	// {
+	// 	*exit_stts() = stts;
+	// 	exit(*exit_stts());
+	// }
 }
 
 void	print_hdoc_warn(char *eof, char *in, int stts)

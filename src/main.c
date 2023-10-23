@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/21 19:16:26 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:09:24 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,13 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 			continue ;
 		}
 		parsa(in, &env, &tree, 0);
+		if (*num_cmds() > 1){
+					// fodase2(&tree);
+		fodase3(&tree);
+		}
 		free_tree(get_tree_root(&tree));
+		*num_cmds() = 0;
+
 		*syntax() = 0;
 	}
 }
