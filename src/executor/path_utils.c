@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:39:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/21 19:13:50 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:18:36 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	is_valid_path(char *cmd, char *path)
 	if (lstat(path, &buf) == 0)
 	{
 		if (S_ISDIR(buf.st_mode))
-			print_shell_err(cmd, "Is a directory", 126);
+			print_shell_err(cmd, "command not found", 127);
 		else if (access(path, X_OK) == 0)
 			return (1);
 	}
