@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/23 12:37:53 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:08:55 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,25 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 	char	*path;
 	char	**cmds;
 
-	path = get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env));
-	cmds = get_cmd_args(node, cmd->pos);
-	close((cmd->pipes[0]));
-	redir(node, cmd, fd);
-	sig_handle();
-	rl_clear_history();
-	if (builtin_ret(node, cmd->env, get_cmd(node, cmd->pos), cmd->pos))
-		exit(*exit_stts());
-	if (!*cmds)
-		cmds = ft_split(" ", 0);
-	if (!path)
-		path = *cmds;
-	execve(path, cmds, *(cmd->env));
-	free_mtx(cmds);
+	if (!get_cmd_arg_num(node, cmd->pos))
+		free_tree(get_tree_root(&node));
+	else
+	{
+		path = get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env));
+		cmds = get_cmd_args(node, cmd->pos);
+		close((cmd->pipes[0]));
+		redir(node, cmd, fd);
+		sig_handle();
+		rl_clear_history();
+		if (builtin_ret(node, cmd->env, get_cmd(node, cmd->pos), cmd->pos))
+			exit(*exit_stts());
+		if (!*cmds)
+			cmds = ft_split(" ", 0);
+		if (!path)
+			path = *cmds;
+		execve(path, cmds, *(cmd->env));
+		free_mtx(cmds);
+	}
 	free_tree(get_tree_root(&node));
 	*exit_stts() = 127;
 	exit(*exit_stts());

@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:13:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/23 12:37:27 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:06:34 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,7 @@ void			holy_pid_initializer(int *cmdpid, int *proc_stts);
 char			*get_cmd(t_tree *node, int pos);
 char			**get_cmd_args(t_tree *node, int pos);
 int				get_cmd_num(t_tree *node);
+int				get_cmd_arg_num(t_tree *node, int pos);
 //path_utils.c
 char			*get_cmd_path(char *cmd, char **env);
 //sig_utils.c

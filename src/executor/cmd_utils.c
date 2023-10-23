@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:48:22 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/21 17:47:13 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:06:19 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*get_cmd(t_tree *node, int pos)
 		return (NULL);
 }
 
-static int	get_cmd_arg_num(t_tree *node, int pos)
+int	get_cmd_arg_num(t_tree *node, int pos)
 {
 	int	res;
 
