@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/23 13:08:55 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:33:46 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 	{
 		path = get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env));
 		cmds = get_cmd_args(node, cmd->pos);
-		close((cmd->pipes[0]));
+		if (*num_cmds()>1)
+			close((cmd->pipes[0]));
 		redir(node, cmd, fd);
 		sig_handle();
 		rl_clear_history();
@@ -44,7 +45,7 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 //The actual executor function. Cool name, right?
 void	xqt(t_tree *node, t_cmd *cmd, int *fd)
 {
-	if (pipe(cmd->pipes) == -1)
+	if (*num_cmds()>1 && pipe(cmd->pipes) == -1)
 	{
 		print_err("failed to open pipe", EXIT_FAILURE);
 		*exit_stts() = 1;
@@ -60,7 +61,7 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd)
 	}
 	else if (cmd->pid == 0)
 		proc_child(node, cmd, fd);
-	if (cmd->num != 1)
+	if (*num_cmds()>1)
 	{
 		if ((*fd) > 0)
 			close(*fd);
@@ -80,6 +81,8 @@ static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)
 	cmd.num = cmd_num;
 	cmd.pos = pos;
 	xqt(node, &cmd, &fd);
+	if (*num_cmds() > 1 && cmd.pos == *num_cmds()  -1)
+		close(fd);
 	return (cmd);
 }
 

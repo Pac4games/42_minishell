@@ -6,7 +6,7 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/23 12:34:33 by paugonca         ###   ########.fr        #
+#    Updated: 2023/10/23 18:25:37 by psoares-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ MKD         = mkdir -p
 SRC_PATH    = ./src
 OBJ_PATH    = ./obj
 
-SRC_NAME    = main.c						\
+SRC_NAME    = parser/sopas.c main.c						\
               env_utils.c					\
 			  exit_stts.c					\
 			  parser/parser.c				\

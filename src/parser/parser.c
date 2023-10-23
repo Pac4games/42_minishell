@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 12:46:53 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:27:20 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	parse_str(char *str, t_parse parse, int exp)
 		{
 			i = tree_add_case(str, i - 1, E_CMD, parse);
 			cmd++;
+			*num_cmds()= *num_cmds()+  1;
 		}
 	}
 }

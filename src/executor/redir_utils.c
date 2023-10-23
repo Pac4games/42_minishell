@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:18:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/16 15:18:50 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:31:52 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	redir(t_tree *node, t_cmd *cmd, int *fd)
 	}
 	else
 	{
-		if (cmd->pos == cmd->num - 1)
+		if (*num_cmds()> 1 && cmd->pos == *num_cmds()- 1)
 			close((cmd->pipes)[1]);
-		else
+		else if (*num_cmds()> 1)
 			dup2((cmd->pipes)[1], STDOUT_FILENO);
 	}
 }
