@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/24 18:41:09 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:16:45 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 		}
 		parsa(in, &env, &tree, 0);
 		if (*num_cmds() > 1){
-					// fodase2(&tree);
-		fodase3(&tree);
+			fodase2(&tree);
+			fodase3(&tree);
 		}
-		for (int i = 3;i < FOPEN_MAX; i++)
-			close (i);
+		/*for (int i = 3;i < FOPEN_MAX; i++)
+			close (i);*/
 		free_tree(get_tree_root(&tree));
 		*num_cmds() = 0;
 		*syntax() = 0;
