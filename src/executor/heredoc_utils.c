@@ -64,8 +64,8 @@ static void	rtfd(int fd, char *eof, int stts, t_tree **root)
 	*exit_stts() = EXIT_SUCCESS;
 	/*if (*num_cmds()>0 )
 		fodase3(root);*/
-	for(int i = 3; i < FOPEN_MAX; i++)
-		close(i);
+	// for(int i = 3; i < FOPEN_MAX; i++)
+	// 	close(i);
 	exit(*exit_stts());
 }
 
@@ -88,12 +88,12 @@ static int	deezdocs(t_tree **root, t_cmd *cmd, int p, int stts)
 			rtfd(-1, ft_strjoin((*root)->content, "\n"), 129, root);
 	}
 	if (*num_cmds()>0 )
-	{
-		//<< ola | cat Makefile > lingua
-		for(int i = 3; i < FOPEN_MAX; i++)
-			close(i);
-	}
-		//close(((*root)->pipes)[1]);
+	// {
+	// 	//<< ola | cat Makefile > lingua
+	// 	for(int i = 3; i < FOPEN_MAX; i++)
+	// 		close(i);
+	// }
+		close(((*root)->pipes)[1]);
 	waitpid(cmd->pid, &stts, 0);
 	sig_handle();
 	set_exit_stts(stts);
