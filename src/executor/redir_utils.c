@@ -48,8 +48,8 @@ void	redir(t_tree *node, t_cmd *cmd, int *fd)
 	if (out_num)
 	{
 		redir_out(node, cmd, out_num);
-		//close((cmd->pipes)[1]);
-		for(int i = 0; i < FOPEN_MAX; i++)
+		// close((cmd->pipes)[1]);
+		for(int i = 3; i < FOPEN_MAX; i++)
 			close(i);
 	}
 	else
