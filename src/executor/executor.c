@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/24 13:05:27 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:33:29 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ static int	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num)
 	if (!cmd)
 		return (0);
 	if (redir_hdoc(root, cmd)){
-
+		for (int i = 3;i < FOPEN_MAX; i++)
+			close(i);
 		return (1);
 		
 	}
