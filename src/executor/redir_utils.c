@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:18:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/23 20:16:31 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:10:05 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ void	redir(t_tree *node, t_cmd *cmd, int *fd)
 		dup2(*fd, STDIN_FILENO);
 	if (out_num)
 	{
-		close((cmd->pipes)[1]);
 		redir_out(node, cmd, out_num);
+		//close((cmd->pipes)[1]);
+		for(int i = 0; i < FOPEN_MAX; i++)
+			close(i);
 	}
 	else
 	{

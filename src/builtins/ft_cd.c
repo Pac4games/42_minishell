@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:38:35 by jferreir          #+#    #+#             */
-/*   Updated: 2023/10/21 19:04:17 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:17:04 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	print_cd_error(char **args)
 {
-	if (access(args[1], X_OK == -1))
+	if (access(args[1], F_OK == -1))
 	{
 		ft_putstr_fd(SHELL ": cd: `", STDERR_FILENO);
 		ft_putstr_fd(args[1], STDERR_FILENO);
