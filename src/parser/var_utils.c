@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:48:54 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 14:16:25 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:18:28 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,13 @@ char	*add_var(char *str, char *var, int start, int end)
 
 char	*find_var(char *var, char **env)
 {
-	int	i;
-	int	size;
-	int j = 0;
-	char *tmp = ft_strdup(var + 1);
+	int		i;
+	int		j;
+	int		size;
+	char	*tmp;
+
+	j = 0;
+	tmp = ft_strdup(var + 1);
 	if (ft_isdigit(tmp[j]))
 	{
 		free(var);
