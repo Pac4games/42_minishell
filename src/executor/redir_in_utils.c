@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:10:56 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/24 18:45:34 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:02:10 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	redir_stdin(t_tree *node, int p, int in_num)
 		close(fd);
 	else
 		dup2(fd, STDIN_FILENO);
-	
 }
 
 void	redir_in(t_tree *node, t_cmd *cmd, int in_num)

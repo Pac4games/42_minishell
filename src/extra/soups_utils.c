@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:10:52 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 11:21:18 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:25:33 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,4 @@ int	*num_cmds(void)
 	static int	num;
 
 	return (&num);
-}
-
-void	fd_close_all(int fd)
-{
-	while (fd < FOPEN_MAX)
-		close(fd++);
 }

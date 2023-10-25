@@ -6,46 +6,29 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/24 18:33:29 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:12:35 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void	proc_child(t_tree *node, t_cmd *cmd, int *fd, t_tree **root)
+static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 {
 	char	*path;
 	char	**cmds;
-	(void )root;
-	if (!get_cmd_arg_num(node, cmd->pos)){
-			;
-	}
-	else
+
+	if (get_cmd_arg_num(node, cmd->pos) != 0)
 	{
 		path = get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env));
 		cmds = get_cmd_args(node, cmd->pos);
-		if (*num_cmds()>1)
+		if (*num_cmds() > 1)
 			close((cmd->pipes[0]));
-		
 		redir(node, cmd, fd);
 		sig_handle();
 		rl_clear_history();
-		if (builtin_ret(node, cmd->env, get_cmd(node, cmd->pos), cmd->pos)){
-			for(int i = 0; i < FOPEN_MAX; i++)
-				close(i);
-			free_tree(get_tree_root(&node));
-			exit(*exit_stts());
-		}
-		if (!*cmds)
-			cmds = ft_split(" ", 0);
-		if (!path){
-			path = *cmds;
-			print_shell_err(path, "command not found", 127);
-		}
-		
+		pc_utils(cmd, node, path, cmds);
 		execve(path, cmds, *(cmd->env));
-		for(int i = 0; i < FOPEN_MAX; i++)
-			close(i);
+		fd_close_all(0);
 		free_mtx(cmds);
 	}
 	free_tree(get_tree_root(&node));
@@ -54,9 +37,9 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd, t_tree **root)
 }
 
 //The actual executor function. Cool name, right?
-void	xqt(t_tree *node, t_cmd *cmd, int *fd, t_tree **root)
+void	xqt(t_tree *node, t_cmd *cmd, int *fd)
 {
-	if (*num_cmds()>1 && pipe(cmd->pipes) == -1)
+	if (*num_cmds() > 1 && pipe(cmd->pipes) == -1)
 	{
 		print_err("failed to open pipe", EXIT_FAILURE);
 		*exit_stts() = 1;
@@ -71,8 +54,8 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd, t_tree **root)
 		exit (1);
 	}
 	else if (cmd->pid == 0)
-		proc_child(node, cmd, fd, root);
-	if (*num_cmds()>1)
+		proc_child(node, cmd, fd);
+	if (*num_cmds() > 1)
 	{
 		if ((*fd) > 0)
 			close(*fd);
@@ -81,7 +64,7 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd, t_tree **root)
 	}
 }
 
-static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num, t_tree **root)
+static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num)
 {
 	t_cmd		cmd;
 	static int	fd;
@@ -91,8 +74,8 @@ static t_cmd	proc_exec_cmd(t_tree *node, char ***env, int pos, int cmd_num, t_tr
 	cmd.env = env;
 	cmd.num = cmd_num;
 	cmd.pos = pos;
-	xqt(node, &cmd, &fd, root);
-	if (*num_cmds() > 1 && cmd.pos == *num_cmds()  -1)
+	xqt(node, &cmd, &fd);
+	if (*num_cmds() > 1 && cmd.pos == *num_cmds() - 1)
 		close(fd);
 	return (cmd);
 }
@@ -102,14 +85,12 @@ static int	pet_utils(t_tree **root, t_cmd *cmd, int *i, int *cmd_num)
 	*i = 0;
 	if (!cmd)
 		return (0);
-	if (redir_hdoc(root, cmd)){
-		for (int i = 3;i < FOPEN_MAX; i++)
-			close(i);
+	if (redir_hdoc(root, cmd))
+	{
+		fd_close_all(3);
 		return (1);
-		
 	}
 	*cmd_num = get_cmd_num(*root);
-
 	return (0);
 }
 
@@ -129,14 +110,12 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	while (tmp)
 	{
 		if (!(p == 1 && !(tmp->right)))
-			cmd = proc_exec_cmd(tmp, env, p, cmd_num, root);
+			cmd = proc_exec_cmd(tmp, env, p, cmd_num);
 		if (p++)
 			tmp = tmp->parent;
 	}
 	holy_pid_initializer(&cmd.pid, &proc_stts);
 	waitpid(cmd.pid, &proc_stts, 0);
-	// if (*num_cmds() > 0)
-	// 	fodase2(root);
 	set_exit_stts(proc_stts);
 	p = 0;
 	while (p++ < cmd_num)

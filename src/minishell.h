@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:13:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 11:28:12 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:19:24 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,11 +177,10 @@ char			*parse_tilde(char *arg, char **env);
 
 /*					EXECUTOR					*/
 //executor.c
-// void	xqt(t_tree *node, t_cmd *cmd, int *fd, t_tree **root);
-
 void			proc_exec_tree(t_tree **root, char ***env);
 //executor_handy.c
 void			holy_pid_initializer(int *cmdpid, int *proc_stts);
+void			pc_utils(t_cmd *cmd, t_tree *node, char *path, char **cmds);
 //cmd_utils.c
 char			*get_cmd(t_tree *node, int pos);
 char			**get_cmd_args(t_tree *node, int pos);
@@ -212,8 +211,6 @@ void			reset_the_terminal(void);
 int				print_builtin_err(char *arg);
 int				run_builtin(t_tree *node, char ***env, char *cmd, int fd);
 int				builtin_ret(t_tree *node, char ***env, char *cmd, int pos);
-void			fodase2(t_tree **node); 
-void			fodase3(t_tree **node); 
 
 bool			is_builtin(t_tree *node, char ***env, char *cmd);
 //ft_pwd.c
@@ -248,6 +245,8 @@ void			free_mtx(char **mtx);
 void			free_tree(t_tree **node);
 t_tree			**get_tree_root(t_tree **node);
 int				mtx_len(char **mtx);
+void			fd_close_cmd(t_tree **node); 
+void			fd_close_hdoc(t_tree **node); 
 
 /*					  MISC						*/
 char			**get_path(char **env);

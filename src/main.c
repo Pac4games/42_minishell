@@ -6,23 +6,11 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 11:30:56 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:21:49 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	set_exit_stts(int stts)
-{
-	if (WIFSIGNALED(stts))
-	{
-		*exit_stts() = WTERMSIG(stts) + 128;
-		if (stts == SIGINT)
-			ft_putendl_fd(NULL, STDIN_FILENO);
-	}
-	else
-		*exit_stts() = WEXITSTATUS(stts);
-}
 
 char	*shlvl_up(char *shlvl)
 {
@@ -67,7 +55,7 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 			continue ;
 		parsa(in, &env, &tree, 0);
 		if (*num_cmds() > 1)
-			fodase3(get_tree_root(&tree));
+			fd_close_hdoc(get_tree_root(&tree));
 		free_tree(get_tree_root(&tree));
 		fd_close_all(3);
 		*num_cmds() = 0;

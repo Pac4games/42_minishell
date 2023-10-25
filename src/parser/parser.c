@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/23 18:27:20 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:15:38 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,10 @@ static int	parse_str_redir(char *str, t_parse parse, int *i)
 	return (1);
 }
 
-static void	parse_str(char *str, t_parse parse, int exp)
+static void	parse_str(char *str, t_parse parse, int exp, int cmd)
 {
 	int	i;
-	int	cmd;
 
-	cmd = 0;
 	i = 0;
 	parse.exp = &exp;
 	while (str[i])
@@ -58,7 +56,7 @@ static void	parse_str(char *str, t_parse parse, int exp)
 		{
 			i = tree_add_case(str, i - 1, E_CMD, parse);
 			cmd++;
-			*num_cmds()= *num_cmds()+  1;
+			*num_cmds() += 1;
 		}
 	}
 }
@@ -71,12 +69,12 @@ static void	parse_pipes(char *arg, char **mtx, t_tree **root, char **env)
 	parse.env = env;
 	parse.tree = root;
 	if (!mtx)
-		parse_str(arg, parse, 0);
+		parse_str(arg, parse, 0, 0);
 	else
 	{
 		while (mtx[parse.pos])
 		{
-			parse_str(mtx[parse.pos], parse, 0);
+			parse_str(mtx[parse.pos], parse, 0, 0);
 			parse.pos++;
 		}
 	}
