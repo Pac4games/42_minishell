@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:18:49 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/24 13:10:05 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:35:29 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,13 @@ void	redir(t_tree *node, t_cmd *cmd, int *fd)
 	if (out_num)
 	{
 		redir_out(node, cmd, out_num);
-		// close((cmd->pipes)[1]);
-		for(int i = 3; i < FOPEN_MAX; i++)
-			close(i);
+		fd_close_all(3);
 	}
 	else
 	{
-		if (*num_cmds()> 1 && cmd->pos == cmd->num- 1)
+		if (*num_cmds() > 1 && cmd->pos == cmd->num - 1)
 			close((cmd->pipes)[1]);
-		else if (*num_cmds()> 1)
+		else if (*num_cmds() > 1)
 			dup2((cmd->pipes)[1], STDOUT_FILENO);
 	}
 }

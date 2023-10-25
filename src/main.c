@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/24 20:16:45 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:30:56 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,25 @@ char	*shlvl_up(char *shlvl)
 	return (res);
 }
 
+static int	handle_input(char *in)
+{
+	if (in && ft_strlen(in))
+		add_history(in);
+	else if (!in)
+	{
+		ft_putstr_fd("\nexit\n", STDOUT_FILENO);
+		rl_clear_history();
+		*exit_stts() = EXIT_FAILURE;
+		exit(*exit_stts());
+	}
+	else if (!ft_strlen(in))
+	{
+		free(in);
+		return (0);
+	}
+	return (1);
+}
+
 static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 {
 	while (true)
@@ -44,28 +63,13 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 		prompt = ft_strjoin(SHELL, ":$ ");
 		in = readline(prompt);
 		free(prompt);
-		if (in && ft_strlen(in))
-			add_history(in);
-		else if (!in)
-		{
-			ft_putstr_fd("\nexit\n", STDOUT_FILENO);
-			rl_clear_history();
-			*exit_stts() = EXIT_FAILURE;
-			exit(*exit_stts());
-		}
-		else if (!ft_strlen(in))
-		{
-			free(in);
+		if (!handle_input(in))
 			continue ;
-		}
 		parsa(in, &env, &tree, 0);
-		if (*num_cmds() > 1){
-			// fodase2(get_tree_root(&tree));
+		if (*num_cmds() > 1)
 			fodase3(get_tree_root(&tree));
-		}
 		free_tree(get_tree_root(&tree));
-		for (int i = 3;i < FOPEN_MAX; i++)
-			close (i);
+		fd_close_all(3);
 		*num_cmds() = 0;
 		*syntax() = 0;
 	}

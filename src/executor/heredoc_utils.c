@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:10:28 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/24 18:36:19 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:59:28 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,10 @@ void	term_change(void)
 }
 
 //Takes the input for deezdocs()
-static void	rtfd(int fd, char *eof, int stts, t_tree **root)
+static void	rtfd(int fd, char *eof, int stts, char *in)
 {
-	char	*in;
 	char	*res;
-	
-	(void)(root);
+
 	while (true)
 	{
 		in = readline("> ");
@@ -54,53 +52,45 @@ static void	rtfd(int fd, char *eof, int stts, t_tree **root)
 			if (!ft_strlen(res) || !ft_strncmp(res, eof, ft_strlen(eof)))
 				break ;
 			if (*num_cmds() > 0 && fd > 0)
-			{
 				ft_putstr_fd(res, fd);
-				close(((*root)->pipes)[0]);	
-			}
 			free(res);
 		}
 	}
-	//close(((*root)->pipes)[1]);
 	free(eof);
 	if (res)
 		free(res);
-	if (*num_cmds()>0 )
-	{
-		//fodase3(root);
-		fodase2(root);
-		for(int i = 3; i < FOPEN_MAX; i++)
-			close(i);
-	}
+	if (*num_cmds() > 0)
+		fd_close_all(3);
 	*exit_stts() = EXIT_SUCCESS;
 	exit(*exit_stts());
 }
 
+static void	call_rtfd(t_cmd *cmd, t_tree **root)
+{
+	int	p;
+
+	p = 0;
+	signal_here();
+	if (p == cmd->in)
+		rtfd(((*root)->pipes)[1], ft_strjoin((*root)->content, "\n"),
+			EXIT_SUCCESS, NULL);
+	else
+		rtfd(-1, ft_strjoin((*root)->content, "\n"), 129, NULL);
+}
+
 //Yet another genius name (may change it later)
 //It's our heredoc if it ain't obvious lol
-static int	deezdocs(t_tree **root, t_cmd *cmd, int p, int stts)
+static int	deezdocs(t_tree **root, t_cmd *cmd, int stts)
 {
-	if (*num_cmds()> 0 && pipe((*root)->pipes) < 0)
+	if (*num_cmds() > 0 && pipe((*root)->pipes) < 0)
 		print_err("failed to open pipe", EXIT_FAILURE);
 	cmd->pid = fork();
 	if (cmd->pid < 0)
 		print_err("failed to fork process", EXIT_FAILURE);
 	else if (cmd->pid == 0)
-	{
-		signal_here();
-		if (p == cmd->in)
-			rtfd(((*root)->pipes)[1], ft_strjoin((*root)->content, "\n"),
-				EXIT_SUCCESS, root);
-		else
-			rtfd(-1, ft_strjoin((*root)->content, "\n"), 129, root);
-	}
-	if (*num_cmds()>0 )
+		call_rtfd(cmd, root);
+	if (*num_cmds() > 0)
 		close(((*root)->pipes)[1]);
-	// {
-	// 	//<< ola | cat Makefile > lingua
-	// 	for(int i = 3; i < FOPEN_MAX; i++)
-	// 		close(i);
-	// }
 	waitpid(cmd->pid, &stts, 0);
 	sig_handle();
 	set_exit_stts(stts);
@@ -110,7 +100,6 @@ static int	deezdocs(t_tree **root, t_cmd *cmd, int p, int stts)
 			*exit_stts() = EXIT_SUCCESS;
 		return (1);
 	}
-
 	return (0);
 }
 
@@ -130,7 +119,7 @@ int	handle_hdoc(t_tree **root, t_cmd *cmd)
 		{
 			p++;
 			if (tmp->type == E_HDOC)
-				if (deezdocs(&tmp, cmd, p, 0))
+				if (deezdocs(&tmp, cmd, EXIT_SUCCESS))
 					return (1);
 		}
 		if (!(cmd->pos))

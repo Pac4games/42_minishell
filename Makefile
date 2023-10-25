@@ -6,7 +6,7 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/23 20:45:35 by psoares-         ###   ########.fr        #
+#    Updated: 2023/10/25 11:31:41 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ MKD         = mkdir -p
 SRC_PATH    = ./src
 OBJ_PATH    = ./obj
 
-SRC_NAME    = parser/sopas.c main.c						\
+SRC_NAME    = main.c						\
               env_utils.c					\
 			  exit_stts.c					\
 			  parser/parser.c				\
@@ -49,7 +49,6 @@ SRC_NAME    = parser/sopas.c main.c						\
 			  builtins/ft_unset.c			\
               executor/executor.c			\
 			  executor/executor_handy.c		\
-			  executor/letter_soup.c		\
 			  executor/cmd_utils.c			\
               executor/path_utils.c			\
 			  executor/sig_utils.c			\
@@ -61,7 +60,8 @@ SRC_NAME    = parser/sopas.c main.c						\
 			  executor/heredoc_utils.c		\
 			  executor/reset_the_term.c		\
               extra/free_utils.c			\
-			  extra/print_utils.c
+			  extra/print_utils.c			\
+			  extra/soups_utils.c
 
 SRC         = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJ         = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o, $(SRC))

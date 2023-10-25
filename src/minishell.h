@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:13:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/23 20:10:23 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:28:12 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ typedef enum e_io
 	E_IN,
 	E_OUT
 }			t_io;
-
 
 //Signal types
 typedef enum e_sigtype
@@ -213,8 +212,8 @@ void			reset_the_terminal(void);
 int				print_builtin_err(char *arg);
 int				run_builtin(t_tree *node, char ***env, char *cmd, int fd);
 int				builtin_ret(t_tree *node, char ***env, char *cmd, int pos);
-void	fodase2(t_tree **node); 	
-void	fodase3(t_tree **node); 	
+void			fodase2(t_tree **node); 
+void			fodase3(t_tree **node); 
 
 bool			is_builtin(t_tree *node, char ***env, char *cmd);
 //ft_pwd.c
@@ -250,12 +249,12 @@ void			free_tree(t_tree **node);
 t_tree			**get_tree_root(t_tree **node);
 int				mtx_len(char **mtx);
 
-//TEST
+/*					  MISC						*/
 char			**get_path(char **env);
-//void    handle_signals(void);
 void			signal_here(void);
 int				*is_inside(void);
 struct termios	*term(void);
+int				*num_cmds(void);
+void			fd_close_all(int fd);
 
-int	*num_cmds(void);
 #endif

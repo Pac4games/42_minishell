@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:39:09 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/24 13:18:38 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:35:49 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ static char	*join_rel_path(char *cmd, char **path, char *tmp)
 	while (cmd[p])
 		if (cmd[p++] == '/')
 			print_shell_err(cmd, "No such file or directory", 126);
-	// print_shell_err(cmd, "command not found", 127);
 	return (NULL);
 }
 
