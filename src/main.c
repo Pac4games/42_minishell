@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 11:01:34 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 12:21:49 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:46:51 by psoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ int	main(int ac, char **av, char **envp)
 	*syntax() = 0;
 	*exit_stts() = EXIT_SUCCESS;
 	le_loop(in, prompt, env, tree);
+	fd_close_all(0);
 	return (*exit_stts());
 }
