@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:32:02 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 15:40:25 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:17:58 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,8 @@ void	pc_utils(t_cmd *cmd, t_tree *node, char *path, char **cmds)
 	if (!path)
 	{
 		path = *cmds;
-		print_shell_err(path, "command not found", 127);
+		print_shell_err(path, "command not found", NO_EXIT);
+		fd_close_all(0);
+		exit(127);
 	}
-}
-
-void	check_cmd(t_cmd *cmd, t_tree *node)
-{
-	char	*path;
-
-	path = get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env));
-	if (!path)
-		print_shell_err(node->content, "command not found", 127);
-	else
-		free(path);
 }
