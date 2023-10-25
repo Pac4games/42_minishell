@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:51:17 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 14:55:06 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:43:32 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd)
 	if (get_cmd_arg_num(node, cmd->pos) != 0)
 	{
 		path = get_cmd_path(get_cmd(node, cmd->pos), *(cmd->env));
+		printf("path: %s\n", path);
 		cmds = get_cmd_args(node, cmd->pos);
 		if (*num_cmds() > 1)
 			close((cmd->pipes[0]));
@@ -53,7 +54,7 @@ void	xqt(t_tree *node, t_cmd *cmd, int *fd)
 		*exit_stts() = 1;
 		exit (1);
 	}
-	else if (cmd->pid == 0)
+	if (cmd->pid == 0)
 		proc_child(node, cmd, fd);
 	if (*num_cmds() > 1)
 	{
