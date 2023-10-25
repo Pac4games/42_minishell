@@ -59,7 +59,7 @@ static int	check_var_names(char **args)
 	res = 0;
 	while (args[++i])
 	{
-		if (ft_isdigit(args[i][0]))
+		if (ft_isdigit(args[i][0]) || !ft_str_islanum(args[i]))
 			res = export_fail(args[i]);
 	}
 	if (res)

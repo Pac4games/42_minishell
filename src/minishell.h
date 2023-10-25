@@ -226,6 +226,7 @@ int				ft_export(char **args, char ***env, int fd);
 //export_utils.c
 void			export_arg_new(char *arg, char ***env, int i);
 int				export_fail(char *arg);
+int				ft_str_islanum(char *str);
 //ft_unset.c
 int				ft_unset(char **args, char ***env);
 //ft_cd.c

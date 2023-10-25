@@ -20,6 +20,7 @@ int	export_fail(char *arg)
 	ft_putstr_fd(msg, STDERR_FILENO);
 	ft_putstr_fd(arg, STDERR_FILENO);
 	ft_putendl_fd("': not a valid identifier", STDERR_FILENO);
+	*exit_stts() = 1;
 	free(msg);
 	return (1);
 }
@@ -64,4 +65,18 @@ void	export_arg_new(char *arg, char ***env, int i)
 		(*env)[i] = ft_strdup(arg);
 	}
 	free(arg);
+}
+
+int	ft_str_islanum(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		if (!ft_isalnum(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
