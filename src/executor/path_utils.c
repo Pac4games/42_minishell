@@ -61,7 +61,7 @@ static char	*join_rel_path(char *cmd, char **path, char *tmp)
 	while (cmd[p])
 		if (cmd[p++] == '/')
 			print_shell_err(cmd, "No such file or directory", 126);
-	//print_shell_err(cmd, "command not found e", 127);
+	// print_shell_err(cmd, "command not found", 127);
 	return (NULL);
 }
 

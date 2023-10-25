@@ -60,12 +60,12 @@ static void	le_loop(char *in, char *prompt, char **env, t_tree *tree)
 		}
 		parsa(in, &env, &tree, 0);
 		if (*num_cmds() > 1){
-			fodase2(&tree);
-			fodase3(&tree);
+			// fodase2(get_tree_root(&tree));
+			fodase3(get_tree_root(&tree));
 		}
-		/*for (int i = 3;i < FOPEN_MAX; i++)
-			close (i);*/
 		free_tree(get_tree_root(&tree));
+		for (int i = 3;i < FOPEN_MAX; i++)
+			close (i);
 		*num_cmds() = 0;
 		*syntax() = 0;
 	}

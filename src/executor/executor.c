@@ -38,8 +38,10 @@ static void	proc_child(t_tree *node, t_cmd *cmd, int *fd, t_tree **root)
 		}
 		if (!*cmds)
 			cmds = ft_split(" ", 0);
-		if (!path)
+		if (!path){
 			path = *cmds;
+			print_shell_err(path, "command not found", 127);
+		}
 		
 		execve(path, cmds, *(cmd->env));
 		for(int i = 0; i < FOPEN_MAX; i++)
@@ -133,8 +135,8 @@ void	proc_exec_tree(t_tree **root, char ***env)
 	}
 	holy_pid_initializer(&cmd.pid, &proc_stts);
 	waitpid(cmd.pid, &proc_stts, 0);
-	if (*num_cmds() > 0)
-		fodase2(root);
+	// if (*num_cmds() > 0)
+	// 	fodase2(root);
 	set_exit_stts(proc_stts);
 	p = 0;
 	while (p++ < cmd_num)
