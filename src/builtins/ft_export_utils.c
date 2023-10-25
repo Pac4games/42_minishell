@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:40:30 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 19:54:53 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/25 22:15:54 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	export_fail(char *arg)
 	ft_putstr_fd(msg, STDERR_FILENO);
 	ft_putstr_fd(arg, STDERR_FILENO);
 	ft_putendl_fd("': not a valid identifier", STDERR_FILENO);
+	*exit_stts() = 1;
 	free(msg);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:40:24 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/23 20:19:37 by psoares-         ###   ########.fr       */
+/*   Updated: 2023/10/25 22:21:05 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,19 @@ static void	export_arg(char *arg, char ***env)
 static int	check_var_names(char **args)
 {
 	int	i;
+	int	j;
 	int	res;
 
 	i = -1;
 	res = 0;
 	while (args[++i])
 	{
-		if (ft_isdigit(args[i][0]))
+		j = 1;
+		if (ft_isdigit(args[i][j]))
 			res = export_fail(args[i]);
+		while (args[i][++j])
+			if (!ft_isalnum(args[i][j]))
+				res = export_fail(args[i]);
 	}
 	if (res)
 		free_mtx(args);

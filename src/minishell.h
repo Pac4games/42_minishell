@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:13:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 16:10:13 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/25 22:22:56 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,8 +245,8 @@ void			free_mtx(char **mtx);
 void			free_tree(t_tree **node);
 t_tree			**get_tree_root(t_tree **node);
 int				mtx_len(char **mtx);
-void			fd_close_cmd(t_tree **node); 
-void			fd_close_hdoc(t_tree **node); 
+void			fd_close_cmd(t_tree **node);
+void			fd_close_hdoc(t_tree **node);
 
 /*					  MISC						*/
 char			**get_path(char **env);
