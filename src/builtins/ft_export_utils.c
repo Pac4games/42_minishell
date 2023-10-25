@@ -6,7 +6,7 @@
 /*   By: paugonca <paugonca@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:40:30 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/23 10:38:44 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/25 19:54:53 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	export_fail(char *arg)
 	ft_putstr_fd(arg, STDERR_FILENO);
 	ft_putendl_fd("': not a valid identifier", STDERR_FILENO);
 	free(msg);
-	return (1);
+	return (0);
 }
 
 static bool	is_exportable(char *arg)
