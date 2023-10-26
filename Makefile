@@ -6,7 +6,7 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/25 12:21:02 by paugonca         ###   ########.fr        #
+#    Updated: 2023/10/26 11:02:31 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ $(VERBOSE).SILENT:
 NAME        = minishell
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=address
 
 RM          = rm -f
 MKD         = mkdir -p

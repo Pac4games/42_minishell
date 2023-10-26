@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:40:24 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/26 10:00:09 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:09:08 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,15 @@ int	ft_export(char **args, char ***env, int fd)
 	{
 		free_mtx(args);
 		return (export_no_args(*env, fd));
+	}
+	i = -1;
+	while (args[++i])
+	{
+		if (!ft_strlen(args[i]) || !args[i][0])
+		{
+			free_mtx(args);
+			return (export_no_args(*env, fd));
+		}
 	}
 	i = 1;
 	if (check_var_names(args))
