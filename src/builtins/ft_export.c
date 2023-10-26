@@ -6,13 +6,13 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:40:24 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 22:21:05 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/26 10:00:09 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int	no_args(char **env, int fd)
+static int	export_no_args(char **env, int fd)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ static int	no_args(char **env, int fd)
 		ft_putstr_fd("declare -x ", fd);
 		ft_putendl_fd(env[i++], fd);
 	}
-	return (1);
+	return (0);
 }
 
 static void	export_arg(char *arg, char ***env)
@@ -60,11 +60,12 @@ static int	check_var_names(char **args)
 	res = 0;
 	while (args[++i])
 	{
-		j = 1;
-		if (ft_isdigit(args[i][j]))
+		j = 0;
+		if (ft_isdigit(args[i][0]))
 			res = export_fail(args[i]);
 		while (args[i][++j])
-			if (!ft_isalnum(args[i][j]))
+			if (!ft_isalnum(args[i][j]) && args[i][j] != '=' \
+			&& args[i][j] != '_')
 				res = export_fail(args[i]);
 	}
 	if (res)
@@ -79,11 +80,11 @@ int	ft_export(char **args, char ***env, int fd)
 	if (mtx_len(args) == 1)
 	{
 		free_mtx(args);
-		return (no_args(*env, fd));
+		return (export_no_args(*env, fd));
 	}
 	i = 1;
 	if (check_var_names(args))
-		return (1);
+		return (0);
 	while (args[i])
 		export_arg(ft_strdup(args[i++]), env);
 	free_mtx(args);

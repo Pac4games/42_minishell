@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:13:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 22:22:56 by paugonca         ###   ########.fr       */
+/*   Updated: 2023/10/26 09:35:40 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,6 @@ void			reset_the_terminal(void);
 int				print_builtin_err(char *arg);
 int				run_builtin(t_tree *node, char ***env, char *cmd, int fd);
 int				builtin_ret(t_tree *node, char ***env, char *cmd, int pos);
-
 bool			is_builtin(t_tree *node, char ***env, char *cmd);
 //ft_pwd.c
 int				ft_pwd(int fd);
