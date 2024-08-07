@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:13:37 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/26 09:35:40 by paugonca         ###   ########.fr       */
+/*   Updated: 2024/08/07 14:35:48 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,8 +172,6 @@ int				is_diff_sign(char *sign, char c);
 int				quotes_skip(char *str, int i);
 int				get_quote_num(char *str);
 char			*quotes_rm(char *str);
-//tilde_utils.c
-char			*parse_tilde(char *arg, char **env);
 
 /*					EXECUTOR					*/
 //executor.c

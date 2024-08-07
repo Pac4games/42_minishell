@@ -6,7 +6,7 @@
 #    By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/10 11:20:48 by paugonca          #+#    #+#              #
-#    Updated: 2023/10/26 11:12:48 by paugonca         ###   ########.fr        #
+#    Updated: 2024/08/07 14:35:56 by paugonca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ SRC_NAME    = main.c						\
 			  parser/pipe_utils.c			\
 			  parser/signs_utils.c			\
 			  parser/quotes_utils.c			\
-			  parser/tilde_utils.c			\
 			  parser/syntax_utils.c			\
 			  parser/var_utils.c			\
 			  parser/get_stts_utils.c		\

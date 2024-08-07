@@ -6,7 +6,7 @@
 /*   By: psoares- <psoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:59:05 by paugonca          #+#    #+#             */
-/*   Updated: 2023/10/25 12:15:38 by paugonca         ###   ########.fr       */
+/*   Updated: 2024/08/07 14:36:37 by paugonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	parsa(char *in, char ***env, t_tree **root, int num)
 	t_pipe	*pipes;
 
 	pipes = NULL;
-	in = parse_tilde(in, *env);
 	check_pipes(in);
 	if (!in)
 		return ;
